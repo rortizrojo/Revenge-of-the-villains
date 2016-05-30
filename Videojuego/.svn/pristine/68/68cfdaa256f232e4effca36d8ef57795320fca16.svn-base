@@ -1,0 +1,128 @@
+correr
+
+Tamaño horizontal total:651
+Tamaño vertical total:30
+Retroceso:False
+Milisegundos:50
+
+Número de sprites:24
+
+SPRITE 1: 00000.png
+Tamaño horizontal:32
+tamaño vertical:29
+X:0
+
+SPRITE 2: 00001.png
+Tamaño horizontal:30
+tamaño vertical:29
+X:33
+
+SPRITE 3: 00002.png
+Tamaño horizontal:28
+tamaño vertical:29
+X:64
+
+SPRITE 4: 00003.png
+Tamaño horizontal:27
+tamaño vertical:29
+X:93
+
+SPRITE 5: 00004.png
+Tamaño horizontal:29
+tamaño vertical:29
+X:121
+
+SPRITE 6: 00005.png
+Tamaño horizontal:30
+tamaño vertical:29
+X:151
+
+SPRITE 7: 00006.png
+Tamaño horizontal:32
+tamaño vertical:29
+X:182
+
+SPRITE 8: 00007.png
+Tamaño horizontal:32
+tamaño vertical:29
+X:215
+
+SPRITE 9: 00008.png
+Tamaño horizontal:32
+tamaño vertical:29
+X:248
+
+SPRITE 10: 00009.png
+Tamaño horizontal:31
+tamaño vertical:29
+X:281
+
+SPRITE 11: 00010.png
+Tamaño horizontal:31
+tamaño vertical:29
+X:313
+
+SPRITE 12: 00011.png
+Tamaño horizontal:31
+tamaño vertical:29
+X:345
+
+SPRITE 13: 00012.png
+Tamaño horizontal:21
+tamaño vertical:25
+X:377
+
+SPRITE 14: 00013.png
+Tamaño horizontal:28
+tamaño vertical:25
+X:399
+
+SPRITE 15: 00014.png
+Tamaño horizontal:31
+tamaño vertical:25
+X:428
+
+SPRITE 16: 00015.png
+Tamaño horizontal:19
+tamaño vertical:25
+X:460
+
+SPRITE 17: 00016.png
+Tamaño horizontal:15
+tamaño vertical:25
+X:480
+
+SPRITE 18: 00017.png
+Tamaño horizontal:16
+tamaño vertical:25
+X:496
+
+SPRITE 19: 00018.png
+Tamaño horizontal:21
+tamaño vertical:25
+X:513
+
+SPRITE 20: 00019.png
+Tamaño horizontal:26
+tamaño vertical:25
+X:535
+
+SPRITE 21: 00020.png
+Tamaño horizontal:31
+tamaño vertical:25
+X:562
+
+SPRITE 22: 00021.png
+Tamaño horizontal:20
+tamaño vertical:25
+X:594
+
+SPRITE 23: 00022.png
+Tamaño horizontal:15
+tamaño vertical:25
+X:615
+
+SPRITE 24: 00023.png
+Tamaño horizontal:18
+tamaño vertical:25
+X:631

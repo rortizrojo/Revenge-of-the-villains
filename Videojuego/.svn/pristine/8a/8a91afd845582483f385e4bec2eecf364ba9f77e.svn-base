@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="120" height="25" tilewidth="50" tileheight="50">
+ <tileset firstgid="1" name="dataPointTiles" tilewidth="50" tileheight="50">
+  <image source="../tileSets/dataPointTiles.png" width="250" height="300"/>
+  <tile id="0">
+   <properties>
+    <property name="num" value="0"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="num" value="1"/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="num" value="2"/>
+   </properties>
+  </tile>
+  <tile id="3">
+   <properties>
+    <property name="num" value="3"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="31" name="collisionTiles" tilewidth="50" tileheight="50">
+  <image source="../tileSets/collisionTiles.png" width="250" height="401"/>
+  <tile id="0">
+   <properties>
+    <property name="dir" value="lrud"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="dir" value="l"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="dir" value="r"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="3">
+   <properties>
+    <property name="dir" value="u"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="4">
+   <properties>
+    <property name="dir" value="d"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="5">
+   <properties>
+    <property name="dir" value="lu"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="6">
+   <properties>
+    <property name="dir" value="ld"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="7">
+   <properties>
+    <property name="dir" value="ru"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="8">
+   <properties>
+    <property name="dir" value="rd"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="10">
+   <properties>
+    <property name="dir" value="lr"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="11">
+   <properties>
+    <property name="dir" value="ud"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="15">
+   <properties>
+    <property name="dir" value="lru"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="16">
+   <properties>
+    <property name="dir" value="lrd"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="17">
+   <properties>
+    <property name="dir" value="lud"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="18">
+   <properties>
+    <property name="dir" value="rud"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="20">
+   <properties>
+    <property name="dir" value="lu"/>
+    <property name="type" value="slope"/>
+   </properties>
+  </tile>
+  <tile id="22">
+   <properties>
+    <property name="dir" value="ru"/>
+    <property name="type" value="slope"/>
+   </properties>
+  </tile>
+  <tile id="30">
+   <properties>
+    <property name="dir" value="ld"/>
+    <property name="type" value="slope"/>
+   </properties>
+  </tile>
+  <tile id="32">
+   <properties>
+    <property name="dir" value="rd"/>
+    <property name="type" value="slope"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="71" name="dirtTerrain" tilewidth="50" tileheight="50">
+  <image source="../tileSets/dirtTerrain.png" width="300" height="300"/>
+ </tileset>
+ <tileset firstgid="107" name="waterTiles" tilewidth="50" tileheight="50">
+  <image source="../tileSets/waterTiles.png" width="100" height="150"/>
+ </tileset>
+ <tileset firstgid="113" name="foliage" tilewidth="50" tileheight="50">
+  <image source="../tileSets/foliage.png" width="250" height="300"/>
+ </tileset>
+ <tileset firstgid="143" name="basicBackground" tilewidth="50" tileheight="50">
+  <image source="../images/basicBackground.png" width="800" height="450"/>
+ </tileset>
+ <tileset firstgid="287" name="TileSetMario2" tilewidth="50" tileheight="50">
+  <image source="../tileSets/TileSetMario2.png" width="800" height="800"/>
+  <tile id="135">
+   <properties>
+    <property name="type" value="muerte"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="543" name="TileSet Mario" tilewidth="50" tileheight="50">
+  <image source="../tileSets/MarioTileset.png" width="2149" height="1999"/>
+  <tile id="319">
+   <properties>
+    <property name="type" value="moneda"/>
+   </properties>
+  </tile>
+  <tile id="361">
+   <properties>
+    <property name="type" value="moneda"/>
+   </properties>
+  </tile>
+  <tile id="508">
+   <properties>
+    <property name="type" value="moneda"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="Fondo" width="120" height="25">
+  <properties>
+   <property name="position" value="back"/>
+   <property name="type" value="tile"/>
+  </properties>
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+2XhXcUMRCH73DXAr0W+JeLc0UOKNYDurhLcXd3d3e3r+91X0OaSbK76XLlMa9fX3s7k0zmN8nmCoUuK0MzzIG5MA/mQ0UgglaBKqyAlRafmLKGlIPup/r6xDYLflKs67Oykn+anG1zt1rGdo2pzu+rbWRA91Of6XUwjR3nb9JaykXyNfXVKmjT6qDXzFYjmxZq3lK++tpMvlJ8vBZ1PltNpOc++kZKrSKLn+pj2y9x7Wx72qRTpP2vrsumre28sM2p526KrRbk2pnG7Ql9K5bnPtrqNa4k0FeqnXSOm9Zv09ulrx6v61p2xOp9qse79DX1TBp9bTWINTHh0lcaz0dfV+1ca1ffQ9LebE44j66NT//YtI17xnZ2Jt2/+tngq7EJl77SeJVC97tX/Mx3b+jrTnvO2TSyvdNt+UWFrneo6Yy3aSbpa3pnmfLzORsqhvFN+afVVz0T4v/Vno9z89XXpZHpjHXtXf3uZNqH0vpMd6SqEJNEX/WOJ93RfM+GqGBfg3o+p9U4RrpbJTmf1bwqFl9TfVx713RP98lBHz+tvtL8+jms5+XSxnVmFxw1in10s/n7vNt83iU2X5+7tu1e7oqNCt33h9QTPvV3zW/SXP3c9f0riXY+1gRTYCpMg+kwA2bCLJhtqUebZ6xUM9+5Xd/50/S01GtJe93Ws77ju94bbcI6fGwBLIRF0AKLYQkshWWw3DJnltgoQHxoq3bSrLCyE1e/Je3Vps7PJXT/tLYa1sBaWAfrYQNshE2wGbbAVtgG22EH7MwYuytAfEjLu1c7/GMtW5S/Jf+01g67YQ/shX2wHw7AQTgEh+EIHIVjcBxOZIw9GSA+pOXdq7F/rGu7wz+tnYLTcAbOwjk4DxfgIlyCy3AFrsI1uA43MsbeDBAf0vLuVdW/3cM/rd2C23AH7sI9uA8P4CE8gsfwBJ7CM3gOLzLGvgwQH9Ly7tWk/mntFbyGN/AW3sF7+AAf4RN8hi/wFb7Bd/iRMfZngPiQlnevJvVPa786fhX5gT7QF/pBfxgAA2EQDIYhMBSGwfBittgRAeJDWt69mtQ/rY2kTqNgNIyBsVAH42A8TIB6KEEDNMJEmFTMFjs5QHxIy7tXk/qHtLrin+j1dmmgjxX7SuNJsXmaq9dceTcm7NWkvd0Tpuvs0l3XKUtsLZmPtg0CtbzWtHq44mp5zSZz5StpG6PH1tfQWkNrW+s9bbIs+uqxpRpfq6+5atKb1iitpdRL8u8J83lnNfbS+pQUff/bv2d/Q9/fLUX71+AuAAA=
+  </data>
+ </layer>
+ <layer name="Montañas fondo" width="120" height="25">
+  <properties>
+   <property name="position" value="back"/>
+   <property name="type" value="tile"/>
+  </properties>
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+2YXXLbMAyEecUmTVO/ii/y/S/QaCaYbj4v/yTaldtihiOJtCUSSywWXFJKS0e7frT183qkZXnP+vmcK/0rvr31/bd+68F2TyvhsPU7zEv9ru/bnKX/E9aD1VppgWVG3ygf1Ppd34bx64T1v056z1ltBN+rGctyDavtB7br4Bwz2t5Y3jB9Sb/3zN/KCUc5uMXHM+w91XlhJJYD1+B+5YV4T609m/ViSf9m6Q8ffb/jPH+a9p7GcA5cYy2h4+L/F2nki7h/tjgfjdkV970cey9jbAcGxDmwDXwVt8g7iq+ujfr9mTCuca/D0uXPzR8/Hj1xMYex8q3GrfIy88vWLoXG2vCeXDXTAjutRxTPLGOL+f2fxjashLGui1zr6m1da4yRt7e+npzfyuWPyPWKqZ4/rBhTfLd2BkxpgTHPRFxNXaqtmXe0JnNxXeLql+T1/kij3ttjsecVY67X4XvWHOS0l4vdUr3tcF7x7DBWHDTXu300ctbn8G6ZzkXjU9eisVyrS85oWv8QR+Yi4qd+1WeeARDjyFUaszy7GdGwNbxLfo+9Rd3AnEUNxdjVdjad4XSy+lnX5GJa8zFzFPf/JX3Fz2nuo83hTYwdrqoXanvN5eez4hs5j3XcFX3MRYxv5WeevWr+LmltxXrTKa52722qGxXnwLiEK+t45imXj67yLa1BZtpePaFnjTrPktYiVytuLgY1V9WwVZ/O0qCqG4lzbR7BL7pHHQfTZ67OPGo8D44apMde0i13qi8c/7ZqfY5pnJfwZPzO5DZqRj176MFXfaM+Jv7k5/jN0XN+V5OMYOz4hWcZihP1ku4BvTKPlvB1fDib294a82jFL/c0+c3hq1p0dD2Ka6lu7cHYYanP5CG3X/W+pDHjP735brY+aeVa19QP3MvUI9GX0i3GI/GmMctzMWLdigV9h6s5F4wpJ+n+1L3lYld5peXTe8TwHmzduSr1RMlXLkeHb1r1meZK5jvGTw1jxyk6Z46597K+ZU20mHfF86Mw3out4uvqoNIZQC0Xl87WyMWMWdYsrg7kOYPmFX2Hcg9zbsY3qD/cNadbn2jOvSdPvzW+08PP1B88D1C/uXgjvo5rHbbUc/x2Tc9m9HHO1AfUTKxpnQ/IYXHt9e2MGN4bu0nmoL5XYw4md8VYSl99H76I+TmMXU5w+2UpjLu8QR5yNa3jbMcL5JX434iP4xvq8xEbwTbhGvfUUMxpbu+rubiraSbm6lZzXO10MWsb9nP/6XxZL5PDuW/J04Gh4+wj1oNp6XctU51c09VcO7mU+PB9pZhV7ua40/ua+zP+zxxO3naam3Uac7C+jzpkhgVO8f299gsSy73b4C4AAA==
+  </data>
+ </layer>
+ <layer name="Arboles 2" width="120" height="25">
+  <properties>
+   <property name="position" value="back"/>
+   <property name="type" value="tile"/>
+  </properties>
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3YyQ6CMBhF4b4nKx7BeVacZ5/Z64IEjAuB0hY4X3LixqGbn9YaAwAAAAAA8FtU4L2j2laBusS+F9BBPdVXAzU0zE3bjNVETdVMzSt8V5Hnb5uEPCMLtVQrtVabCt/V1eevzRmxLVFbtVN7dfC6mmayOSO2HdVJndVFXf0up5ESE+6M3NRdPdRTvfwupxHSfTbFjLTL9z77z4yEfAZDXpl9NuQzGPLK7LMhn8GQl+6zRSQm3DOYCy7uRqLMa5Xfe5T4jK0zWFPvkFzcjcSZV9d3Mbb+p3T1DgkAPt4Eof7V4C4AAA==
+  </data>
+ </layer>
+ <layer name="Arboles" width="120" height="25">
+  <properties>
+   <property name="position" value="back"/>
+   <property name="type" value="tile"/>
+  </properties>
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+2Y227CMBBE9z954hPaAr1RcC8UWmi/ufNiBcKaxInD2OkeaSQeIrNajZwDIoZhGOPlBrlF7pAZMueOYyRmgdwjD8gj8sQdx0jMM7JEXpAVsuaOE8WMPUABOOQVeUPekQ/qNHHYfdPMBvlEtsgO+eKOE0Vp9w2Db2SPHJAf5Jc7ThSl3TepGbsb79gDkGG78dj7xYbtxux+5U69/7E44boxu1+507f/bDd2crlfQ9/Xk4HP70vf/rPdmN2v6ZW/LxYnev9z76WH3a9S8P33tOllKR1oi+Yimpc3OUtoL6W5/pB3U9ddbFo8EzpLcxHNS5qcJbQXc/0Kxi40F9G8pKuzmOtXMHbh5NxFNC/Xnut6/n/FCWcXxy4uEvbyiZw7Swj/Pma7fk4wd3Gofda8fFp77hL+fWyuX5FyF/4sSXDW0IztN4lxSu7/lxhGSfwB+tWoneAuAAA=
+  </data>
+ </layer>
+ <layer name="Terreno 1" width="120" height="25">
+  <properties>
+   <property name="position" value="front"/>
+   <property name="type" value="tile"/>
+  </properties>
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+2ZWW4DMQiGfbssTZcbZF7So/TcDUpQECIYbMJ4Wv8SyqyW8Tdg7JRi1+lq33c7X20xHl8azhdyjr9vjr5Otemj3FhcyoNL7bj1nPOefHMEjGHsn7Ggx3i/xShvaG/yzRMwfhZ70Qbtv+e4NUX0mWhTU1NTU37tiHEdmUnXtWujSPPxrwtrLaib9+XB6HC/hraUWw18YtdpO2fSziiC/mLf/mudh/5/MZP40uel8cJ7IzEGYZ23pTjeCdYijEnghTUvXUN596BGZQyCvlniOGJce8XjrSf/SOsYyhnWsZ49ipEZgzRuMDfxsV3Djyi2miC26fzsUTZjT7zxOP5h9yJjJ0o9+USre2kN5uWVxZjH3Kh5o0fcPytrnH+1/Iu5+mx4lss657VIyqVYN9T6GDG3Zq4LW/MKroVq40HXRlH/F0g1omfcub+Uca2Pvd8dXUMuZdycgXFpYRa5pyzFniXHIn/tfY1vVE3M42nNOVqLD0t+jlSNq8a4513UK+eLtaR9a5l8PXzQqDzvcYZb2tuIVBbfFrY9fKk/uE+5lbg9BLbF95TpXnSUWtlG8d2ScKy02tNrdO3DOUf1dw2+Ft+pLM8cK+3xuAD/95V3pHpR4vEK8zK21LcZfCPb9/Yhos9ZfJGx5buPYjr55vKVLMKHyfe5/QK+gSsw4C4AAA==
+  </data>
+ </layer>
+ <layer name="Datapoints" width="120" height="25" visible="0">
+  <properties>
+   <property name="shiftX" value="0"/>
+   <property name="shiftY" value="0"/>
+   <property name="type" value="data"/>
+  </properties>
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3OsQ0AAAQAMOH/n71gQ9Je0AgAAAAAuK22AwAAAAAAvJbbAQDGGrU3dMzgLgAA
+  </data>
+ </layer>
+ <layer name="Colisiones" width="120" height="25" visible="0">
+  <properties>
+   <property name="shiftX" value="0"/>
+   <property name="shiftY" value="0"/>
+   <property name="type" value="collision"/>
+  </properties>
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+2YYW7DIAyF31G8pV20/Zi2U+z+N2otBQ25hGDH0JDySVZVQgj4YTDMAKZhp7Tr3d6g46qs74W2nwOAYPPbMzQe+uoh2P3GGrdca2ZjP18ZwoiLM0MY+p4ZwtD3zBCGvmeG4KPvz93eF/uIyi+LrT2TZdzOV6L8CIS+/T67IwoIfvE7Lb9xeyTqxM9C/p3Ki8P562ga9wbBd31mXWbxf4r+a751ZI05lnuIY8L/2hmsRr+DVta7siNqvEW8L6X2pxYQ2t0h8Lf23JUdUeNcHKfuf1rf0RDa5c9hvJa53EpjGXNHnFMaCI/6xnmtdnzfBXX2rNW15n8YsyRV1hOERz/H60o8l7dgH30WfremVhZopbxkDu7NtWquGQS/9Zk1K9XXE3nGlr7a8tcl86zF3iX3ac95T/AdQ0t919ZUSUrjeD7kyPmmhzMSQadvuMMJJsfXSt9czElS+lLhu73f3RL84/cvshpotA3IMZLxPaaHuA0QfPXl9mqeLyzaMp769gL7iuCvr8RLZ6u2zBn05fGX+DHOS8I7qdzTamtYNS7No3JY9S31TS5/09TZU19zlq1FqcbxmccDq76e7Wv7ULvPNdDOUS9eWd8bucrP2OAuAAA=
+  </data>
+ </layer>
+ <layer name="Monedas" width="120" height="25">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3WsQ0AIAgEQAq3cP89HcDGRBNM/m4CeCi+CgAAeszRPQEAAIn00J1M+rkBCfw5AMBdJ9KnOJX6K6l7/0D2ALy2ACstZirgLgAA
+  </data>
+ </layer>
+</map>

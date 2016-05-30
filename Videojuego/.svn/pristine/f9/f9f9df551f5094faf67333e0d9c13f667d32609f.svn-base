@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="22" height="12" tilewidth="50" tileheight="50">
+ <tileset firstgid="1" name="dirtTerrain" tilewidth="50" tileheight="50">
+  <image source="../tileSets/dirtTerrain.png" width="300" height="300"/>
+ </tileset>
+ <tileset firstgid="37" name="foliage" tilewidth="50" tileheight="50">
+  <image source="../tileSets/foliage.png" width="250" height="300"/>
+ </tileset>
+ <tileset firstgid="67" name="collisionTiles" tilewidth="50" tileheight="50">
+  <image source="../tileSets/collisionTiles.png" width="250" height="401"/>
+  <tile id="0">
+   <properties>
+    <property name="dir" value="lrud"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="dir" value="l"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="dir" value="r"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="3">
+   <properties>
+    <property name="dir" value="u"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="4">
+   <properties>
+    <property name="dir" value="d"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="5">
+   <properties>
+    <property name="dir" value="lu"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="6">
+   <properties>
+    <property name="dir" value="ld"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="7">
+   <properties>
+    <property name="dir" value="ru"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="8">
+   <properties>
+    <property name="dir" value="rd"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="10">
+   <properties>
+    <property name="dir" value="lr"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="11">
+   <properties>
+    <property name="dir" value="ud"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="15">
+   <properties>
+    <property name="dir" value="lru"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="16">
+   <properties>
+    <property name="dir" value="lrd"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="17">
+   <properties>
+    <property name="dir" value="lud"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="18">
+   <properties>
+    <property name="dir" value="rud"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="20">
+   <properties>
+    <property name="dir" value="lu"/>
+    <property name="type" value="slope"/>
+   </properties>
+  </tile>
+  <tile id="22">
+   <properties>
+    <property name="dir" value="ru"/>
+    <property name="type" value="slope"/>
+   </properties>
+  </tile>
+  <tile id="30">
+   <properties>
+    <property name="dir" value="ld"/>
+    <property name="type" value="slope"/>
+   </properties>
+  </tile>
+  <tile id="32">
+   <properties>
+    <property name="dir" value="rd"/>
+    <property name="type" value="slope"/>
+   </properties>
+  </tile>
+  <tile id="35">
+   <properties>
+    <property name="type" value="water"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="107" name="waterTiles" tilewidth="50" tileheight="50">
+  <image source="../tileSets/waterTiles.png" width="100" height="150"/>
+ </tileset>
+ <tileset firstgid="113" name="dataPointTiles" tilewidth="50" tileheight="50">
+  <image source="../tileSets/dataPointTiles.png" width="250" height="300"/>
+  <tile id="0">
+   <properties>
+    <property name="num" value="0"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="num" value="1"/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="num" value="2"/>
+   </properties>
+  </tile>
+  <tile id="3">
+   <properties>
+    <property name="num" value="3"/>
+   </properties>
+  </tile>
+  <tile id="4">
+   <properties>
+    <property name="num" value="4"/>
+   </properties>
+  </tile>
+  <tile id="5">
+   <properties>
+    <property name="num" value="5"/>
+   </properties>
+  </tile>
+  <tile id="6">
+   <properties>
+    <property name="num" value="6"/>
+   </properties>
+  </tile>
+  <tile id="7">
+   <properties>
+    <property name="num" value="7"/>
+   </properties>
+  </tile>
+  <tile id="8">
+   <properties>
+    <property name="num" value="8"/>
+   </properties>
+  </tile>
+  <tile id="9">
+   <properties>
+    <property name="num" value="9"/>
+   </properties>
+  </tile>
+  <tile id="10">
+   <properties>
+    <property name="num" value="10"/>
+   </properties>
+  </tile>
+  <tile id="11">
+   <properties>
+    <property name="num" value="11"/>
+   </properties>
+  </tile>
+  <tile id="12">
+   <properties>
+    <property name="num" value="12"/>
+   </properties>
+  </tile>
+  <tile id="13">
+   <properties>
+    <property name="num" value="13"/>
+   </properties>
+  </tile>
+  <tile id="14">
+   <properties>
+    <property name="num" value="14"/>
+   </properties>
+  </tile>
+  <tile id="15">
+   <properties>
+    <property name="num" value="15"/>
+   </properties>
+  </tile>
+  <tile id="16">
+   <properties>
+    <property name="num" value="16"/>
+   </properties>
+  </tile>
+  <tile id="17">
+   <properties>
+    <property name="num" value="17"/>
+   </properties>
+  </tile>
+  <tile id="18">
+   <properties>
+    <property name="num" value="18"/>
+   </properties>
+  </tile>
+  <tile id="19">
+   <properties>
+    <property name="num" value="19"/>
+   </properties>
+  </tile>
+  <tile id="20">
+   <properties>
+    <property name="num" value="20"/>
+   </properties>
+  </tile>
+  <tile id="21">
+   <properties>
+    <property name="num" value="21"/>
+   </properties>
+  </tile>
+  <tile id="22">
+   <properties>
+    <property name="num" value="22"/>
+   </properties>
+  </tile>
+  <tile id="23">
+   <properties>
+    <property name="num" value="23"/>
+   </properties>
+  </tile>
+  <tile id="24">
+   <properties>
+    <property name="num" value="24"/>
+   </properties>
+  </tile>
+  <tile id="25">
+   <properties>
+    <property name="num" value="25"/>
+   </properties>
+  </tile>
+  <tile id="26">
+   <properties>
+    <property name="num" value="26"/>
+   </properties>
+  </tile>
+  <tile id="27">
+   <properties>
+    <property name="num" value="27"/>
+   </properties>
+  </tile>
+  <tile id="28">
+   <properties>
+    <property name="num" value="28"/>
+   </properties>
+  </tile>
+  <tile id="29">
+   <properties>
+    <property name="num" value="29"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="143" name="indoorHouseTIles" tilewidth="50" tileheight="50">
+  <image source="../tileSets/indoorHouseTIles.png" width="450" height="450"/>
+ </tileset>
+ <layer name="BackTerrain" width="22" height="12">
+  <properties>
+   <property name="position" value="back"/>
+   <property name="type" value="tile"/>
+  </properties>
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGAWjYBSMAuwAAN9OCrMgBAAA
+  </data>
+ </layer>
+ <layer name="BackTerrain+" width="22" height="12">
+  <properties>
+   <property name="position" value="back"/>
+   <property name="type" value="tile"/>
+  </properties>
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC8XSuwqAMBBE0fx/Y6vGB75ttNTfc4oUQ5CwyogLp1pyiyTOfTc1FCINdXPIRMqfuxP0wWzYW7sdbLDDYNg/6R5wJrq8524FnvC5FcZguenGe+7Go3o31V+wdP1LbeIeFHMBvIaSCiAEAAA=
+  </data>
+ </layer>
+ <layer name="BackTerrain++" width="22" height="12">
+  <properties>
+   <property name="position" value="back"/>
+   <property name="type" value="tile"/>
+  </properties>
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGAWjYHCA9UC8AYg3EilOLNgBxDuBeBeR4sSCg0B8CIgPEylOCjhNojitAABbczfIIAQAAA==
+  </data>
+ </layer>
+ <layer name="Foliage" width="22" height="12">
+  <properties>
+   <property name="position" value="back"/>
+   <property name="type" value="tile"/>
+  </properties>
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGAWjYBSMAuwAAN9OCrMgBAAA
+  </data>
+ </layer>
+ <layer name="Terrain--" width="22" height="12">
+  <properties>
+   <property name="position" value="front"/>
+   <property name="type" value="tile"/>
+  </properties>
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGAWjYBSMAuwAAN9OCrMgBAAA
+  </data>
+ </layer>
+ <layer name="Terrain-" width="22" height="12">
+  <properties>
+   <property name="position" value="front"/>
+   <property name="type" value="tile"/>
+  </properties>
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGAWjYBSMAuwAAN9OCrMgBAAA
+  </data>
+ </layer>
+ <layer name="Terrain" width="22" height="12">
+  <properties>
+   <property name="position" value="front"/>
+   <property name="type" value="tile"/>
+  </properties>
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC1vAwMCwgEZ4ChBPpBKeimTuBAbqgUmj5hI0dzWVzJ0OxJOheDMQb6HAbGRz+5HwHiDeCzV7DYXmogOY2VupbC7M7H0MiPAhFk9jID9/EoMBCXS/SCAEAAA=
+  </data>
+ </layer>
+ <layer name="Terrain+" width="22" height="12">
+  <properties>
+   <property name="position" value="front"/>
+   <property name="type" value="tile"/>
+  </properties>
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGAWjYBSMAuwAAN9OCrMgBAAA
+  </data>
+ </layer>
+ <layer name="Collision" width="22" height="12">
+  <properties>
+   <property name="shiftX" value="0"/>
+   <property name="shiftY" value="-10"/>
+   <property name="type" value="collision"/>
+  </properties>
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGAWjYGgDNzQcSUO7hqrZ6GFEDAYBAORPexsgBAAA
+  </data>
+ </layer>
+ <layer name="Collision+" width="22" height="12">
+  <properties>
+   <property name="shiftX" value="0"/>
+   <property name="shiftY" value="7"/>
+   <property name="type" value="collision"/>
+  </properties>
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgYGBwpzIeBaNgFAwPAAAVMmyiIAQAAA==
+  </data>
+ </layer>
+ <layer name="Collision++" width="22" height="12">
+  <properties>
+   <property name="shiftX" value="-20"/>
+   <property name="shiftY" value="0"/>
+   <property name="type" value="collision"/>
+  </properties>
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGDrAZdTcUXNHzaWbuSAAAJVhQj8gBAAA
+  </data>
+ </layer>
+ <layer name="Collision+++" width="22" height="12">
+  <properties>
+   <property name="shiftX" value="20"/>
+   <property name="shiftY" value="0"/>
+   <property name="type" value="collision"/>
+  </properties>
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgoA1wHTV31Fw6mDsKaAsAobHfHSAEAAA=
+  </data>
+ </layer>
+ <layer name="DataPoints" width="22" height="12">
+  <properties>
+   <property name="shiftX" value="0"/>
+   <property name="shiftY" value="-10"/>
+   <property name="type" value="data"/>
+  </properties>
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC2NgGAWjgH6gaKAdMARBIQ7xYjrYDQAeOuzvIAQAAA==
+  </data>
+ </layer>
+</map>

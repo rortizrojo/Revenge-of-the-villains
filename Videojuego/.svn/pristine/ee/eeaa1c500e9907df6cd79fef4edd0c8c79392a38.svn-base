@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<frames>
+<frame id="0001" x="834" y="440" width="139" height="220"/>
+<frame id="0002" x="0" y="660" width="139" height="220"/>
+<frame id="0003" x="139" y="660" width="139" height="220"/>
+<frame id="0004" x="278" y="660" width="139" height="220"/>
+<frame id="0005" x="417" y="660" width="139" height="220"/>
+<frame id="0006" x="556" y="660" width="139" height="220"/>
+<frame id="0007" x="695" y="660" width="139" height="220"/>
+<frame id="0008" x="834" y="660" width="139" height="220"/>
+<frame id="0009" x="0" y="880" width="139" height="220"/>
+<frame id="0010" x="139" y="880" width="139" height="220"/>
+<frame id="0011" x="278" y="880" width="139" height="220"/>
+<frame id="0012" x="417" y="880" width="139" height="220"/>
+<frame id="0013" x="556" y="880" width="139" height="220"/>
+<frame id="0014" x="695" y="880" width="139" height="220"/>
+<frame id="0015" x="834" y="880" width="139" height="220"/>
+<frame id="0016" x="0" y="1100" width="139" height="220"/>
+<frame id="0017" x="139" y="1100" width="139" height="220"/>
+<frame id="0018" x="278" y="1100" width="139" height="220"/>
+<frame id="0019" x="417" y="1100" width="139" height="220"/>
+<frame id="0020" x="556" y="1100" width="139" height="220"/>
+</frames>

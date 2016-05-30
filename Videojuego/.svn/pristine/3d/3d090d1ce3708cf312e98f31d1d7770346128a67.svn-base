@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="100" height="40" tilewidth="50" tileheight="50">
+ <tileset firstgid="1" name="TileSetMario2" tilewidth="50" tileheight="50">
+  <image source="../tileSets/TileSetMario2.png" width="800" height="800"/>
+  <tile id="3">
+   <properties>
+    <property name="type" value="muerte"/>
+   </properties>
+  </tile>
+  <tile id="136">
+   <properties>
+    <property name="type" value="muerte"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="257" name="Tileset2" tilewidth="50" tileheight="50">
+  <image source="../tileSets/Tileset2.jpg" width="1199" height="774"/>
+ </tileset>
+ <tileset firstgid="602" name="collisionTiles" tilewidth="50" tileheight="50">
+  <image source="../tileSets/collisionTiles.png" width="250" height="401"/>
+  <tile id="0">
+   <properties>
+    <property name="dir" value="lrud"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="dir" value="l"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="dir" value="r"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="3">
+   <properties>
+    <property name="dir" value="u"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="4">
+   <properties>
+    <property name="dir" value="d"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="5">
+   <properties>
+    <property name="dir" value="lu"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="6">
+   <properties>
+    <property name="dir" value="ld"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="7">
+   <properties>
+    <property name="dir" value="ru"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="8">
+   <properties>
+    <property name="dir" value="rd"/>
+    <property name="type " value="rect"/>
+   </properties>
+  </tile>
+  <tile id="10">
+   <properties>
+    <property name="dir" value="lr"/>
+    <property name="type " value="rect"/>
+   </properties>
+  </tile>
+  <tile id="11">
+   <properties>
+    <property name="dir" value="ud"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="15">
+   <properties>
+    <property name="dir" value="lru"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="16">
+   <properties>
+    <property name="dir" value="lrd"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="17">
+   <properties>
+    <property name="dir" value="lud"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="18">
+   <properties>
+    <property name="dir" value="rud"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="642" name="Tileset mario" tilewidth="50" tileheight="50">
+  <image source="../tileSets/MarioTileset.png" width="2149" height="1999"/>
+  <tile id="196">
+   <properties>
+    <property name="type" value="estrella"/>
+   </properties>
+  </tile>
+  <tile id="340">
+   <properties>
+    <property name="type" value="daño"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="Fondo" width="100" height="40">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3DAQkAAAwEoef6h16QKVhbqqqqqqqqqqqqqqqqqqqqvn8xzA1OgD4AAA==
+  </data>
+ </layer>
+ <layer name="FondoCastillo" width="100" height="40">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+2ZTU7DMBCFLVUK7OAG3AI4AELqArgCsIcNC+AeUDgAPwXUJSugXALWcBLgVWqkNLWJx4zpBN4nPbmaGbnxvNpRUucIIYQQQgghhBBCCCGEEEJmy0bHuU1oq6OXI+kcop9H0LGnr6k50szF3HTsBDqFetAZdK6QI+nQj2l8v9sRt4Vzd0V8fSj+7XdDl9AVdA31FXIa9LHuG8/aZ0VKbyXzlPGyr/su3HNpjqRjdX9YQbIv6rV/6bzKzQfOws+E81Dr3ArN2WY/1jL0RkqsP7F1D9Aj9AQNoWdhzBfPScgDC95ICPnzBr1HxkO1TTkSj7Yfw3md67LGfeCzBtW90pb9sVRMjqk1OdC8x1v24wV9fR33tlsbfcTUWMeyH1XoB/34TcozL7cf25V38T95J2XVD+m9o6lew489T24HPuxCy0r/jVj1Y8RgvEZfrwfC9ec6Z1ZwHav/xA9N6Ic+oT0h3SuaaPtxUEyOkpoFaLEyxhBTX59XMj+JY13x2a5t79QsoelDHfpCqnwBbAMoDoA+AAA=
+  </data>
+ </layer>
+ <layer name="Terreno" width="100" height="40">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+2XwWrCQBiE99DnsD5I775Cz0KvvpbPUbW1FezRQkHfRPDfQ2kJyW52kzGzyXwwIJqEmQz/7uqcEEII0T9PQxtogNUXGtbcrL7QsOZm9YWGNTerLzSsuVl9oWHNzeoLDWtuVl9oWHOz+kLDmpvVFxrW3Ky+0LDmZvWFhjU3qy80U83NivrgQn1w0dTHzPRomt/PinCaDzZy+ngBXSvUBxu+j9S9ovqOQ/erjzQ0H1yoDy5ifdStRV36SFkbp3jmzp2PFIn2lPb/49W0MW1NO9Ob6TCoo37JOV8Nycn0XdHPoI76pbT58H2s3F8X/vOY+iiF/zM85vmIwbaWxdara+De0G8iD79/v5v2pg/Tp7vvfr58SD9flnjWrJvDuu/8fKwrCq1XTTORMitdOyixj7b89nE0fbl4H7n02cEU+jibLi6/D8S7bqNFRFVi16NVx3NHIZ6ZK/WBeab6GEcfN/ij1syAPgAA
+  </data>
+ </layer>
+ <layer name="Trampas" width="100" height="40">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3XMQoAIAwDwIL//57vcZCCS3HUwh1kSx6QCAAAAAAAAAAAAADoZ44dAAAA3shfdqbq3PYA/GMBeYrJuYA+AAA=
+  </data>
+ </layer>
+ <layer name="Plantas" width="100" height="40">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3NsQ0AQAgDMRr4/Td+hkAUyJauTSIAAAAAAAAAAAAAAAAAgKuyq+4tbU3+AbDvA1TBd1eAPgAA
+  </data>
+ </layer>
+ <layer name="Colisiones" width="100" height="40">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+2a3Q6CMAxGDY/pv0YuVN7/WrggLKSMNV3h2/xOshsU1nJoN6KHAyGEEJKfV7N3BCSEPrCgDyzoAwtUH6hxeYOaN2pcFk4JOaHmjRqXBfrAgj6woA8s6AOLwcd5JS/UvFHjslCyjxqhDyzoAwuLj29/vO1HR1/ZYH1g4eXjrThH893a8fKhOYf1N5Hqo1WuFfN7HFtr6GOC/crGtck72K+wyOFD6kXDOZfEoeltKXOXjFd93IM1Z208K7mXOajx/eMm1OBajiho9lddIX1B+g2hJh+fQnIZqd1HKYxr+7/7QNvjrPk4RuKMfeZFOGdN9TGyd30M+wlpT5E6SvEh1aF0TOtjqSY0tTJ3YKEUH6lsVR85HYTQh0xKb/EgNt9DmNPSG61Disca09I1U/4LtTXSc7VnnEvPuSUmj2t6QR/b8wO6L8+2gD4AAA==
+  </data>
+ </layer>
+ <layer name="TrampasMortales" width="100" height="40">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3DsQkAAAgDsL7v175Q3IQEkgAAAAAAAAAAAAD8MGUAAAAAAG4Wz3K1/oA+AAA=
+  </data>
+ </layer>
+</map>

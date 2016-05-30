@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="120" height="25" tilewidth="50" tileheight="50" nextobjectid="1">
+ <tileset firstgid="1" name="dirtTerrain" tilewidth="50" tileheight="50">
+  <image source="../tileSets/dirtTerrain.png" width="300" height="300"/>
+ </tileset>
+ <tileset firstgid="37" name="dataPointTiles" tilewidth="50" tileheight="50">
+  <image source="../tileSets/dataPointTiles.png" width="250" height="300"/>
+  <tile id="0">
+   <properties>
+    <property name="num" value="0"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="num" value="1"/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="num" value="2"/>
+   </properties>
+  </tile>
+  <tile id="3">
+   <properties>
+    <property name="num" value="3"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="67" name="waterTiles" tilewidth="50" tileheight="50">
+  <image source="../tileSets/waterTiles.png" width="100" height="150"/>
+ </tileset>
+ <tileset firstgid="73" name="foliage" tilewidth="50" tileheight="50">
+  <image source="../tileSets/foliage.png" width="250" height="300"/>
+ </tileset>
+ <tileset firstgid="103" name="collisionTiles" tilewidth="50" tileheight="50">
+  <image source="../tileSets/collisionTiles.png" width="250" height="401"/>
+  <tile id="0">
+   <properties>
+    <property name="dir" value="lrud"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="dir" value="l"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="dir" value="r"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="3">
+   <properties>
+    <property name="dir" value="u"/>
+    <property name="type " value="rect"/>
+   </properties>
+  </tile>
+  <tile id="4">
+   <properties>
+    <property name="dir" value="d"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="5">
+   <properties>
+    <property name="dir" value="lu"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="6">
+   <properties>
+    <property name="dir" value="ld"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="7">
+   <properties>
+    <property name="dir" value="ru"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="8">
+   <properties>
+    <property name="dir" value="rd"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="10">
+   <properties>
+    <property name="dir" value="lr"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="11">
+   <properties>
+    <property name="dir" value="ud"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="15">
+   <properties>
+    <property name="dir" value="lru"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="16">
+   <properties>
+    <property name="dir" value="lrd"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="17">
+   <properties>
+    <property name="dir" value="lud"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="18">
+   <properties>
+    <property name="dir" value="rud"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="20">
+   <properties>
+    <property name="dir" value="lu"/>
+    <property name="type" value="slope"/>
+   </properties>
+  </tile>
+  <tile id="22">
+   <properties>
+    <property name="dir" value="ur"/>
+   </properties>
+  </tile>
+  <tile id="30">
+   <properties>
+    <property name="dir" value="ld"/>
+    <property name="type" value="slope"/>
+   </properties>
+  </tile>
+  <tile id="32">
+   <properties>
+    <property name="dir" value="rd"/>
+    <property name="type" value="slope"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="143" name="basicBackground" tilewidth="50" tileheight="50">
+  <image source="../images/basicBackground.png" width="800" height="450"/>
+ </tileset>
+ <tileset firstgid="287" name="TileSetMario2" tilewidth="50" tileheight="50">
+  <image source="../tileSets/TileSetMario2.png" width="800" height="800"/>
+  <tile id="135">
+   <properties>
+    <property name="type" value="muerte"/>
+   </properties>
+  </tile>
+ </tileset>
+ <layer name="Fondo" width="120" height="25">
+  <properties>
+   <property name="position" value="back"/>
+   <property name="type" value="tile"/>
+  </properties>
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+WXBXMUQRBG93C3BEgI8JeDc0EOgiZAFnd3d3d3d5eXKrZumIzv3HFJuvJSdbfdMz399czOJUnZitACc2AuzIP5UNKQQpuGdlgBKw0+GUUJXQ6yn+jrEtui8dPF2r4rCvmH5Gyau80wtm1McX5XbVMFsp/4TK6Dauwsf5XWulx0vqq+WgUdUh3kmplqZNJCzFuXr7w2la8uPluLOJ+pJrrnLvqmQq1Sg5/oY9ovWe1Me1qlUyp9Ftdl0tZ0XpjmlHNXxbYn+tqpxq2EviXDcxdt5RqXPPTV1U53jqvWb9Lbpq8cL+tatMTKfSrH2/RV9UyIvqYaZJqosOmrG89FX1vtbGsX30O6vdniOY+sjUv/mLTNesZ0dvruX/lscNVYhU1f3XilpOvdK3vmujfkdYeecyaNTO90U35pUn6Hqs54k2Y6fVXvLFV+LmdDSTG+Kv9QfcUzIfss6pvl5qqvTSPVGWvbu/LdSbUPdetT3ZHaNTE++op3PN0dzfVsSBPzGsTzOVTjDN3dyud8FvMqGXxV9bHtXdU93SUHefxQfXXzy+ewnJdNG9uZnVhqlPnIZvJ3ebe5vEtMvi53bdO93BabJl33h64nXOpvm1+lufi97feXj3Yu1gxTYCpMg+kwA2bCLJhtqEeHY6yuZq5z237zh/S0rtcW/MW11009q/re9t7S+YRa51oWQissgsWwBJbCMlhumDNPbBohPrY1J2V9RZ07sfWbb6/6+ofaalgDa2EdrIcNsBE2wWbYAlthG2yHHbAzZ+yuCPExTey11qSsb6V61dc/1HbDHtgL+2A/HICDcAgOwxE4CsfgOJyAkzljT0WIj2lir9Ulle9VX/9QOw1n4Cycg/NwAS7CJbgMV+AqXIPrcANu5oy9FSE+plW7V339Q+023IG7cA/uwwN4CI/gMTyBp/AMnsMLeJkz9lWE+JhW7V719Q+11/AG3sI7eA8f4CN8gs/wBb7CN/gOP+BnzthfEeJjWrV71dc/1H53/ivwB32gL/SD/jAABsIgGAxDYCgMg+GFfLEjIsTHtGr3qq9/qI2kTqNgNIyBOqiHsTAOxkMDNMIEaIKJMKmQL3ZyhPiYVu1e9fWPafWFf5HrbdNAHivz1Y2ni62m2XrNlneTZ6/69nYlTNbZprusU57YWjJbvo0KGgpusf97XSF62OJqec0q66n6huTn0hO1vmbZTPmqtM2wxdbiWl3Npee7yxrz6NtTzeU+0tRN9HWxTM/eom9vtUrp+wetLUH44C4AAA==
+  </data>
+ </layer>
+ <layer name="Montañas fondo" width="120" height="25">
+  <properties>
+   <property name="position" value="back"/>
+   <property name="type" value="tile"/>
+  </properties>
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+2YwXKjMBBEdd/NXnyFS/z//7irWnel89IyCOMYUVGVChsMlubN9MwwlVKmhfmn/IxRxxLbOn+9bHU/49Gxhu+ZGb/d5lnHWr5n0+nK9Pe/eb3Ns/pvD9+z2KBynct/ru/lM+OzxXMP39FjWFwr0+l2nMvH3i42xXr00ct31BgWW/HV57qna/nK91I+9jtyTLc4up9zjrZXj1vXZY9d8SZjzXptRNbSqbpn7V3n3B5ui+klK902Klvfn/Yx23mPZ9+rrjGm67lR9NuZam9kK3uMptNeR2nOOPKa+7ZfS/qtPH3kIQ12xtxv4nv0GK5stc4Uu36NLMn5Hd8T4yPF8ptNj0/fi8fyaLWWxy05MheRn/uCf/d7UywrP79yqKf3dTk/7tl1usX4aCPVya6xvqcU056PmaPo/5fy2YdeFcuJq9cLtAHraObno/bDrsnut1ecYy5ifLs+u6+w3qQN/T+/K5ZbXH1tKU+lfCQbOPe99+G5o2f4u0Zfp9fIvE49di3m75xf6qOm8PnZvr/EVvriPpo0mDZjbO/BmO+D1YOsGeqBPD6db9Lfe70+c5bnXenyUsw8k+89PW7xddu4jcmf+qzfbGWstaaepIdx0he+y3BOrJfcB/zIemSJ77Prz7VcU/zSp6lvia/Xor37ca5uP+rj0nMTS/9OHUr+6p9bNabuWct37/qkl63qerdp0iz2UIlxT7x5zFILyHopFnw9XhOzXkw9D/vAVF8kXVmjz3vH8Ba26o9S3dHqLzy2yVi2ae2JWpzyHePnHuOkKb5mXkvPZX/Lnog9k3//LsZb2Trf1Ae13gHcy8W6z9/FkyvZ0t5JH10/WBdMeIZrD3PujP9g/ZGOc/lqE6+X1+j0I4y3spU+s/7g+wC3W4o38mXdmlhR2zn5XOYNvjvlmlkfsGZiT5tsQA3Tca1t92C8lavuZd5L7KlRyY7eE6aclnIrYzX5y9S4nvIGdSj1tEmzky5QV3Rfj431H27z3tHLs+CcxyV92usS2itp4wXPS1yZq5dm8o9UF7O34XnfH3WC/TI1nHUZdfqeVj8y1jBt/U7D7eXao1jW/mmjCffx6P6Q+LZ4klvS6lTve+6fcT9zOHU71dzs0+jb/jw9c8+xh3/U8RfoRrlE4C4AAA==
+  </data>
+ </layer>
+ <layer name="Arboles 2" width="120" height="25">
+  <properties>
+   <property name="position" value="back"/>
+   <property name="type" value="tile"/>
+  </properties>
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+2Y2Q7CIBBF+QejL36R+77vWv3/T/A22miwQSjVAb0nOfEFdZLbgaFKEUIIIYQQQgghhLhT0+zIlkNKRs+3JlvOz9CATdiCbSXXN8z3M3RhD/bhAA6F6og531B6JI8RHMMJnMLZl/+/cv+MOd9QeiSPOVzAJVzBtVAdR/XI9QwvQnUUQbpHTGzgFu7gHh5Eq5FB319dCaVH8kj75gQTFV/flEW2v6ZOLNbrz0HZPVL1/D55JdtfbfLVz1mbHnGZwep2JTv/Lrntr+8ocs76zGCmDEOe7UJkZ7GmyDnrM4OZMgx5tguRxGJNds664DODmTIMebaLFZtnQMdnBjNlGOP9J6Z3G7b43FOeM0xn64N6zNi8/8TPc4bpbH1RbjM2If/EFRCK6TDgLgAA
+  </data>
+ </layer>
+ <layer name="Arboles" width="120" height="25">
+  <properties>
+   <property name="position" value="back"/>
+   <property name="type" value="tile"/>
+  </properties>
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+2XV27DQAxEmUM4Pz5R4vTem53c/wimYAgRNqR2zWJaCB8wgD8sLbdoOAuQJEmSJEmSWHISXUDiyiXqKrqIxI071H10EYkbz6iXwPEPAsfuOEIdoxaw6VWnwvccMormI7qAYM5Q56gLkPcqbm/3ZY//M9eoG9Qt2Paq3F8bSn/dlgfUI+oJbHtV7q8NWn99Rb2h3mHTqz4Na5PsrVUeaGXm/H4tWn/9Qi1RK9Q36seoLum3a5EHtmHu/H4tnL9Gn0vp/nrlganT+2tPy7n0OAMSDxjWockDVBahfL6WWbh12XXv0KLxJsu5DusYywO1MSlvp3y+1gO4ddl174jEa65jeaA2JuXtlM9Le4DkOe39JoqIPlkbk/J2yuelPUDy3FS/ea97s3bMobcD8Pe+GfzNLBx9P5bcJaeaF7s5l3Mt8zKXoaW5rnV9V8VvKvPNi/+N0fdjyV0y4juwoJtzOdfW/ZXmOq+7uiXc2W31imS/4c5uq1ckSfLLGlgbIQXgLgAA
+  </data>
+ </layer>
+ <layer name="Terreno 1" width="120" height="25">
+  <properties>
+   <property name="position" value="front"/>
+   <property name="type" value="tile"/>
+  </properties>
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+2Z227DIAyG2dod2vtlam+693/KBSnWPM8YMLg4Hb9kRW2T4ObDB0gIY3RY7XnQ2FO2el3tvNnLYF+m+mvyfWxNvo8tie+TYJ7k0Scvkvi+o9+oxX7Mw3ON/l/Dj09Tv5XLz5HxlTHM2ppxLn+cNjsb+7FHaesv5W7JmOaRt8R5k+9fUb41nCjj0flx8uVF46Mmjk/ERghytne+I/vU0YxaBPMzlbe9iPaoHvz1uibao7yxjRoZG6m5VTLfPrfjgo7e5uneYqfne4p4r1RPEOccnW8LY/h7qM+e1ske9xMkRT9b+2jKFfNdhOs4vti4/ZnR4vaP7pEntXkD+AJjTa8o7ZfhuKSiPGFMzBdyABf/nuOmt7Q1N8Umt+4CFqnYLWXM+YI/S+s+ONcL595rqdbruRxIjY5XwlTLmI6ZW/fl/Ly3Svfsau6nuYdU4yS+NUxTtVhizI0pKeenh3pdox5xn+thrPhCbZcYl+zVYN9xvKT8hHE1Oiiv06p1XVvSo1rwxe+vcK4uqcnSf8D78Dk/azlDDZLep9cYlkXt4Ngegy1f+k6SPutWw31AqZ+5sWlvcelkWJfNj2PQK/L7IEdspT0SljZ2W/J6qbX6mTIrvjif9coRmt7X6rn9Z7631b4UY+zpue3Fz2+sFNcw4C4AAA==
+  </data>
+ </layer>
+ <layer name="Datapoints" width="120" height="25" visible="0">
+  <properties>
+   <property name="shiftX" value="0"/>
+   <property name="shiftY" value="0"/>
+   <property name="type" value="data"/>
+  </properties>
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3OQQ0AIAwEsJkZ+HeIBR4kt4RWQasAAAAAYLadDgAAAAAA3+p0gCdWOgDAtQMejm3e4C4AAA==
+  </data>
+ </layer>
+ <layer name="Colisiones" width="120" height="25">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+2ZC07DMAxAfQqOiAK0TKBqgNTDM0s18qykcT5NvJInWRRaXDev+W0XAHgbccqYb/ECfXAd7/1f6NnGw+/xDL/nZvg9Nxb9ft/iNRDvzaqLg3V+gq2aJBb9Irju860HEWueP3oXsINVvyFmdny0Y+qfFD+B64bfuveWfTvU7q0Yfv2QJxxvezsqYfg9JzR+W3430a9co1qud5AG+uVz2aVvOX88Qt/w8dy7AMEZxucJ6q2lMRffay/sHL5zOe8b5eyxp/P5lc9oHbf9LKmVnpmD7bLAvWPOEomnLS+OifRdjrzH0fj8yv2H9XHSseNcxy7wd8qX63lixzPc799bYGl8zp1zpRu5XowxRc5zx5pcV/b7V+T6a+R8KZb8prJuEep7SOjZ+BykgebimOPU9qT9y1HzYGo92s/sUvLl5Fghz2+qV5kn5hjHX80ehHK47ThUZ6n3R+y/5JVI8bt3bQw5F2vGax/8fx34HdRYU1Celn5L97XSLdLKL8L7VI5neb3Gr7yvlimQ2yo+t0hLvwRva61n33VUj7ZOjWe+1yO/oe/TtSHvWfMzh5BX355VcpRfgPI247Wn1qnJSXlq9F9fffTe5HhePUFovO7VZZGj6sQ82P4130WolK9WWK2rVZ2/zOiAJeAuAAA=
+  </data>
+ </layer>
+</map>

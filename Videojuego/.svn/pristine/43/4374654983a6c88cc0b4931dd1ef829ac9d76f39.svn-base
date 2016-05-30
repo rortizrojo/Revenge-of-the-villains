@@ -1,0 +1,50 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Niveles;
+
+import Engine.Camara;
+import Engine.Colisiones;
+import Engine.GestorColision;
+import Engine.Nivel;
+import Objetos.Puerta;
+import Personajes.Enemigo;
+import Personajes.Mario;
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
+import org.newdawn.slick.SlickException;
+import org.newdawn.slick.state.StateBasedGame;
+import org.newdawn.slick.tiled.TiledMap;
+
+/**
+ *
+ * @author Roberto
+ */
+public class Nivel1 extends Nivel{
+        
+         //private Puerta puerta; 
+    public Nivel1(GameContainer container, StateBasedGame game, Nivel nivel /*GestorColision gestor*/)throws SlickException{
+        super();
+        super.container = container;
+        super.game = game;
+        jugador = nivel.getJugador();
+        puerta = nivel.getPuerta();
+        gestor = nivel.getGestor();
+        map = new TiledMap("res/tileMaps/Nivel 2.tmx");
+        //puerta = new Puerta (46,430,0,gestor);
+       
+        colisiones = new Colisiones(map);
+        jugador.setColisiones(colisiones);
+        //jugador.setMonedas();
+        mario = new Mario(container, colisiones, gestor, 350,1000,0.30f);
+        enemigo = new Enemigo(container, colisiones, gestor, 5550,1000,0.15f);
+        puerta.setPosicion(46,430);
+        zoom = 0.85f;
+        camara = new Camara(container, map,  jugador, zoom );
+    }
+
+
+     
+}
