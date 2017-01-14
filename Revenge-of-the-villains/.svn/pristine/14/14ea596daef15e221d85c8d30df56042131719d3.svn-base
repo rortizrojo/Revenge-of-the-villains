@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="100" height="40" tilewidth="50" tileheight="50">
+ <tileset firstgid="1" name="TileSetMario2" tilewidth="50" tileheight="50">
+  <image source="../tileSets/TileSetMario2.png" width="800" height="800"/>
+  <tile id="3">
+   <properties>
+    <property name="type" value="muerte"/>
+   </properties>
+  </tile>
+  <tile id="136">
+   <properties>
+    <property name="type" value="muerte"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="257" name="Tileset2" tilewidth="50" tileheight="50">
+  <image source="../tileSets/Tileset2.jpg" width="1199" height="774"/>
+ </tileset>
+ <tileset firstgid="602" name="collisionTiles" tilewidth="50" tileheight="50">
+  <image source="../tileSets/collisionTiles.png" width="250" height="401"/>
+  <tile id="0">
+   <properties>
+    <property name="dir" value="lrud"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="dir" value="l"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="dir" value="r"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="3">
+   <properties>
+    <property name="dir" value="u"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="4">
+   <properties>
+    <property name="dir" value="d"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="5">
+   <properties>
+    <property name="dir" value="lu"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="6">
+   <properties>
+    <property name="dir" value="ld"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="7">
+   <properties>
+    <property name="dir" value="ru"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="8">
+   <properties>
+    <property name="dir" value="rd"/>
+    <property name="type " value="rect"/>
+   </properties>
+  </tile>
+  <tile id="10">
+   <properties>
+    <property name="dir" value="lr"/>
+    <property name="type " value="rect"/>
+   </properties>
+  </tile>
+  <tile id="11">
+   <properties>
+    <property name="dir" value="ud"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="15">
+   <properties>
+    <property name="dir" value="lru"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="16">
+   <properties>
+    <property name="dir" value="lrd"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="17">
+   <properties>
+    <property name="dir" value="lud"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="18">
+   <properties>
+    <property name="dir" value="rud"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="642" name="Tileset mario" tilewidth="50" tileheight="50">
+  <image source="../tileSets/MarioTileset.png" width="2149" height="1999"/>
+  <tile id="196">
+   <properties>
+    <property name="type" value="estrella"/>
+   </properties>
+  </tile>
+  <tile id="340">
+   <properties>
+    <property name="type" value="daño"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="2280" name="mario" tilewidth="50" tileheight="50">
+  <image source="../tileSets/mario-8-bit-sprites.png" width="1300" height="550"/>
+ </tileset>
+ <layer name="Fondo" width="100" height="40">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3DMQ0AAAwDoPacf8MVMkjoJVVVVVVVVVVVVVVVVVVVVfX9AWyAtYiAPgAA
+  </data>
+ </layer>
+ <layer name="FondoCastillo" width="100" height="40">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3YTw7BQBTH8UkkteQGboEDiMQCV8ABbCxwD/8O4O/C0k24Dl6TSoZoKS9tme8neRlJn3iTX2bSMAYAAAAAAAAAAAAAAD1bz5idl/YU6XB57wBg4z7UV8unPQHCMiAbID2HkM+uKnn366c9vmbOmJZUO6cz281Zfvfyx+8IR9nbKdhf42F95p0e31ByGEmNlfOI49ff77TymEhNpWZSc6mF9czOH9GSyMMFHetO+OaMauWxlFpJraU2/kyfjfNzupJDT6qsdEdr59E3ennsI/YY9SxJFZmjmuE8XDsfLueRlTNh085j4N2vcXoKUsVgfTePovW9MIWHvlf9iK/O/2CZQA5IyhXZRzYZgD4AAA==
+  </data>
+ </layer>
+ <layer name="Terreno" width="100" height="40">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+2azWrCQBSFZ9GNL2G78NXc+lp9A123/law1E0LBX0REbxBghJmbsxMMnPMnA8OCEnMMF/uvVnEGDfTgTGzgXICiQp9YEEfWNAHFvSBBX1gQR9Y0AcWpY9RRnGhHYsF6wML+sCCPrCgDyzow442+7uc+/SBBX3400Wd0AcW9BFOm3VCH1hoPoaSV8lbxPXkDuujXUJ7l6+PcUfn5g59YFH6aDorqnusXU8fj5OqPnJ5VxhbooHar/rgy+aiDR+2veH80HG5qNuLH3Gx96yPJsmJ3PbiQ/IpmUsWkqVkm3RFN9p6Np+pX/9K/ir5T7qiK7n2isLHxNxcFL9T+8ixd9/XMFJ9xJ6laL2srl+dlWu1Yz40ddGn+igp5vdKspZsJF8mzTz3cfHsPmy1WdTHeyVav3LVRMje+LrwuefpJWChESh97CTfpt6HC18fIS767OMgOZowHynS9PtixO+du/hP+qAP+sDzcQFtBhDCgD4AAA==
+  </data>
+ </layer>
+ <layer name="Trampas" width="100" height="40">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3BAQEAAACAkP6v7ggKAAAAAAAAAAAAAAAAAAAAao3nfFeAPgAA
+  </data>
+ </layer>
+ <layer name="Plantas" width="100" height="40">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3NsQ0AQAgDMRr4/Td+hkAUyJauTSIAAAAAAAAAAAAAAAAAgKuyq+4tbU3+AbDvA1TBd1eAPgAA
+  </data>
+ </layer>
+ <layer name="Colisiones" width="100" height="40">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+2a3W7DIAxGoz7m0qk/ai+m7v2vF0uLWiFsbFzASb8jcVE1RI5PTIBkmnjmwzQdD8IBoCvwEQv4iAV8xAI+YgEfsYCPWMBHLFYf9w9pv8K99xXgvkR99GUu5Bo++gIfsYCPWMBHHfRs557vnuc+fMSilG/4qKemTuAjFvDRHkudwEcsPD4eij0GYAP10ZfS2NXKx4+hj+XYvdPKx83Qx3Ls3tH60OxHv5Lm+LT8/l7aJdMfPp5EHa8+Za6w3qevbYvj1R58nZjYvT5yucHzQ4ZzQUj5Pi//XSvydTa8I605/5aRXBDR1xfSXEA6Xjsm96TkgtDE+vgfj0aM1+s7AW1Oc+8QIvjQuCAixMqRXoOmRiL60LogRscqkeZWinWdV0TzYXFBeGNtOfe0+OD6pP2kPaR3f2NldUHspT64Ptp+76bGBbFlH7natPrgasKzz1nrgrD66LkfO7I+atepHheENdae6+mRPtI1jKV5kM6bm1/Ojji9jctrbg2obdwcuvQt1Ahy1z8yTs6HJ6YW52wFfPTnD6Zpr2iAPgAA
+  </data>
+ </layer>
+ <layer name="TrampasMortales" width="100" height="40">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3DsQkAAAgDsL7v175Q3IQEkgAAAAAAAAAAAAD8MGUAAAAAAG4Wz3K1/oA+AAA=
+  </data>
+ </layer>
+</map>

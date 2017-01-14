@@ -1,0 +1,37 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Engine;
+
+import org.newdawn.slick.Graphics;
+import org.newdawn.slick.SlickException;
+import org.newdawn.slick.tiled.TiledMap;
+
+/**
+ *
+ * @author Roberto
+ */
+public abstract class Nivel {
+   
+    protected TiledMap map;
+ 
+    
+    public Nivel()throws SlickException{
+    
+    }
+
+    public abstract void setMap(TiledMap map);
+
+    public abstract TiledMap getMap();
+   public abstract void update(int delta);
+    public abstract void render();
+
+    public void render2() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+     
+        
+        
+}

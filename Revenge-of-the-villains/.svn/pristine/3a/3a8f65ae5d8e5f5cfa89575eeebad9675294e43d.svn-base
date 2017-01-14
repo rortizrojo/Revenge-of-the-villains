@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="100" height="40" tilewidth="50" tileheight="50">
+ <tileset firstgid="1" name="TileSetMario2" tilewidth="50" tileheight="50">
+  <image source="../tileSets/TileSetMario2.png" width="800" height="800"/>
+  <tile id="3">
+   <properties>
+    <property name="type" value="muerte"/>
+   </properties>
+  </tile>
+  <tile id="136">
+   <properties>
+    <property name="type" value="muerte"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="257" name="Tileset2" tilewidth="50" tileheight="50">
+  <image source="../tileSets/Tileset2.jpg" width="1199" height="774"/>
+ </tileset>
+ <tileset firstgid="602" name="collisionTiles" tilewidth="50" tileheight="50">
+  <image source="../tileSets/collisionTiles.png" width="250" height="401"/>
+  <tile id="0">
+   <properties>
+    <property name="dir" value="lrud"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="1">
+   <properties>
+    <property name="dir" value="l"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="2">
+   <properties>
+    <property name="dir" value="r"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="3">
+   <properties>
+    <property name="dir" value="u"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="4">
+   <properties>
+    <property name="dir" value="d"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="5">
+   <properties>
+    <property name="dir" value="lu"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="6">
+   <properties>
+    <property name="dir" value="ld"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="7">
+   <properties>
+    <property name="dir" value="ru"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="8">
+   <properties>
+    <property name="dir" value="rd"/>
+    <property name="type " value="rect"/>
+   </properties>
+  </tile>
+  <tile id="10">
+   <properties>
+    <property name="dir" value="lr"/>
+    <property name="type " value="rect"/>
+   </properties>
+  </tile>
+  <tile id="11">
+   <properties>
+    <property name="dir" value="ud"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="15">
+   <properties>
+    <property name="dir" value="lru"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="16">
+   <properties>
+    <property name="dir" value="lrd"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="17">
+   <properties>
+    <property name="dir" value="lud"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+  <tile id="18">
+   <properties>
+    <property name="dir" value="rud"/>
+    <property name="type" value="rect"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="642" name="Tileset mario" tilewidth="50" tileheight="50">
+  <image source="../tileSets/MarioTileset.png" width="2149" height="1999"/>
+  <tile id="196">
+   <properties>
+    <property name="type" value="estrella"/>
+   </properties>
+  </tile>
+  <tile id="340">
+   <properties>
+    <property name="type" value="daño"/>
+   </properties>
+  </tile>
+ </tileset>
+ <tileset firstgid="2280" name="mario" tilewidth="50" tileheight="50">
+  <image source="../tileSets/mario-8-bit-sprites.png" width="1300" height="550"/>
+ </tileset>
+ <layer name="Fondo" width="100" height="40">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3DAQkAAAwEoef6h16QKVhbqqqqqqqqqqqqqqqqqqqqvn8xzA1OgD4AAA==
+  </data>
+ </layer>
+ <layer name="FondoCastillo" width="100" height="40">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3YTUrDQBjG8YFCXLY38BbqAURwoV5BPYAbF+o9/DqA1rpw6QX8/tjW66hPIEIamtjoJPOm8//BQwqdNjM8TGjHOQAAAAAAAAAAgG7a6Dm3qWz1Qs8EqQP1cKgc0Udwx8qJcqqcKedhpxO9GPsYJc5dJ6FnMd2FcqkMlStl5Pn7La/dop8+9lwzfaCepvcH6ul6H/P2PLTQx+pCgJsacKfcKw/Ko/KkPCsvyqvyprwr4yxNKusg1m4AC25LXsdqMZm8/nVMqqlzt0/d92uOfiMUjbW2j2x964XrNLOMSVk4d+v67ztffVSd8+T7R7U2+ojBdu6Z8J896qsPC/+bQthRD7vKkqdntO8+fJ673VSsseq9Ni1rHiuG+4htf8TcR9meCLlXfPexn0xe64zpK4PsOmsfg9znyvQL434bj/rWOAczgR7Qlm8fOxmogD4AAA==
+  </data>
+ </layer>
+ <layer name="Terreno" width="100" height="40">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+2WQWoCMRiFs3DjJaq36RW8gNteyxvUtVXbKih1o1CoF5FC/yyCZcgkYybJvMm8Dx4IkzDD//ESlarndazUcuxYQLJCH1jQBxb0gQV9YEEfWNAHFvSBBX1gQR9Y0AcW9IEFfWBBH1jQBxb0gQV9YEEfWNAHFi4fT5KJZJrxe4YO+4FFqI95orVDhz6wMD4evSuqM3btp4/mdNWPUv4rzAPiAvW86oOvEBcxfNhmM/T7I9SFbxZf4uIU2I9Y39A32rgobRaaleRNspZsJFvJPtO727po6qMP57XhLLlU8p3hvTFclNgP7eNF3V3o36l9xHJRko//Hc7Zj5guYvhAO8t859WvY6/rmY3YLkrqh0Hf3++SD8mnZKfS3OcpXPTdh62buh+LSlznVV0nXLNJ5SLEx20UsCkjxsdBclR+H3XUzSali5J9/Eiuqp2PLvLsSRXf+tSxMWsZG/RBH/SB5+MP6JrdS4A+AAA=
+  </data>
+ </layer>
+ <layer name="Trampas" width="100" height="40">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3XMQoAIAwDwIL//57vcZCCS3HUwh1kSx6QCAAAAAAAAAAAAADoZ44dAAAA3shfdqbq3PYA/GMBeYrJuYA+AAA=
+  </data>
+ </layer>
+ <layer name="Plantas" width="100" height="40">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3NsQ0AQAgDMRr4/Td+hkAUyJauTSIAAAAAAAAAAAAAAAAAgKuyq+4tbU3+AbDvA1TBd1eAPgAA
+  </data>
+ </layer>
+ <layer name="Colisiones" width="100" height="40">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+2Z0W7DIAxFo37m0qrd1D5U3f8/F0uLNkXgYMBwk90j8dAEI/AphJBpSjOfpul8UiqQrtAHFvSBBX1gQR9Y0AcW9IEFfWBBH1jQR1/mjVzTR1/oAwv6wII+sKAPLLbyTR99oQ8s6AML+sCixscrXH+E8k1fzeD8wMLLx9MQY6l7dLx83A0xlrpHJ9fHw/isWOf4Gn5fQvmMxNPHL6jr1VH2Csv/0FL2uF7twde1sG+1PmK5+e/Pj1IXgpbvW7j3VdD27c8zZ6uUtI9MjQsB/f1C2wto9XPX5JbUuhBy+vr6WY9GrNfLN4HcnMa+IfTw0cKFgDw/1mPMmSMjfLRyISD7WOdW6+uyr+jto6ULobavnntPi49UzDruQ2lDuxejtQvhKPMjFZMbZ8XDhbBnH7G5afWRmhPaGYOXC8Hqo+d57Mj5kXpP9XQhWPva8316pI/U+ZI32tlWbH85K/W9SyqvJed22hiXcaIRG//IfqZ81PTJo00v6KM/b78LlcGAPgAA
+  </data>
+ </layer>
+ <layer name="TrampasMortales" width="100" height="40">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAC+3DsQkAAAgDsL7v175Q3IQEkgAAAAAAAAAAAAD8MGUAAAAAAG4Wz3K1/oA+AAA=
+  </data>
+ </layer>
+</map>

@@ -1,0 +1,79 @@
+package States;
+
+import Engine.Nivel;
+import Niveles.Nivel0;
+import Niveles.Nivel1;
+import Niveles.Nivel2;
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
+import org.newdawn.slick.SlickException;
+import org.newdawn.slick.state.BasicGameState;
+import org.newdawn.slick.state.StateBasedGame;
+
+
+
+/**
+ *
+ * @author Roberto
+ */
+public class GameState extends BasicGameState {
+    private GameContainer container;
+    private Nivel nivel;
+   
+
+    public int getID() {
+        return 2;
+    }
+
+    public void init(GameContainer container, StateBasedGame game) throws SlickException {
+     
+        this.container = container;
+        
+        
+        //Si el jugador no se ha creado
+        if(nivel != null){     
+            //Si el nivel del juagador es el 1
+            if(nivel.getJugador().getNivel()==1){  
+                System.out.println("Arranca nivel 1");
+                nivel = new Nivel1(container,game, nivel);
+                
+            //Si el nivel del juagador es el 2
+            }else if(nivel.getJugador().getNivel()==2){              
+                System.out.println("Arranca nivel 2");
+                nivel = new Nivel2(container,game,nivel);
+
+            }
+        //Si el jugador no existe es porque es el nivel 0 y hay que crear al jugador
+            //y todo lo demas
+        }
+        else{
+           
+            nivel = new Nivel0(container, game);
+    
+        }
+        
+    }
+    
+    @Override
+    public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {        
+        if (nivel!=null)
+           nivel.render(g);
+            
+    }
+    @Override
+    public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {  
+        if (nivel!=null)
+            nivel.update(delta);
+       
+    }   
+ 
+    
+ 
+    @Override
+    public void enter(GameContainer container, StateBasedGame game)throws SlickException{
+       container.getInput().clearKeyPressedRecord();
+       init(container, game);   
+   }
+
+   
+}

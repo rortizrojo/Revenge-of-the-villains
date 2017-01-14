@@ -1,0 +1,33 @@
+parado
+
+Tamaño horizontal total:146
+Tamaño vertical total:30
+Retroceso:False
+Milisegundos:50
+
+Número de sprites:5
+
+SPRITE 1: 00000.png
+Tamaño horizontal:29
+tamaño vertical:29
+X:0
+
+SPRITE 2: 00001.png
+Tamaño horizontal:29
+tamaño vertical:29
+X:30
+
+SPRITE 3: 00002.png
+Tamaño horizontal:30
+tamaño vertical:29
+X:60
+
+SPRITE 4: 00003.png
+Tamaño horizontal:31
+tamaño vertical:29
+X:91
+
+SPRITE 5: 00004.png
+Tamaño horizontal:21
+tamaño vertical:29
+X:123

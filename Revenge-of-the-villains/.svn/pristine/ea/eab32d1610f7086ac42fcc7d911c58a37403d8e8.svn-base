@@ -1,0 +1,209 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Objetos;
+
+import Armas.TiraBolas;
+import Engine.Camara;
+import Engine.Colisiones;
+import Engine.GestorColision;
+import Engine.IColisionable;
+import Personajes.Personaje;
+import org.newdawn.slick.Animation;
+import org.newdawn.slick.Color;
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
+import org.newdawn.slick.SlickException;
+import org.newdawn.slick.SpriteSheet;
+import org.newdawn.slick.geom.Rectangle;
+import org.newdawn.slick.geom.Shape;
+
+/**
+ *
+ * @author Usuario
+ */
+public class Trampa extends Personaje implements IColisionable {
+                                          //jugador_a_izq=true -> jugador a izq. de Mario
+    private float distancia, posX_ant, daño;    //jugador_a_alt=true -> jugador a misma altura Mario
+    private boolean jugador_a_izq,jugador_a_alt, saltar, cambiar_dir, muerto; 
+    private int estado, cont_disparo, cont_salto, cont_mirar,cont_muerte, contador;
+    private SpriteSheet sheet;
+    private Animation animation;
+    private int tiempoDisparo ;
+    
+    ////////Sprite y animaciones:
+    private SpriteSheet sheetCorriendoDerecha;
+    private SpriteSheet sheetCorriendoIzquierda;
+    private SpriteSheet sheetParadoIzquierda;
+    private SpriteSheet sheetParadoDerecha;
+    private SpriteSheet sheetMuerte_Izq;
+    private SpriteSheet sheetMuerte_Der;
+    private Animation corriendoDerecha;
+    private Animation corriendoIzquierda;
+    private Animation paradoDerecha;
+    private Animation paradoIzquierda;
+   
+    private Animation muerte_Izq;
+    private Animation muerte_Der;
+    /////////
+
+    private boolean puedeDisparar;
+    private boolean mirandoIzquierda;
+
+    private Rectangle areaColision;
+    private GestorColision gestor;
+
+    
+
+    public Trampa(GameContainer container, Colisiones colisiones, GestorColision gestor, float posX, float posY, float daño ) throws SlickException {
+        
+        super(container,colisiones);
+        this.gestor = gestor;
+        gestor.registrarCuerpo(this);
+
+        vida = 100;
+        cont_muerte = 100;
+        muerto=false;        
+        //Posicion inicial
+        this.posX = posX;
+        this.posY = posY;      
+        //Daño
+        this.daño= daño;
+        //Tamaño del sprite .png ver en propiedades de la imagen
+        anchoSprite = 28;
+        altoSprite = 39;
+        //Escalado del sprite, ajustar con el numero
+        anchoDibujado = anchoSprite*2.6f;
+        altoDibujado = altoSprite*2.6f;
+
+        areaColision = new Rectangle(posX, posY,anchoDibujado,altoDibujado);
+  
+        //Sheets y animaciones necesarias para el movimiento:
+        sheetCorriendoDerecha = new SpriteSheet("res/animations//Mario/corriendoDerechaSprite.png", (int) anchoSprite, (int) altoSprite);
+        //Crear la animaciones
+        corriendoDerecha = new Animation();
+        
+        //Cargas los frames de los sprites en las animaciones
+        //ej.--> for (int i = 0; i < n_framesPorSprite-1; i++)
+        for (int i = 0; i < 6; i++) { 
+            corriendoDerecha.addFrame(sheetCorriendoDerecha.getSprite(i, 0), 50);
+        }
+  
+    }
+      
+     /**
+     * Secuencia de acciones que realiza el personaje
+     */
+
+    public void acciones() throws SlickException {
+    
+        botonArriba = false;
+        saltar =false;
+        sincronizarArea();
+        gestor.comprobarColisiones();
+        
+        // Según el estado realiza unas acciones u otras
+        
+       
+                    if (distancia >50 && !jugador_a_alt){                       
+                        saltar = true; 
+                    }  
+        if (saltar==true){
+            if (cont_salto==50)
+                botonArriba =true;
+            cont_salto++; 
+            if (cont_salto>50)
+                cont_salto=0;       
+        }
+    }
+   
+    @Override
+    public void render(int delta,Graphics g, Camara camara) throws SlickException {
+
+        this.delta = delta;
+        //Si muere
+        if(vida <= 0){
+            if(conectadoSuelo){
+                velocidadY = 0;
+                velocidadX = 0;
+                grav = 0;
+            }
+            if (mirandoIzquierda){
+                //Carga animacion de muerte
+                muerte_Izq.draw(posX, posY, anchoDibujado, altoDibujado);
+
+                if(muerte_Izq.getFrame() == 7) //muerte.getFrame()==nºframe-1
+                    muerte_Izq.stop();
+                if (muerte_Izq.isStopped()){
+                    cont_muerte -=1;
+                    if (cont_muerte <=0)
+                        muerto = true;
+                }
+            }
+            else{
+                //Carga animacion de muerte
+                muerte_Der.draw(posX, posY, anchoDibujado, altoDibujado);
+
+                if(muerte_Der.getFrame() == 7) //muerte.getFrame()==nºframe-1
+                    muerte_Der.stop();
+                if (muerte_Der.isStopped()){
+                    cont_muerte -=1;
+                    if (cont_muerte <=0)
+                        muerto = true;
+                }
+            }
+        } else if(botonDerecha){
+            corriendoDerecha.draw(posX, posY, anchoDibujado, altoDibujado);
+            mirandoIzquierda = false;
+        } else if (botonIzquierda) {
+            corriendoIzquierda.draw(posX, posY, anchoDibujado, altoDibujado);
+            mirandoIzquierda = true;
+        } else {
+            if (mirandoIzquierda) {
+                paradoIzquierda.draw(posX, posY, anchoDibujado, altoDibujado);
+            } else {
+                paradoDerecha.draw(posX, posY, anchoDibujado, altoDibujado);
+            }
+        }
+ 
+        g.setColor(Color.red);
+        g.fillRect(container.getWidth()-camara.getCamX()- 220, container.getWidth()-camara.getCamY()-750, vida*2, 20 );
+       
+    }
+
+    public void actualizarEstado(float jugadorX, float jugadorY) {  
+     
+        distancia = (float)Math.sqrt((Math.pow(posX-jugadorX,2))+(Math.pow(posY-jugadorY,2)));    
+        jugador_a_izq = jugadorX < posX;    //jugador_a_izq=true -> jugador a izq. de Mario
+       
+        if (Math.abs(jugadorY-posY) < 50)
+            jugador_a_alt = true ; //jugador_a_alt=true -> jugador a misma altura Mario
+        else 
+            jugador_a_alt = false ;
+       
+    }     
+
+    public float getDaño() {
+        return daño;
+    }
+  
+    public Shape getAreaColision() {
+       return areaColision; 
+    }
+
+    public void alColisionar(IColisionable colision) {
+
+    }
+    
+    public boolean isMuerto() {
+        return muerto;
+    }
+    
+    @Override
+    public void sincronizarArea() {
+        areaColision.setX(posX);
+        areaColision.setY(posY);
+    }
+}

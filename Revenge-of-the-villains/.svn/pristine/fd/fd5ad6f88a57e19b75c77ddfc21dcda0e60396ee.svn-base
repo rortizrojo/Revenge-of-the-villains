@@ -1,0 +1,58 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package States;
+
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
+import org.newdawn.slick.Input;
+import org.newdawn.slick.SlickException;
+import org.newdawn.slick.state.BasicGameState;
+import org.newdawn.slick.state.StateBasedGame;
+import org.newdawn.slick.state.transition.FadeInTransition;
+import org.newdawn.slick.state.transition.FadeOutTransition;
+
+/**
+ *
+ * @author Roberto
+ */
+public class CreditosState extends BasicGameState {
+
+    private Image fondocreditos;
+    private GameContainer container;
+
+    public int getID() {
+        return 3;
+
+    }
+
+    public void init(GameContainer container, StateBasedGame game) throws SlickException {
+        this.container = container;
+        fondocreditos = new Image("testdata/ImagenFondoCreditos.png", true);
+    }
+
+    public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
+        fondocreditos.draw();
+        
+        
+        g.drawString("Valentin Paru", 150, 180);
+        g.drawString("Alex Munguiía", 150, 210);
+        g.drawString("Ignacio Soria", 150, 240);
+        g.drawString("Gonzalo Heras ", 150,270);
+        g.drawString("Roberto Ortiz", 150, 300);
+        g.drawString("Elizabeth Salinas ", 150, 330);
+        g.drawString("Felipe Arango", 150, 360);
+        
+    }
+
+    public void update(GameContainer container, StateBasedGame sbg, int delta) throws SlickException {
+        if (container.getInput().isKeyPressed(Input.KEY_ESCAPE)) {
+            sbg.enterState(1, new FadeOutTransition(), new FadeInTransition());
+
+        }
+    }
+
+}

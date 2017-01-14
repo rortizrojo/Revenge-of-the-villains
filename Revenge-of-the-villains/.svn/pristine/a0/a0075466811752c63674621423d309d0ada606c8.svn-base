@@ -1,0 +1,296 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Personajes;
+
+import Armas.Bola;
+import Engine.Camara;
+import Engine.Colisiones;
+import Engine.GestorColision;
+import Engine.IColisionable;
+import Engine.Inventario;
+import Armas.Pistola;
+import org.newdawn.slick.Animation;
+import org.newdawn.slick.Color;
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
+
+import org.newdawn.slick.Input;
+import org.newdawn.slick.SlickException;
+import org.newdawn.slick.SpriteSheet;
+import org.newdawn.slick.geom.Shape;
+import org.newdawn.slick.geom.Rectangle;
+import org.newdawn.slick.state.StateBasedGame;
+
+/**
+ *
+ * @author Roberto
+ */
+public class Jugador extends Personaje implements IColisionable {
+
+    private final StateBasedGame game;
+    private boolean monedas[][];
+    private SpriteSheet sheetCorriendoDerecha;
+    private SpriteSheet sheetCorriendoIzquierda;
+    private SpriteSheet sheetParadoIzquierda;
+    private SpriteSheet sheetParadoDerecha;
+    private SpriteSheet sheetMuerte;
+    private Animation corriendoDerecha;
+    private Animation corriendoIzquierda;
+    private Animation paradoDerecha;
+    private Animation paradoIzquierda;
+    private Animation muerte;
+    private Boolean pasoDeNivel, enemigos_muertos;
+    private Inventario inventario;
+    
+    private boolean puedeEntrar;
+    private boolean botonDisparo;
+    private boolean mirandoIzquierda;
+    private boolean mirandoDerecha;
+    private String[][] dataPoints;
+
+    private Pistola pistola;
+    private Rectangle areaColision;
+    private GestorColision gestor;
+    
+    private int nivel=0;
+    private int tiempoReinicio;
+    private boolean muerto;
+    private Mario mario;
+    private Bola bola; 
+
+
+    public Jugador(GameContainer container, StateBasedGame game, Colisiones colisiones, GestorColision gestor) throws SlickException {
+        
+        super(container, colisiones);
+        
+        this.game = game;
+        this.gestor = gestor;
+        gestor.registrarCuerpo(this);
+       
+        pasoDeNivel=false;
+        muerto = false;
+        tiempoReinicio = 120;
+        vida = 100;
+        posX = 200;
+        posY = 100;
+        anchoSprite = 32;
+        altoSprite = 42;
+        anchoDibujado = anchoSprite * 2f;
+        altoDibujado = altoSprite * 2f;
+
+        areaColision = new Rectangle(posX, posY,anchoDibujado,altoDibujado);
+        sheetCorriendoDerecha = new SpriteSheet("res/animations//Metal/corriendoDerechaSprite.png", (int) anchoSprite, (int) altoSprite);
+        sheetCorriendoIzquierda = new SpriteSheet("res/animations//Metal/corriendoIzquierdaSprite.png", (int) anchoSprite, (int) altoSprite);
+        sheetParadoIzquierda = new SpriteSheet("res/animations//Metal/paradoIzquierdaSprite.png", (int) anchoSprite, (int) altoSprite);
+        sheetParadoDerecha = new SpriteSheet("res/animations//Metal/paradoDerechaSprite.png", (int) anchoSprite, (int) altoSprite);
+        sheetMuerte = new SpriteSheet("res/animations/Metal/Tarmo/muerte estrella/mortajao.png", (int) 38, (int) 47);
+        
+        pistola = new Pistola(1.0f);
+        
+        monedas = colisiones.getMonedas();
+        inventario = new Inventario();
+        dataPoints = colisiones.getDataPoints();
+        
+        corriendoDerecha = new Animation();
+        corriendoIzquierda = new Animation();
+        paradoIzquierda = new Animation();
+        paradoDerecha = new Animation();
+        muerte = new Animation();
+
+        
+        for (int i = 0; i < 11; i++) {
+            corriendoDerecha.addFrame(sheetCorriendoDerecha.getSprite(i, 0), 50);
+        }
+
+        for (int i = 0; i < 4; i++) {
+            paradoIzquierda.addFrame(sheetParadoIzquierda.getSprite(i, 0), 150);
+        }
+
+        for (int i = 0; i < 4; i++) {
+            paradoDerecha.addFrame(sheetParadoDerecha.getSprite(i, 0), 150);
+        }
+
+        for (int i = 10; i >=0; i--) {
+            corriendoIzquierda.addFrame(sheetCorriendoIzquierda.getSprite(i, 0), 50);
+        }
+        
+        for (int i = 0; i < 25; i++) {
+            muerte.addFrame(sheetMuerte.getSprite(i, 0), 150);
+        }
+
+    }
+    public boolean getPasoNivel(){
+        return pasoDeNivel;
+    }
+    public void acciones() throws SlickException {
+        pasoDeNivel=false;
+        if(vida>0){
+            //creando botones.....
+            botonDerecha = container.getInput().isKeyDown(Input.KEY_D);
+            botonIzquierda = container.getInput().isKeyDown(Input.KEY_A);
+            botonArriba = container.getInput().isKeyPressed(Input.KEY_W);
+
+            botonDisparo = container.getInput().isKeyPressed(Input.KEY_J);
+            //botonAccion = container.getInput().isKeyPressed(Input.KEY_F);
+
+            if (botonDisparo) {
+                if(mirandoIzquierda)
+                    pistola.disparar(this, -500, gestor);
+                if(mirandoDerecha)
+                    pistola.disparar(this, 500, gestor);
+            }
+            
+            //cogerMonedas();
+            sincronizarArea();
+            gestor.comprobarColisiones();
+        }
+        pistola.update(delta,map);
+        if((posY+altoDibujado+velocidadY)>=(map.getHeight()*map.getTileHeight()))
+            vida = vida - vida;
+    }
+
+    public void cogerMonedas() {
+        if (monedas[((int) posX / map.getTileWidth())][(int) posY / map.getTileWidth()]) {
+            inventario.setMonedas();
+            monedas[((int) posX / map.getTileWidth())][(int) posY / map.getTileWidth()] = false;
+        }
+    }
+    
+    public void enemigos_muertos_toFalse() {
+        enemigos_muertos=false;
+    }
+    public void enemigos_muertos_toTrue() {
+        enemigos_muertos=true;
+    }
+
+    public void pasarNivel()throws SlickException{
+        
+        nivel++; 
+        
+            if (nivel==1||nivel ==2){
+
+                game.init(container);
+
+            }
+         
+    }
+    @Override
+    public void render(int delta,Graphics g, Camara camara) throws SlickException {
+        
+            this.delta = delta;
+
+            /* Codigo para depurar colisiones con el mapa
+
+            System.out.println("celda x: "+(int)(posX-1)/map.getTileWidth());
+            System.out.println("celda y: "+(int)(posY+altoDibujado+velocidadY)/map.getTileHeight());
+
+            System.out.println("conectado derecha "+conectadoDerecha);
+            System.out.println("conectado izq "+conectadoIzquierda);
+            System.out.println("conectado suelo "+conectadoSuelo);
+            System.out.println("conectado techo "+ conectadoTecho);
+            */
+            System.out.println("pos x: "+posX);
+            System.out.println("pos y: "+posY);
+            //Si muere
+            if(vida <= 0){
+               if(conectadoSuelo){
+                    velocidadY = 0;
+                    velocidadX = 0;
+                    grav = 0;
+               }
+                //Carga animacion de muerte
+                muerte.draw(posX, posY-12, 38*2f, 47*2f);
+
+                if(muerte.getFrame() == 24)
+                    muerte.stop();
+
+                if (muerte.isStopped()){
+
+                    tiempoReinicio -=1;
+                    if (tiempoReinicio <=0)
+                        muerto = true;
+
+                }
+
+
+            }else if(botonDerecha){
+                corriendoDerecha.draw(posX, posY, anchoDibujado, altoDibujado);
+                mirandoDerecha = true;
+                mirandoIzquierda = false;
+            } else if (botonIzquierda) {
+                corriendoIzquierda.draw(posX, posY, anchoDibujado, altoDibujado);
+                mirandoIzquierda = true;
+                mirandoDerecha = false;
+            } else {
+                if (mirandoIzquierda) {
+                    paradoIzquierda.draw(posX, posY, anchoDibujado, altoDibujado);
+                } else {
+                    paradoDerecha.draw(posX, posY, anchoDibujado, altoDibujado);
+                }
+            }
+            pistola.render();
+            
+            g.setColor(Color.yellow);
+            g.fillRect(container.getWidth()-camara.getCamX()- 700, container.getWidth()-camara.getCamY()-750, vida*2, 20 );
+            g.drawString("Vida: " , container.getWidth()-camara.getCamX()- 750, container.getWidth()-camara.getCamY()-750);
+            //g.drawString("Monedas: " + inventario.getMonedas(), container.getWidth()-camara.getCamX()- 500, container.getWidth()-camara.getCamY()-750);
+    }
+
+    public int getNivel() {
+        return nivel;
+    }
+
+    public Boolean getPasoDeNivel() {
+        return pasoDeNivel;
+    }
+
+    public boolean isMuerto() {
+        return muerto;
+    }
+
+    public boolean isPuedeEntrar() {
+        return puedeEntrar;
+    }
+    
+    public void setMonedas(){
+        monedas = colisiones.getMonedas();      
+    }
+
+    @Override
+    public Shape getAreaColision() {
+        return areaColision;
+    }
+
+    @Override
+    public void alColisionar(IColisionable colision) {
+        if(colision.getClass().getName().equals("Armas.Bola") ){
+            bola = (Bola)colision;
+            if (bola != null)
+                if(vida>0){
+                    vida = vida - bola.getDaño();
+
+                }
+        }
+        if(colision.getClass().getName().equals("Objetos.Puerta")&&enemigos_muertos){
+            pasoDeNivel = true;
+       
+        }
+        if(colision.getClass().getName().equals("Personajes.Mario")){ 
+            mario = (Mario)colision;
+            if(!mario.isMuerto())
+                if(vida>0)
+                   vida = vida - mario.getDaño();
+        }           
+
+    }
+
+    @Override
+    public void sincronizarArea() {
+        areaColision.setX(posX);
+        areaColision.setY(posY);
+    }
+
+}

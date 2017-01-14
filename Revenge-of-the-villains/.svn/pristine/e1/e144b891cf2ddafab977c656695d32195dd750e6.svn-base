@@ -1,0 +1,9 @@
+Exception in thread "main" java.lang.UnsatisfiedLinkError: org.lwjgl.opengl.WindowsDisplay.setWindowProc(Ljava/lang/reflect/Method;)V
+	at org.lwjgl.opengl.WindowsDisplay.setWindowProc(Native Method)
+	at org.lwjgl.opengl.WindowsDisplay.<clinit>(WindowsDisplay.java:217)
+	at org.lwjgl.opengl.Display.createDisplayImplementation(Display.java:159)
+	at org.lwjgl.opengl.Display.<clinit>(Display.java:136)
+	at org.newdawn.slick.AppGameContainer$1.run(AppGameContainer.java:39)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at org.newdawn.slick.AppGameContainer.<clinit>(AppGameContainer.java:36)
+	at platformerImplementation.Boss.main(Boss.java:55)

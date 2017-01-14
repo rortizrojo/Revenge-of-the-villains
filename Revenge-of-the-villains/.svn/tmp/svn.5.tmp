@@ -1,0 +1,228 @@
+package States;
+
+import Engine.Camara;
+import Engine.Colisiones;
+import Engine.GestorColision;
+import Engine.Nivel;
+import Personajes.Jugador;
+import Personajes.Mario;
+import Niveles.Nivel0;
+import Niveles.Nivel1;
+import Niveles.Nivel2;
+import Objetos.BolaFuego;
+import Objetos.Cofre;
+import Objetos.Lava;
+import Objetos.Puerta;
+import Personajes.Enemigo;
+import java.awt.Color;
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
+import org.newdawn.slick.Input;
+import org.newdawn.slick.SlickException;
+import org.newdawn.slick.state.BasicGameState;
+import org.newdawn.slick.state.StateBasedGame;
+import org.newdawn.slick.state.transition.FadeInTransition;
+import org.newdawn.slick.state.transition.FadeOutTransition;
+import org.newdawn.slick.tiled.TiledMap;
+import java.awt.Font;
+import org.newdawn.slick.UnicodeFont;
+import org.newdawn.slick.font.effects.ColorEffect;
+
+/**
+ *
+ * @author Roberto
+ */
+public class GameState extends BasicGameState {
+    private UnicodeFont fuente;
+    private UnicodeFont fuente2;
+    private int delta;
+    private GameContainer container;
+    private TiledMap map;
+    private Jugador jugador;
+    private Mario mario; 
+    private Enemigo enemigo; 
+    private Nivel nivel;   
+    private Colisiones colisiones;
+    private Camara camara; 
+    private GestorColision gestor;
+    private Puerta puerta;
+    private Cofre cofre;
+    private Lava lava;
+ 
+    private BolaFuego fuego1;
+    private BolaFuego fuego2;
+    private BolaFuego fuego3;
+    public int getID() {
+        return 2;
+    }
+
+    public void init(GameContainer container, StateBasedGame game) throws SlickException {
+        java.awt.Font fuenteAWT = new java.awt.Font("Comic Sans MS",Font.BOLD, 24);
+        java.awt.Font fuenteAW = new java.awt.Font("Comic Sans MS",Font.BOLD, 15);
+        fuente = new UnicodeFont (fuenteAWT);
+        fuente2= new UnicodeFont (fuenteAW);
+        fuente2.addAsciiGlyphs();
+        fuente.addAsciiGlyphs();
+        ColorEffect colorFuente = new ColorEffect(java.awt.Color.WHITE);
+        fuente2.getEffects().add(colorFuente);
+        fuente.getEffects().add(colorFuente);
+        fuente.loadGlyphs();
+        fuente2.loadGlyphs();
+        this.container = container;
+        
+        //Si el jugador no se ha creado
+        if(jugador != null){     
+            //Si el nivel del juagador es el 1
+            if(jugador.getNivel()==1){  
+                System.out.println("Arranca nivel 1");
+                nivel = new Nivel1();
+                map = nivel.getMap();
+                colisiones = new Colisiones(map);
+                jugador.setColisiones(colisiones);
+                //jugador.setMonedas();
+                mario = new Mario(container, colisiones, gestor, 350,1000,0.30f);
+                enemigo = new Enemigo(container, colisiones, gestor, 5550,1000,0.15f);
+                puerta.setPosicion(46,430);
+            //Si el nivel del juagador es el 2
+            }else if(jugador.getNivel()==2){              
+                System.out.println("Arranca nivel 2");
+                nivel = new Nivel2();
+                map = nivel.getMap();
+                colisiones = new Colisiones(map);
+                jugador.setColisiones(colisiones);
+                mario = new Mario(container, colisiones, gestor,500,200,0.30f);
+                enemigo = new Enemigo(container, colisiones, gestor, 1300,1650,0.15f);
+                //jugador.setMonedas();
+                cofre = new Cofre (mario.getPosX(),mario.getPosY()+50,0,gestor);
+                lava = new Lava (1100,1300,0,gestor);
+                fuego1 = new BolaFuego (1150,1300,0,gestor);
+                fuego2 = new BolaFuego (1300,950,0,gestor);
+                fuego3 = new BolaFuego (1450,1300,0,gestor);
+            
+            }
+        //Si el jugador no existe es porque es el nivel 0 y hay que crear al jugador
+            //y todo lo demas
+        }
+        else{
+            gestor = new GestorColision();
+            nivel = new Nivel0();
+            map = nivel.getMap();
+            colisiones = new Colisiones(map);
+            jugador = new Jugador(container,game, colisiones, gestor);
+            mario = new Mario(container, colisiones, gestor, 4421,916,0.15f);
+            enemigo = new Enemigo(container, colisiones, gestor, 1573,1030,0.15f);
+            puerta = new Puerta(5819,928,0,gestor);     
+        }
+        camara = new Camara(container, map, jugador );
+    }
+    public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {        
+      /*
+        System.out.println("CamaraX: " + camara.getCamX());
+        System.out.println("CamaraY" + camara.getCamY());
+        System.out.println("JugadorX: " + jugador.getPosX());
+        System.out.println("JugadorY: " + jugador.getPosY());*/
+        if (jugador!=null){
+            g.translate(camara.getCamX(),camara.getCamY());
+            nivel.render();
+            puerta.draw();
+        
+            jugador.render(delta, g, camara);
+        
+            if(!mario.isMuerto())
+                mario.render(delta, g, camara);  
+            if(!enemigo.isMuerto())
+                enemigo.render(delta, g, camara);
+            if(jugador.getPasoDeNivel()|| jugador.getFinJuego()){
+                fuente.drawString(jugador.getPosX()-100, jugador.getPosY()-100,"MISSION COMPLETED");
+                fuente2.drawString(jugador.getPosX()-70, jugador.getPosY()-70,"(presiona F para continuar)");     
+            } 
+            if (jugador.getNivel()==2){
+
+                
+               
+
+                fuego1.draw();
+                fuego2.draw();
+                fuego3.draw();
+                lava.draw();
+
+               
+            }
+            if(jugador.getEnemigosMuertos()&&jugador.getNivel()==2)
+                cofre.draw();   
+            
+        }
+    }
+    public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {        
+        if (jugador!=null){ 
+            nivel.update(delta);                  
+            jugador.update(delta);
+            if (jugador.getNivel()==2){
+                cofre.update(delta, mario.getPosX(), mario.getPosY()+65);
+
+                lava.update(delta);
+                fuego1.update(delta);
+                fuego2.update(delta);
+                fuego3.update(delta);
+
+               
+            }
+            puerta.update(delta);
+       
+            if(jugador.getVida()>0)
+                camara.moverCamara();
+        
+            if(!mario.isMuerto()){
+                mario.update(delta);
+                mario.actualizarEstado(jugador.getPosX(), jugador.getPosY());
+            }
+   
+            if(!enemigo.isMuerto()){
+                enemigo.update(delta);
+                enemigo.actualizarEstado(jugador.getPosX(), jugador.getPosY());
+            }
+        
+            jugador.setEnemigos_muertos(mario.isMuerto()&&enemigo.isMuerto());
+            camara.moverCamara();
+            actualizarTeclado(game);
+            if(jugador.isMuerto()){            
+                game.enterState(6);
+                jugador = null;
+            }  
+            
+        }
+    }   
+ 
+    
+   public void actualizarTeclado (StateBasedGame game) throws SlickException{
+        if (container.getInput().isKeyPressed(Input.KEY_B) ) {  //SOLO PARA HACER PRUEBAS          
+            jugador.pasarNivel();            
+        } 
+        if (container.getInput().isKeyPressed(Input.KEY_N )){ //SOLO PARA HACER PRUEBAS  
+            mario.setVida(0);
+            enemigo.setVida(0);
+        }
+        if (container.getInput().isKeyPressed(Input.KEY_P)) {
+            game.enterState(7, new FadeOutTransition(), new FadeInTransition());
+        }
+        if (container.getInput().isKeyPressed(Input.KEY_ESCAPE)) {
+            game.enterState(1, new FadeOutTransition(), new FadeInTransition());
+        }  
+        if (container.getInput().isKeyPressed(Input.KEY_F) && (jugador.getPasoDeNivel()|| jugador.getFinJuego())) {           
+            if (jugador.getNivel()<2){   
+                jugador.pasarNivel();            
+            }
+            else {
+                game.enterState(8, new FadeOutTransition(), new FadeInTransition());
+                jugador = null;
+            }
+        }   
+    }
+
+   @Override
+   public void enter(GameContainer container, StateBasedGame game)throws SlickException{
+       container.getInput().clearKeyPressedRecord();
+       init(container, game);   
+   }
+}

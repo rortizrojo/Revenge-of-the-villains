@@ -1,0 +1,48 @@
+package States;
+
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
+import org.newdawn.slick.Input;
+import org.newdawn.slick.SlickException;
+import org.newdawn.slick.state.BasicGameState;
+import org.newdawn.slick.state.StateBasedGame;
+import org.newdawn.slick.state.transition.FadeInTransition;
+import org.newdawn.slick.state.transition.FadeOutTransition;
+
+/**
+ *
+ * @author Roberto
+ */
+public class HowToPlayState extends BasicGameState {
+
+    private Image howtoplay;
+    private GameContainer container;
+
+    public int getID() {
+        return 5;
+
+    }
+
+    public void init(GameContainer container, StateBasedGame game) throws SlickException {
+        this.container = container;
+        howtoplay = new Image("testdata/ImagenHowToPlay.png", true);
+
+    }
+
+    public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
+        howtoplay.draw();
+    }
+
+    public void update(GameContainer container, StateBasedGame sbg, int delta) throws SlickException {
+        if (container.getInput().isKeyPressed(Input.KEY_ESCAPE)) {
+            sbg.enterState(1, new FadeOutTransition(), new FadeInTransition());
+        }
+        if (container.getInput().isKeyPressed(Input.KEY_H)) {
+            sbg.enterState(2, new FadeOutTransition(), new FadeInTransition());
+        }
+        if (container.getInput().isKeyPressed(Input.KEY_P)) {
+            sbg.enterState(7, new FadeOutTransition(), new FadeInTransition());
+        }
+    }
+}
