@@ -1,0 +1,362 @@
+package Other;
+
+import org.newdawn.slick.Color;
+import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
+import org.newdawn.slick.SlickException;
+import org.newdawn.slick.UnicodeFont;
+
+
+
+
+
+/**
+ * Prints text to a Sprite for easy display
+ * @author William Andrew Cahill
+ */
+public class TextPrinter
+{
+	// Size of the message to create
+	int width, height;
+	
+	// Font to use
+	UnicodeFont font;
+	
+	// Resources to use
+	//Resources res;
+	
+	// Sprite to use for displaying text
+	//Sprite textSprite;
+	
+	// Message to print
+	String message;
+	Image messageCanvas;
+	
+	// Index of the message to print out
+	int charIndex;
+	
+	// Width of a given line
+	int rowWidth;
+	
+	// Number of the line we are on
+	String[] lines;
+	int linesSize;
+	int line;
+	
+	// Color of text
+	int red, green, blue;
+
+	
+	
+	
+	/**
+         * 
+         * @param font
+         * @param image
+         * @param message 
+         */
+	public TextPrinter(UnicodeFont font, Image image, String message)
+	{
+		// Checks to see if the font supplied is valid or not
+		if(font == null || image == null || message == null)
+			throw new IllegalArgumentException("Please insert valid non-null arguments");
+
+		// Assigns font
+		this.font = font;
+		
+		// Protects size from wise-ass arguments
+		this.width = image.getWidth();
+		this.height = image.getHeight();
+		
+		// Builds sprite for containing text
+		try
+		{
+			messageCanvas = image;
+			Graphics g = messageCanvas.getGraphics();
+			g.setFont(font);
+			g.setColor(new Color(255,255,255,100));
+			//textSprite = new Sprite(messageCanvas);
+		}
+		catch(SlickException e)
+		{
+			e.printStackTrace();
+		}
+
+		
+		// Creates empty lines
+		linesSize = 0;
+		lines = new String[100];
+		line = 0;
+		
+		// Message default value
+		setMessage(message);
+		
+		// Sets up helper variables
+		charIndex = rowWidth = 0;
+		
+		// Sets up default white color
+		red = green = blue = 255;
+	}
+	
+	
+	
+	
+	/**
+	 * @return Width of the text image
+	 */
+	public int getWidth()
+	{
+		return width;
+	}
+	
+	
+	
+	
+	/**
+	 * @return Height of the text image
+	 */
+	public int getHeight()
+	{
+		return height;
+	}
+	
+	
+	
+	
+	/**
+	 * @return Sprite containing the text
+	 */
+	/*public Sprite getSprite()
+	{
+		return textSprite;
+	}*/
+	
+	
+	
+	
+	/**
+	 * Sets the message to print
+	 * @param message Message to print
+	 */
+	public void setMessage(String message)
+	{
+		// Resets the character index if the new message differs from the last
+		if(message == null || !message.equals(this.message))
+			charIndex = 0;
+		
+		// Sets the message
+		this.message = message;
+		
+		// Splits the message into words
+		String[] words = message.split(" ");
+		
+		// Puts words into lines
+		linesSize = 0;
+		int line = 0, startWord = 0, rowWidth = 0, wordWidth;
+		int spaceWidth = font.getWidth(" ");
+		lines[0] = new String();
+		for(int i=0; i<words.length; i++)
+		{
+			// Gets the width of our word
+			wordWidth = font.getWidth(words[i]);
+			
+			// Checks to see if it makes our current line to big.  If it does, write what we currently have, and go down a line
+			if(rowWidth + wordWidth > getWidth()*0.95)
+			{
+				for(int j=startWord; j<i; j++)
+				{
+					lines[line] += words[j];
+					lines[line] += ' ';
+				}
+				
+				// Now go to the next line
+				startWord = i;
+				line ++;
+				lines[line] = new String();
+				rowWidth = 0;
+			}
+			rowWidth += wordWidth + spaceWidth;
+			
+			// Increases row
+		}
+		
+		// Gets the last line
+		for(int i=startWord; i<words.length; i++)
+		{
+			lines[line] += words[i] + ' ';
+		}
+
+		linesSize = line + 1;
+	}	
+	
+	
+	
+	
+	/**
+	 * @return The message the TextPrinter is set to display
+	 */
+	public String getMessage()
+	{
+		return message;
+	}
+	
+	
+	
+	
+	/**
+	 * Sets the color of the characters to print
+	 * @param red Amount of red
+	 * @param green Amount of green
+	 * @param blue Amount of blue
+	 */
+	public void setColor(int red, int green, int blue)
+	{
+		// Keeps color safe, and applies it
+		if(red > 255)
+			red = 255;
+		else if(red < 0)
+			red = 0;
+		this.red = red;
+		if(green > 255)
+			green = 255;
+		else if(green < 0)
+			green = 0;
+		this.green = green;
+		if(blue > 255)
+			blue = 255;
+		else if(blue < 0)
+			blue = 0;
+		this.blue = blue;
+		try
+		{
+			messageCanvas.getGraphics().setColor(new Color(red, green, blue));
+		}
+		catch (SlickException e)
+		{
+			e.printStackTrace();
+		}
+	}
+	
+	
+	
+	
+	/**
+	 * @return Amount of red used in printing
+	 */
+	public int getRed()
+	{
+		return red;
+	}
+	
+	
+	
+	
+	/**
+	 * @return Amount of green used in printing
+	 */
+	public int getGreen()
+	{
+		return green;
+	}
+	
+	
+	
+	
+	/**
+	 * @return Amount of blue used in printing
+	 */
+	public int getBlue()
+	{
+		return blue;
+	}
+	
+	
+	
+	
+	/**
+	 * Prints the current character of the message in question, then prepares itself to print the next
+	 */
+	public void printNextChar()
+	{
+		if(line < linesSize)
+		{
+			String nextChar = Character.toString(lines[line].charAt(charIndex));
+			
+			// Prints our desired character
+			try
+			{
+				Graphics g = messageCanvas.getGraphics();
+				g.setColor(Color.white);
+				g.drawString(nextChar, rowWidth, line * font.getLineHeight());
+				g.flush();
+			}
+			catch(SlickException e)
+			{
+				e.printStackTrace();
+			}
+			
+			charIndex ++;
+			if(charIndex > lines[line].length()-1)
+			{
+				charIndex = rowWidth = 0;
+				line ++;
+			}
+			else
+				rowWidth += font.getWidth(nextChar);
+		}
+	}
+	
+	
+	
+	
+	/**
+	 * @return Value that determines if there is still a character from the message to print
+	 */
+	public boolean hasNextChar()
+	{
+		if(line == linesSize)
+			return false;
+		return true;
+	}
+	
+	
+	
+	
+	/**
+	 * Clears the message displayed making it ready for another printing if necessary
+	 */
+	public void clearMessage()
+	{
+		Graphics g;
+		try
+		{
+			g = messageCanvas.getGraphics();
+			g.setColor(new Color(0, 0, 0, 0));
+			g.clear();
+			g.flush();
+		}
+		catch (SlickException e)
+		{
+			e.printStackTrace();
+		}	
+	}
+	
+	
+	
+	
+	/**
+	 * Disposes of the resources used in the message displayed
+	 */
+	public void destroy()
+	{
+		try
+		{
+			messageCanvas.getGraphics().destroy();
+			messageCanvas.destroy();
+		}
+		catch (SlickException e)
+		{
+			e.printStackTrace();
+		}
+	}
+}
