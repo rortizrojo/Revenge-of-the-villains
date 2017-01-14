@@ -1,5 +1,6 @@
 package States;
 
+import Juego.EnumStates;
 import java.awt.Font;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -26,7 +27,7 @@ public class CreditosState extends BasicGameState {
     
     @Override
     public int getID() {
-        return 3;
+        return EnumStates.CREDITOS.ordinal();
 
     }
 
@@ -51,20 +52,15 @@ public class CreditosState extends BasicGameState {
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
         fondocreditos.draw();
         
-        fuente.drawString(150, 180,"Valentin Paru");
-        fuente.drawString(150, 210,"Alex Munguía");
-        fuente.drawString(150, 240,"Ignacio Soria");
-        fuente.drawString(150, 270,"Gonzalo Heras");
         fuente.drawString(150, 300,"Roberto Ortiz");
-        fuente.drawString(150, 330,"Elizabeth Salinas");
-        fuente.drawString(150, 360,"Felipe Arango");
+        fuente.drawString(150, 330,"Felipe Arango");
         g.drawString("\nPulse ESC para volver al menú principal ", 440, 550);
     }
 
     @Override
     public void update(GameContainer container, StateBasedGame sbg, int delta) throws SlickException {
         if (container.getInput().isKeyPressed(Input.KEY_ESCAPE)) {
-            sbg.enterState(1, new FadeOutTransition(), new FadeInTransition());
+            sbg.enterState(EnumStates.MENU.ordinal(), new FadeOutTransition(), new FadeInTransition());
 
         }
     }

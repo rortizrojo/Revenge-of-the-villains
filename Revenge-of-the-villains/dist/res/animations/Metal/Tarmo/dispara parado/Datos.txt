@@ -1,0 +1,68 @@
+dispara parado
+
+Tamaño horizontal total:402
+Tamaño vertical total:31
+Retroceso:False
+Milisegundos:50
+
+Número de sprites:12
+
+SPRITE 1: 00000.png
+Tamaño horizontal:48
+tamaño vertical:30
+X:0
+
+SPRITE 2: 00001.png
+Tamaño horizontal:50
+tamaño vertical:30
+X:49
+
+SPRITE 3: 00002.png
+Tamaño horizontal:35
+tamaño vertical:30
+X:100
+
+SPRITE 4: 00003.png
+Tamaño horizontal:1
+tamaño vertical:30
+X:136
+
+SPRITE 5: 00004.png
+Tamaño horizontal:11
+tamaño vertical:30
+X:138
+
+SPRITE 6: 00005.png
+Tamaño horizontal:35
+tamaño vertical:30
+X:150
+
+SPRITE 7: 00006.png
+Tamaño horizontal:36
+tamaño vertical:30
+X:186
+
+SPRITE 8: 00007.png
+Tamaño horizontal:37
+tamaño vertical:30
+X:223
+
+SPRITE 9: 00008.png
+Tamaño horizontal:37
+tamaño vertical:30
+X:261
+
+SPRITE 10: 00009.png
+Tamaño horizontal:34
+tamaño vertical:30
+X:299
+
+SPRITE 11: 00010.png
+Tamaño horizontal:33
+tamaño vertical:30
+X:334
+
+SPRITE 12: 00011.png
+Tamaño horizontal:32
+tamaño vertical:30
+X:368

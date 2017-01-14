@@ -30,7 +30,7 @@ import org.newdawn.slick.state.StateBasedGame;
 public class Main extends StateBasedGame {
 
     public Main() {
-        super("Juego");
+        super("Revenge of the villains");
     }
 
     public static void main(String[] args) {
@@ -40,6 +40,7 @@ public class Main extends StateBasedGame {
             appgc.setDisplayMode(800, 600, false);
             appgc.setTargetFrameRate(60);
             appgc.setShowFPS(false);
+            appgc.setIcon("res/images/icon.png");
             appgc.start();
         } catch (SlickException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
@@ -54,8 +55,8 @@ public class Main extends StateBasedGame {
         this.addState(new CreditosState());         //ID 3
         this.addState(new PuntuacionState());       //ID 4
         this.addState(new HowToPlayState());        //ID 5
-        this.addState(new PausaState());            //ID 7
-        this.addState(new GameOverState());         //ID 6
+        this.addState(new PausaState());            //ID 6
+        this.addState(new GameOverState());         //ID 7
         this.addState(new EndState());              //ID 8
     }
 

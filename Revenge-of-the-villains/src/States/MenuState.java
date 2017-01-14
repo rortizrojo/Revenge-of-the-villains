@@ -5,6 +5,7 @@
  */
 package States;
 
+import Juego.EnumStates;
 import org.newdawn.slick.AngelCodeFont;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Font;
@@ -19,6 +20,7 @@ import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
 
+ 
 /**
  *
  * @author Roberto
@@ -26,7 +28,6 @@ import org.newdawn.slick.state.transition.FadeOutTransition;
 public class MenuState extends BasicGameState {
 
     private Image fondomenu;
-    private GameContainer container;
     private Sound opcion;
     private Sound enter;
 
@@ -48,9 +49,9 @@ public class MenuState extends BasicGameState {
 
     @Override
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
-        this.container = container;
+      
         fondomenu = new Image("res/images/states/ImagenFondoMenu.png", true);
-        font = new AngelCodeFont("testdata/demo2.fnt", "testdata/demo2_00.tga");
+        font = new AngelCodeFont("res/fonts/demo2.fnt", "res/fonts/demo2_00.tga");
         opcion = new Sound("res/sounds/opcion.wav");
         enter = new Sound("res/sounds/enter.wav");
     }
@@ -73,33 +74,29 @@ public class MenuState extends BasicGameState {
     @Override
     public void update(GameContainer container, StateBasedGame sbg, int delta) throws SlickException {
         if (container.getInput().isKeyPressed(Input.KEY_H)) {
-            sbg.enterState(5, new FadeOutTransition(), new FadeInTransition());
+            sbg.enterState(EnumStates.INSTRUCCIONES.ordinal(), new FadeOutTransition(), new FadeInTransition());
         }
         if (container.getInput().isKeyPressed(Input.KEY_P)) {
-            sbg.enterState(7, new FadeOutTransition(), new FadeInTransition());
+            sbg.enterState(EnumStates.PAUSA.ordinal(), new FadeOutTransition(), new FadeInTransition());
         }
         if (container.getInput().isKeyPressed(Input.KEY_ESCAPE)) {
-            sbg.enterState(1, new FadeOutTransition(), new FadeInTransition());
+            sbg.enterState(EnumStates.MENU.ordinal(), new FadeOutTransition(), new FadeInTransition());
         }
         if (container.getInput().isKeyPressed(Input.KEY_0)) {
-            sbg.enterState(6, new FadeOutTransition(), new FadeInTransition());
+            sbg.enterState(EnumStates.GAMEOVER.ordinal(), new FadeOutTransition(), new FadeInTransition());
         }
         if (container.getInput().isKeyPressed(Input.KEY_ENTER)) {
             enter.play();
             switch (selected) {
 
                 case 0:
-                    
-                    sbg.enterState(2, new FadeOutTransition(), new FadeInTransition());
-                    
-                  
+                    sbg.enterState(EnumStates.GAME.ordinal(), new FadeOutTransition(), new FadeInTransition());
                     break;
                 case 1:
-                    sbg.enterState(3, new FadeOutTransition(), new FadeInTransition());
+                    sbg.enterState(EnumStates.CREDITOS.ordinal(), new FadeOutTransition(), new FadeInTransition());
                     break;
-               
                 case 2:
-                    sbg.enterState(5, new FadeOutTransition(), new FadeInTransition());
+                    sbg.enterState(EnumStates.INSTRUCCIONES.ordinal(), new FadeOutTransition(), new FadeInTransition());
                     break;
                 case 3:
                     container.exit();

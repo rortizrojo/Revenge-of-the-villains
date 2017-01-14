@@ -5,6 +5,7 @@
  */
 package Engine;
 
+import Juego.EnumStates;
 import Objetos.BolaFuego;
 import Objetos.Cofre;
 import Objetos.Lava;
@@ -87,13 +88,13 @@ public class Nivel {
         enemigo.update(delta);
         enemigo.actualizarEstado(jugador.getPosX(), jugador.getPosY());
        
-
         jugador.setEnemigos_muertos(mario.isMuerto()&&enemigo.isMuerto());
+        
         camara.moverCamara();
 
         if(jugador.isMuerto()){    
             System.out.println("jugador muerto");
-            game.enterState(6);
+            game.enterState(EnumStates.GAMEOVER.ordinal());
             
         }  
         puerta.update(delta);
@@ -246,11 +247,11 @@ public class Nivel {
         }
         if (container.getInput().isKeyPressed(Input.KEY_P)) {
             pausado = true;
-            game.enterState(7, new FadeOutTransition(), new FadeInTransition());
+            game.enterState(EnumStates.PAUSA.ordinal(), new FadeOutTransition(), new FadeInTransition());
             
         }
         if (container.getInput().isKeyPressed(Input.KEY_ESCAPE)) {
-            game.enterState(1, new FadeOutTransition(), new FadeInTransition());
+            game.enterState(EnumStates.MENU.ordinal(), new FadeOutTransition(), new FadeInTransition());
         }  
         if (container.getInput().isKeyPressed(Input.KEY_F) && (jugador.getPasoDeNivel()|| jugador.getFinJuego())) {           
             if (jugador.getNivel()<2){   
@@ -258,7 +259,7 @@ public class Nivel {
             }
             else {
                 jugador.setMuerto(true);
-                game.enterState(8, new FadeOutTransition(), new FadeInTransition());
+                game.enterState(EnumStates.ENDSTATE.ordinal(), new FadeOutTransition(), new FadeInTransition());
                 
             }
         }   

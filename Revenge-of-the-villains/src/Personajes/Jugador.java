@@ -12,6 +12,7 @@ import Engine.GestorColision;
 import Engine.IColisionable;
 import Engine.Inventario;
 import Armas.Pistola;
+import Juego.EnumStates;
 import Objetos.Moneda;
 import Objetos.Puerta;
 import org.newdawn.slick.Animation;
@@ -76,8 +77,6 @@ public class Jugador extends Personaje implements IColisionable {
     private int nivel;
     private int tiempoReinicio;
     private boolean muerto;
-    private Mario mario;
-    private Enemigo enemigo;
     private Bola bola; 
     private Moneda moneda;
     private Puerta puerta;
@@ -244,7 +243,7 @@ public class Jugador extends Personaje implements IColisionable {
             vida = 100;
             if (nivel==1||nivel ==2){
                  
-                game.enterState(2);
+                game.enterState(EnumStates.GAME.ordinal());
                 
             }
         }
@@ -376,13 +375,13 @@ public class Jugador extends Personaje implements IColisionable {
            
         }
         if(colision.getClass().getName().equals("Personajes.Mario")){ 
-            mario = (Mario)colision;
+            Mario mario = (Mario)colision;
             if(!mario.isMuerto())
                 if(vida>0)
                    vida = vida - 0.05f;         
         }    
         if(colision.getClass().getName().equals("Personajes.Enemigo")){ 
-            enemigo = (Enemigo)colision;
+            Enemigo enemigo = (Enemigo)colision;
             if(!enemigo.isMuerto())
                 if(vida>0)
                    vida = vida - 0.03f;

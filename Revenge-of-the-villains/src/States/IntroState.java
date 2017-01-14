@@ -5,6 +5,7 @@
  */
 package States;
 
+import Juego.EnumStates;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -25,7 +26,7 @@ public class IntroState extends BasicGameState {
 
     @Override
     public int getID() {
-        return 0;
+        return EnumStates.INTRO.ordinal();
 
     }
 
@@ -46,7 +47,7 @@ public class IntroState extends BasicGameState {
     public void update(GameContainer container, StateBasedGame sbg, int delta) throws SlickException {
 
         if (container.getInput().isKeyPressed(Input.KEY_SPACE)) {
-            sbg.enterState(1, new FadeOutTransition(), new FadeInTransition());
+            sbg.enterState(EnumStates.MENU.ordinal(), new FadeOutTransition(), new FadeInTransition());
         }
     }
 }
