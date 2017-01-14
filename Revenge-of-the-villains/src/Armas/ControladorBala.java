@@ -6,7 +6,7 @@
 package Armas;
 
 import Engine.Icontrolador;
-import Engine.GestorColision;
+import Engine.GestorColisiones;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,23 +20,22 @@ public class ControladorBala implements Icontrolador{
 
     private final ArrayList<Bala> balas;
     private Bala bala;
-    private GestorColision gestor;
+    private GestorColisiones gestor;
     
     public ControladorBala() {
         
         balas = new ArrayList<>();
-        
+        gestor = GestorColisiones.getInstancia();
     }
 
     @Override
-    public void addBala(float x, float y, float velocidad,GestorColision gestor) {
+    public void addBala(float x, float y, float velocidad) {
         try {
             bala = new Bala(x,y,velocidad);
         } catch (SlickException ex) {
             Logger.getLogger(ControladorBala.class.getName()).log(Level.SEVERE, null, ex);
         }
         balas.add(bala);
-        this.gestor = gestor;
         gestor.registrarCuerpo(bala);
     }
 
@@ -67,7 +66,7 @@ public class ControladorBala implements Icontrolador{
     }
 
     @Override
-    public void addBola(float x, float y, float velocidad, GestorColision gestor, float daño) throws SlickException {
+    public void addBola(float x, float y, float velocidad, float daño) throws SlickException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
    

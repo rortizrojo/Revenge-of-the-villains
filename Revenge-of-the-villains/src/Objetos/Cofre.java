@@ -5,7 +5,7 @@
  */
 package Objetos;
 
-import Engine.GestorColision;
+import Engine.GestorColisiones;
 import Engine.IColisionable;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.SlickException;
@@ -27,12 +27,11 @@ public class Cofre implements IColisionable {
     private final float altoSprite;
     private final float anchoDibujado;
     private final float altoDibujado;
-    private final int numeroFrames;
     private float posCofreX;
     private float posCofreY;
     
         
-    public Cofre(float x, float y, float velocidad, GestorColision gestor) throws SlickException{
+    public Cofre(float x, float y, float velocidad) throws SlickException{
         
     
         this.posCofreX = x;
@@ -47,12 +46,13 @@ public class Cofre implements IColisionable {
         animationCofre = new Animation();
         sheetCofre = new SpriteSheet("res/images/leftovers.png", (int) anchoSprite, (int) altoSprite);
         animationCofre = new Animation();
-        numeroFrames = 2;
+        //numeroFrames = 2;
         for (int i = 0; i >=0; i--) {
             animationCofre.addFrame(sheetCofre.getSprite(i, 0), 150);
         }
         areaColision = new Rectangle(x,y,anchoDibujado,altoDibujado);
-        gestor.registrarCuerpo(this);
+        
+        GestorColisiones.getInstancia().registrarCuerpo(this);
     }
     
     public void setPosicion(float x, float y){

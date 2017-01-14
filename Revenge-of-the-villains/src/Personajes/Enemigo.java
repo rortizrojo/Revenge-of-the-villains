@@ -2,7 +2,7 @@ package Personajes;
 
 import Engine.Camara;
 import Engine.Colisiones;
-import Engine.GestorColision;
+import Engine.GestorColisiones;
 import Engine.IColisionable;
 import Armas.TiraBolas;
 import org.newdawn.slick.Animation;
@@ -56,16 +56,14 @@ public class Enemigo extends Personaje implements IColisionable {
     private boolean mirandoIzquierda;
 
     private final Rectangle areaColision;
-    private final GestorColision gestor;
-
-      
+    private final GestorColisiones gestor;
     private final TiraBolas tiraBolas;
     
 
-    public Enemigo(GameContainer container, Colisiones colisiones, GestorColision gestor, float posX, float posY, float daño ) throws SlickException {
+    public Enemigo(GameContainer container, Colisiones colisiones, float posX, float posY, float daño ) throws SlickException {
         
         super(container,colisiones);
-        this.gestor = gestor;
+        gestor = GestorColisiones.getInstancia();
         gestor.registrarCuerpo(this);
 
         tiraBolas = new TiraBolas(daño);
@@ -206,7 +204,7 @@ public class Enemigo extends Personaje implements IColisionable {
                             saltar = true; 
                         }
                         if (cont_disparo == 30){
-                            tiraBolas.disparar(this, -500, gestor);       
+                            tiraBolas.disparar(this, -500);       
                         }
                     }
                     else{ 
@@ -218,7 +216,7 @@ public class Enemigo extends Personaje implements IColisionable {
                             saltar = true; 
                         }
                         if (cont_disparo == 30){
-                            tiraBolas.disparar(this, +500, gestor);
+                            tiraBolas.disparar(this, +500);
                         }
                     }       
                     cont_disparo++;
@@ -239,7 +237,7 @@ public class Enemigo extends Personaje implements IColisionable {
                             saltar = true; 
                         }
                         if (cont_disparo == 5){
-                            tiraBolas.disparar(this, -500, gestor);       
+                            tiraBolas.disparar(this, -500);       
                         }
                     }
                     else{ 
@@ -251,7 +249,7 @@ public class Enemigo extends Personaje implements IColisionable {
                             saltar = true; 
                         }
                         if (cont_disparo == 5){
-                            tiraBolas.disparar(this, +500, gestor);
+                            tiraBolas.disparar(this, +500);
                         }
                     }  
                     cont_disparo++;

@@ -1,7 +1,7 @@
 
 package Objetos;
 
-import Engine.GestorColision;
+import Engine.GestorColisiones;
 import Engine.IColisionable;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.SlickException;
@@ -31,7 +31,7 @@ public class Moneda implements IColisionable {
     private final Sound monedaSound;
     
         
-    public Moneda(float x, float y,GestorColision gestor) throws SlickException{
+    public Moneda(float x, float y) throws SlickException{
         
         this.posMonedaX = x;
         this.posMonedaY = y;
@@ -50,7 +50,7 @@ public class Moneda implements IColisionable {
             animationMoneda.addFrame(sheetMoneda.getSprite(i, 0), 200);
         }
         areaColision = new Rectangle(x,y,anchoDibujado,altoDibujado);
-        
+        GestorColisiones.getInstancia().registrarCuerpo(this);
         
     }
     

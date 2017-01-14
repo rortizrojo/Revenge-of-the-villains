@@ -8,7 +8,7 @@ package Objetos;
 import Armas.Punto;
 import Armas.SpriteMovil;
 import Armas.Vector;
-import Engine.GestorColision;
+import Engine.GestorColisiones;
 import Engine.IColisionable;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.SlickException;
@@ -36,7 +36,7 @@ public class BolaFuego implements IColisionable {
     private final float posIniY;
     
         
-    public BolaFuego(float x, float y, float velocidad, GestorColision gestor) throws SlickException{
+    public BolaFuego(float x, float y, float velocidad) throws SlickException{
         
         
     
@@ -58,7 +58,7 @@ public class BolaFuego implements IColisionable {
             animationFuego.addFrame(sheetPuerta.getSprite(i, 0), 100);
         }
         areaColision = new Rectangle(x,y,anchoDibujado,altoDibujado);
-        gestor.registrarCuerpo(this);
+        GestorColisiones.getInstancia().registrarCuerpo(this);
     }
     
     public void setPosicion(float x, float y){

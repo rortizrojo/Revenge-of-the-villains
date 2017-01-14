@@ -27,15 +27,14 @@ public class Nivel1 extends Nivel{
             super.container = container;
             super.game = game;
             jugador = nivel.getJugador();
-            gestor = nivel.getGestor();
             map = new TiledMap("res/tileMaps/Nivel 2.tmx");
 
             colisiones = new Colisiones(map);
             jugador.setColisiones(colisiones);
             //jugador.setMonedas();
-            mario = new Mario(container, colisiones, gestor, 350,1000, 1.0f);
-            enemigo = new Enemigo(container, colisiones, gestor, 5550,1000, 0.6f);
-            puerta = new Puerta(46,430,0,gestor);
+            mario = new Mario(container, colisiones, 350,1000, 1.0f);
+            enemigo = new Enemigo(container, colisiones,5550,1000, 0.6f);
+            puerta = new Puerta(46,430,0);
             zoom = 0.65f;
             camara = new Camara(container, map,  jugador, zoom );
 
@@ -54,15 +53,15 @@ public class Nivel1 extends Nivel{
                     //tileID = map.getTileId(x, y, map.getLayerIndex("Monedas"));
 
                     if(colisiones.getMonedas()[x][y]) {
-                       Moneda moneda = new Moneda(x*50,y*50, gestor);
-                        System.out.println("Añadida moneda");
+                       Moneda moneda = new Moneda(x*50,y*50);
+                       //System.out.println("Añadida moneda");
                        monedas.add(moneda) ;
-                       gestor.registrarCuerpo(moneda);
+                       
                     }
                 }
 
             }
-            System.out.println("Añadidas: "+ monedas.size());
+            //System.out.println("Añadidas: "+ monedas.size());
     }
      
 }

@@ -6,7 +6,7 @@
 package Armas;
 
 import Engine.Icontrolador;
-import Engine.GestorColision;
+import Engine.GestorColisiones;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -19,24 +19,24 @@ import org.newdawn.slick.SlickException;
 public class ControladorBola implements Icontrolador {
 
     private final ArrayList<Bola> bolas;
-    private GestorColision gestor;
+    private GestorColisiones gestor;
     private Bola bola;
 
     public ControladorBola() {
         
         bolas = new ArrayList<>();
+        gestor = GestorColisiones.getInstancia();
         
     }
 
     @Override
-    public void addBola(float x, float y, float velocidad,GestorColision gestor,float daño){
+    public void addBola(float x, float y, float velocidad,float daño){
         try {
             bola = new Bola(x,y,velocidad,daño);
         } catch (SlickException ex) {
             Logger.getLogger(ControladorBola.class.getName()).log(Level.SEVERE, null, ex);
         }
         bolas.add(bola);
-        this.gestor = gestor;
         gestor.registrarCuerpo(bola);
     }
 
@@ -66,7 +66,7 @@ public class ControladorBola implements Icontrolador {
     }
 
     @Override
-    public void addBala(float x, float y, float velocidad, GestorColision gestor) throws SlickException {
+    public void addBala(float x, float y, float velocidad) throws SlickException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
    

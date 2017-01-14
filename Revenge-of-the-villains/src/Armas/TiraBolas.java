@@ -6,7 +6,6 @@
  */
 package Armas;
 
-import Engine.GestorColision;
 import Personajes.Personaje;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.Sound;
@@ -29,8 +28,8 @@ public class TiraBolas extends Arma {
         
     }
     
-    public void disparar(Personaje personaje, float velocidad, GestorColision gestor){
-        bolas.addBola((float)personaje.getPosX()+20,(float)personaje.getPosY()+20, velocidad,gestor,daño);
+    public void disparar(Personaje personaje, float velocidad){
+        bolas.addBola((float)personaje.getPosX()+20,(float)personaje.getPosY()+20, velocidad,daño);
         disparoBola.play(1f,0.2f);
     }
     

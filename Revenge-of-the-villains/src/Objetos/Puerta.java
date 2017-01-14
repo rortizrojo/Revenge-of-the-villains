@@ -6,7 +6,7 @@
 package Objetos;
 
 
-import Engine.GestorColision;
+import Engine.GestorColisiones;
 import Engine.IColisionable;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.SlickException;
@@ -29,15 +29,13 @@ public class Puerta implements IColisionable {
     private final float altoDibujado;
     private float posPuertaX;
     private float posPuertaY;
-    private final GestorColision gestor;
     
         
-    public Puerta(float x, float y, float velocidad, GestorColision gestor) throws SlickException{
+    public Puerta(float x, float y, float velocidad) throws SlickException{
         
     
         this.posPuertaX = x;
         this.posPuertaY = y;
-        this.gestor = gestor;
 
         anchoSprite = 122;
         altoSprite = 123;
@@ -52,7 +50,7 @@ public class Puerta implements IColisionable {
             animationPuerta.addFrame(sheetPuerta.getSprite(i, 0), 150);
         }
         areaColision = new Rectangle(x,y,anchoDibujado,altoDibujado);
-        gestor.registrarCuerpo(this);
+        GestorColisiones.getInstancia().registrarCuerpo(this);
     }
     
     public void setPosicion(float x, float y){

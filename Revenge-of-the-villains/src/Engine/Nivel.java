@@ -39,7 +39,6 @@ public class Nivel {
     protected Jugador jugador;
     protected Mario mario;
     protected Enemigo enemigo;
-    protected GestorColision gestor;
     protected Puerta puerta;
     protected Camara camara;
     protected Cofre cofre;
@@ -71,7 +70,6 @@ public class Nivel {
         fuente.loadGlyphs();
         fuente2.loadGlyphs();
         pausado = false;
-        
        
     }
 
@@ -197,10 +195,6 @@ public class Nivel {
 
     public Enemigo getEnemigo() {
         return enemigo;
-    }
-
-    public GestorColision getGestor() {
-        return gestor;
     }
 
     public Puerta getPuerta() {

@@ -2,9 +2,9 @@ package Personajes;
 
 import Engine.Camara;
 import Engine.Colisiones;
-import Engine.GestorColision;
 import Engine.IColisionable;
 import Armas.TiraBolas;
+import Engine.GestorColisiones;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -50,18 +50,17 @@ public class Mario extends Personaje implements IColisionable {
     /////////
 
     private boolean mirandoIzquierda;
-
+    private GestorColisiones gestor;
     private final Rectangle areaColision;
-    private final GestorColision gestor;
 
       
     private final TiraBolas tiraBolas;
     
 
-    public Mario(GameContainer container, Colisiones colisiones, GestorColision gestor, float posX, float posY, float daño ) throws SlickException {
+    public Mario(GameContainer container, Colisiones colisiones, float posX, float posY, float daño ) throws SlickException {
         
         super(container,colisiones);
-        this.gestor = gestor;
+        gestor = GestorColisiones.getInstancia();
         gestor.registrarCuerpo(this);
 
         tiraBolas = new TiraBolas(daño);
@@ -205,7 +204,7 @@ public class Mario extends Personaje implements IColisionable {
                         saltar = true; 
                     }
                     if (cont_disparo == 30){
-                        tiraBolas.disparar(this, -500, gestor);       
+                        tiraBolas.disparar(this, -500);       
                     }
                 }
                 else{ 
@@ -216,7 +215,7 @@ public class Mario extends Personaje implements IColisionable {
                         saltar = true; 
                     }
                     if (cont_disparo == 30){
-                        tiraBolas.disparar(this, +500, gestor);
+                        tiraBolas.disparar(this, +500);
                     }
                 }       
                 cont_disparo++;
@@ -235,7 +234,7 @@ public class Mario extends Personaje implements IColisionable {
                         saltar = true; 
                     }
                     if (cont_disparo == 5){
-                        tiraBolas.disparar(this, -500, gestor);       
+                        tiraBolas.disparar(this, -500);       
                     }
                 }
                 else{ 
@@ -246,7 +245,7 @@ public class Mario extends Personaje implements IColisionable {
                         saltar = true; 
                     }
                     if (cont_disparo == 5){
-                        tiraBolas.disparar(this, +500, gestor);
+                        tiraBolas.disparar(this, +500);
                     }
                 }  
                 cont_disparo++;

@@ -7,7 +7,6 @@ package Niveles;
 
 import Engine.Camara;
 import Engine.Colisiones;
-import Engine.GestorColision;
 import Engine.Nivel;
 import Objetos.Puerta;
 import Personajes.Enemigo;
@@ -31,16 +30,15 @@ public class Nivel0 extends Nivel {
         super(); 
         super.container = container;
         super.game = game;
-        gestor = new GestorColision();
         map = new TiledMap("res/tileMaps/Nivel 1.tmx");
       //  puerta = new Puerta (5819,928,0,gestor);
         
         
         colisiones = new Colisiones(map);
-        jugador = new Jugador(container,game, colisiones, gestor);
-        mario = new Mario(container, colisiones, gestor, 4421, 916, 1.2f);
-        enemigo = new Enemigo(container, colisiones, gestor, 1573, 1030, 0.6f);
-        puerta = new Puerta(5819,928,0,gestor); 
+        jugador = new Jugador(container,game, colisiones);
+        mario = new Mario(container, colisiones,  4421, 916, 1.2f);
+        enemigo = new Enemigo(container, colisiones,  1573, 1030, 0.6f);
+        puerta = new Puerta(5819,928,0); 
         zoom = 0.65f;
         camara = new Camara(container, map, jugador, zoom);
         nivelAct = jugador.getNivel();

@@ -5,7 +5,7 @@
  */
 package Objetos;
 
-import Engine.GestorColision;
+import Engine.GestorColisiones;
 import Engine.IColisionable;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.SlickException;
@@ -37,7 +37,7 @@ public class Lava implements IColisionable {
     private final float prueba;
     private final Sound lava;
         
-    public Lava(float x, float y, float velocidad, GestorColision gestor) throws SlickException{
+    public Lava(float x, float y, float velocidad) throws SlickException{
         
     
         this.posPuertaX = x;
@@ -66,7 +66,7 @@ public class Lava implements IColisionable {
         lava = new Sound("res/sounds/lava.wav");
              
         areaColision = new Rectangle(x,y,anchoDibujado*10,altoDibujado);
-        gestor.registrarCuerpo(this);
+        GestorColisiones.getInstancia().registrarCuerpo(this);
         
         
         

@@ -8,7 +8,7 @@ package Personajes;
 import Armas.Bola;
 import Engine.Camara;
 import Engine.Colisiones;
-import Engine.GestorColision;
+import Engine.GestorColisiones;
 import Engine.IColisionable;
 import Engine.Inventario;
 import Armas.Pistola;
@@ -71,7 +71,7 @@ public class Jugador extends Personaje implements IColisionable {
     
     private final Pistola pistola;
     private final Rectangle areaColision;
-    private final GestorColision gestor;
+    private final GestorColisiones gestor;
     
     
     private int nivel;
@@ -93,12 +93,12 @@ public class Jugador extends Personaje implements IColisionable {
      * @throws SlickException   Si se produce algún error durante la carga 
      * de sprites o sonidos
      */
-    public Jugador(GameContainer container, StateBasedGame game, Colisiones colisiones, GestorColision gestor) throws SlickException {
+    public Jugador(GameContainer container, StateBasedGame game, Colisiones colisiones) throws SlickException {
         
         super(container, colisiones);
         
         this.game = game;
-        this.gestor = gestor;
+        this.gestor = GestorColisiones.getInstancia();
         
         finJuego = false;
         enemigos_muertos = false;
@@ -213,9 +213,9 @@ public class Jugador extends Personaje implements IColisionable {
 
             if (botonDisparo) {
                 if(mirandoIzquierda)
-                    pistola.disparar(this, -900, gestor);
+                    pistola.disparar(this, -900);
                 if(mirandoDerecha)
-                    pistola.disparar(this, 900, gestor);
+                    pistola.disparar(this, 900);
             }
             
             sincronizarArea();

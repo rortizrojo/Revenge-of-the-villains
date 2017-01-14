@@ -14,8 +14,8 @@ import org.newdawn.slick.SlickException;
 public interface Icontrolador {
     
     
-    public void addBala(float x,float y, float velocidad, GestorColision gestor) throws SlickException;
-    public void addBola(float x,float y, float velocidad, GestorColision gestor, float daño) throws SlickException;
+    public void addBala(float x,float y, float velocidad) throws SlickException;
+    public void addBola(float x,float y, float velocidad, float daño) throws SlickException;
     public void draw();
     public void update(int delta);
     public void delete (float delta);

@@ -5,7 +5,7 @@ package Personajes;
 
 import Engine.Camara;
 import Engine.Colisiones;
-import Engine.GestorColision;
+import Engine.GestorColisiones;
 import Engine.IColisionable;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.GameContainer;
@@ -30,16 +30,16 @@ public class Sonic extends Personaje implements IColisionable {
     private final SpriteSheet sheetParadoDerecha;
     private final Animation paradoDerecha;
     private final Animation paradoIzquierda;
-   
+    private GestorColisiones gestor;
     private boolean mirandoIzquierda;
     private final Rectangle areaColision;
-    private final GestorColision gestor;
 
 
-    public Sonic(GameContainer container, Colisiones colisiones, GestorColision gestor ) throws SlickException {
+    public Sonic(GameContainer container, Colisiones colisiones ) throws SlickException {
         
         super(container,colisiones);
-        this.gestor = gestor;
+        
+        gestor = GestorColisiones.getInstancia();
         gestor.registrarCuerpo(this);
 
          

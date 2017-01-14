@@ -1,6 +1,5 @@
 package Armas;
 
-import Engine.GestorColision;
 import Personajes.Personaje;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.tiled.TiledMap;
@@ -17,12 +16,11 @@ public class Pistola extends Arma {
         super(daño);
        
         balas = new ControladorBala();
-        
     }
     
-    public void disparar(Personaje personaje, float velocidad, GestorColision gestor){
+    public void disparar(Personaje personaje, float velocidad){
         
-        balas.addBala((float)personaje.getPosX()+40,(float)personaje.getPosY()+40, velocidad,gestor);
+        balas.addBala((float)personaje.getPosX()+40,(float)personaje.getPosY()+40, velocidad);
         
     }
     
