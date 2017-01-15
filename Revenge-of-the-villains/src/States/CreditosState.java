@@ -52,8 +52,10 @@ public class CreditosState extends BasicGameState {
     public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException {
         fondocreditos.draw();
         
-        fuente.drawString(150, 300,"Roberto Ortiz");
-        fuente.drawString(150, 330,"Felipe Arango");
+        fuente.drawString(150, 200,"Roberto Ortiz");
+        fuente.drawString(150, 250,"Felipe Arango");
+        fuente.drawString(150, 300,"Valentin Paru");
+        fuente.drawString(150, 350,"Alex Munguía");
         g.drawString("\nPulse ESC para volver al menú principal ", 440, 550);
     }
 

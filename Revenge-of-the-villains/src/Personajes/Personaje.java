@@ -62,10 +62,10 @@ public abstract class Personaje implements IColisionable {
 
     protected TiledMap map;
 
-    public Personaje(GameContainer container, Colisiones colisiones) {
+    public Personaje(GameContainer container) {
 
         this.container = container;
-        this.colisiones = colisiones;
+        colisiones = Colisiones.getInstancia();
         bloqueadoDerecha = colisiones.getBloqueadoDerecha();
         bloqueadoIzquierda = colisiones.getBloqueadoIzquierda();
         bloqueadoArriba = colisiones.getBloqueadoArriba();
@@ -234,8 +234,8 @@ public abstract class Personaje implements IColisionable {
 
     
 
-    public void setColisiones(Colisiones colisiones) {
-        this.colisiones = colisiones;
+    public void setColisiones() {
+        this.colisiones = Colisiones.getInstancia();
         bloqueadoDerecha = colisiones.getBloqueadoDerecha();
         bloqueadoIzquierda = colisiones.getBloqueadoIzquierda();
         bloqueadoArriba = colisiones.getBloqueadoArriba();

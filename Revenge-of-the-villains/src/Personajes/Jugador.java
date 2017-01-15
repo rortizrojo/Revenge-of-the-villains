@@ -93,9 +93,9 @@ public class Jugador extends Personaje implements IColisionable {
      * @throws SlickException   Si se produce algún error durante la carga 
      * de sprites o sonidos
      */
-    public Jugador(GameContainer container, StateBasedGame game, Colisiones colisiones) throws SlickException {
+    public Jugador(GameContainer container, StateBasedGame game) throws SlickException {
         
-        super(container, colisiones);
+        super(container);
         
         this.game = game;
         this.gestor = GestorColisiones.getInstancia();

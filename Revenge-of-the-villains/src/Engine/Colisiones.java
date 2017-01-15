@@ -13,25 +13,22 @@ import org.newdawn.slick.tiled.TiledMap;
  */
 public class Colisiones {
 
+    /**
+     * Instancia de la clase. 
+     * Es privada: solo accesible por la propia clase.
+     * Es estática: propia de la clase (compartida por los objetos). 
+     */
+    private static Colisiones instancia;
     private boolean[][] bloqueadoDerecha;
     private boolean[][] bloqueadoArriba;
     private boolean[][] bloqueadoIzquierda;
     private boolean[][] bloqueadoAbajo;
-    private final boolean[][] monedas;
-    private final String[][] dataPoints;
+    private boolean[][] monedas;
+    private String[][] dataPoints;
     private TiledMap map;
 
-    public Colisiones(TiledMap map) {
-        this.map = map;
-        bloqueadoDerecha = new boolean[map.getWidth()][map.getHeight()];
-        bloqueadoArriba = new boolean[map.getWidth()][map.getHeight()];
-        bloqueadoIzquierda = new boolean[map.getWidth()][map.getHeight()];
-        bloqueadoAbajo = new boolean[map.getWidth()][map.getHeight()];
-        monedas = new boolean[map.getWidth()][map.getHeight()];
-        dataPoints = new String[map.getWidth()][map.getHeight()];
-        detectarColisiones();
-        detectarMonedas();
-        detectarDataPoints();
+    private Colisiones() {
+
     }
 
     /**
@@ -147,6 +144,27 @@ public class Colisiones {
 
     public void setMap(TiledMap map) {
         this.map = map;
+        bloqueadoDerecha = new boolean[map.getWidth()][map.getHeight()];
+        bloqueadoArriba = new boolean[map.getWidth()][map.getHeight()];
+        bloqueadoIzquierda = new boolean[map.getWidth()][map.getHeight()];
+        bloqueadoAbajo = new boolean[map.getWidth()][map.getHeight()];
+        monedas = new boolean[map.getWidth()][map.getHeight()];
+        dataPoints = new String[map.getWidth()][map.getHeight()];
+        detectarColisiones();
+        detectarMonedas();
+        detectarDataPoints();
     }
-
+    /**
+     * Devuelve la instancia de la clase.
+     * Acceso controlado a la única instancia. 
+     * Otras clases que quieran una referencia a la única instancia de la clase Singleton conseguirán esa instancia 
+     * llamando al método estático getInstancia de la clase. 
+     * @return Instancia de la clase.
+     */
+    public static Colisiones getInstancia() {
+        if (instancia == null) {// Si la instancia es null, se crea.
+            instancia = new Colisiones();
+        }
+        return instancia;
+    }
 }

@@ -27,6 +27,8 @@ public class Mario extends Personaje implements IColisionable {
     //jugador_a_alt=true -> jugador a misma altura Mario
     private boolean jugador_a_alt, jugador_a_igualX, saltar, cambiar_dir, muerto; 
     private int estado, cont_disparo, cont_salto, contador, cont_muerte;
+    private int distanciaEnfado;
+    private int vidaEnfado;
     
     
     ////////Sprite y animaciones:
@@ -50,16 +52,16 @@ public class Mario extends Personaje implements IColisionable {
     /////////
 
     private boolean mirandoIzquierda;
-    private GestorColisiones gestor;
+    private final GestorColisiones gestor;
     private final Rectangle areaColision;
 
       
     private final TiraBolas tiraBolas;
     
 
-    public Mario(GameContainer container, Colisiones colisiones, float posX, float posY, float daño ) throws SlickException {
+    public Mario(GameContainer container, float posX, float posY, float daño, EnumTipoEnemigo tipoEnemigo) throws SlickException {
         
-        super(container,colisiones);
+        super(container);
         gestor = GestorColisiones.getInstancia();
         gestor.registrarCuerpo(this);
 
@@ -148,10 +150,6 @@ public class Mario extends Personaje implements IColisionable {
         tiraBolas.delete(map);
         sincronizarArea();
         gestor.comprobarColisiones();
-        
-        
-
-            
         
         // Según el estado realiza unas acciones u otras
         switch (estado){
@@ -303,8 +301,8 @@ public class Mario extends Personaje implements IColisionable {
             if (mirandoIzquierda){
                 //Carga animacion de muerte
                 muerte_Izq.draw(posX, posY, anchoDibujado, altoDibujado);
-
-                if(muerte_Izq.getFrame() == 7) //muerte.getFrame()==nºframe-1
+                 //muerte.getFrame()==nºframe-1
+                if(muerte_Izq.getFrame() == muerte_Izq.getFrameCount()-1)
                     muerte_Izq.stop();
                 if (muerte_Izq.isStopped()){
                     cont_muerte -=1;
@@ -315,8 +313,8 @@ public class Mario extends Personaje implements IColisionable {
             else{
                 //Carga animacion de muerte
                 muerte_Der.draw(posX, posY, anchoDibujado, altoDibujado);
-
-                if(muerte_Der.getFrame() == 7) //muerte.getFrame()==nºframe-1
+                //muerte.getFrame()==nºframe-1
+                if(muerte_Der.getFrame() == muerte_Der.getFrameCount()-1) 
                     muerte_Der.stop();
                 if (muerte_Der.isStopped()){
                     cont_muerte -=1;
@@ -399,4 +397,7 @@ public class Mario extends Personaje implements IColisionable {
         areaColision.setX(posX);
         areaColision.setY(posY);
     }
+    
+    
+   
 }

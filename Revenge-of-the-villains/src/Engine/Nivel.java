@@ -13,7 +13,6 @@ import Objetos.Puerta;
 import Objetos.Moneda;
 import Personajes.Enemigo;
 import Personajes.Jugador;
-import Personajes.Mario;
 import java.awt.Font;
 import java.util.ArrayList;
 import org.newdawn.slick.Color;
@@ -37,8 +36,8 @@ public class Nivel {
     protected TiledMap map;
     protected Colisiones colisiones;
     protected Jugador jugador;
-    protected Mario mario;
-    protected Enemigo enemigo;
+    protected Enemigo enemigo1;
+    protected Enemigo enemigo2;
     protected Puerta puerta;
     protected Camara camara;
     protected Cofre cofre;
@@ -80,13 +79,13 @@ public class Nivel {
         if(jugador.getVida()>0)
             camara.moverCamara();
 
-        mario.update(delta);
-        mario.actualizarEstado(jugador.getPosX(), jugador.getPosY());
+        enemigo1.update(delta);
+        enemigo1.actualizarEstado(jugador.getPosX(), jugador.getPosY());
         
-        enemigo.update(delta);
-        enemigo.actualizarEstado(jugador.getPosX(), jugador.getPosY());
+        enemigo2.update(delta);
+        enemigo2.actualizarEstado(jugador.getPosX(), jugador.getPosY());
        
-        jugador.setEnemigos_muertos(mario.isMuerto()&&enemigo.isMuerto());
+        jugador.setEnemigos_muertos(enemigo1.isMuerto()&&enemigo2.isMuerto());
         
         camara.moverCamara();
 
@@ -98,8 +97,8 @@ public class Nivel {
         puerta.update(delta);
         if (nivelAct==2){
             
-            if(!mario.isMuerto())
-                cofre.update(delta, mario.getPosX(), mario.getPosY()+65);
+            if(!enemigo2.isMuerto())
+                cofre.update(delta, enemigo2.getPosX(), enemigo2.getPosY()+65);
             lava.update();
             fuego1.update(delta);
             fuego2.update(delta);
@@ -145,10 +144,10 @@ public class Nivel {
         
         jugador.render(delta, g, camara);
         
-        if(!mario.isMuerto())
-            mario.render(delta, g, camara);  
-        if(!enemigo.isMuerto())
-            enemigo.render(delta, g, camara);
+        if(!enemigo1.isMuerto())
+            enemigo1.render(delta, g, camara);  
+        if(!enemigo2.isMuerto())
+            enemigo2.render(delta, g, camara);
         if(jugador.getPasoDeNivel()|| jugador.getFinJuego()){
             fuente.drawString(jugador.getPosX()-100, jugador.getPosY()-100,"MISSION COMPLETED");
             fuente2.drawString(jugador.getPosX()-70, jugador.getPosY()-70,"(presiona F para continuar)");  
@@ -169,12 +168,12 @@ public class Nivel {
         g.drawString("Vida: " , container.getWidth()-camara.getCamX()- 750, container.getWidth()-camara.getCamY()-750);
        
         g.setColor(Color.red);
-        g.fillRect(container.getWidth()-camara.getCamX() - 250, container.getWidth()-camara.getCamY()-750, mario.getVida()*2, 20 );
+        g.fillRect(container.getWidth()-camara.getCamX() - 250, container.getWidth()-camara.getCamY()-750, enemigo2.getVida()*2, 20 );
             
         g.drawString("Vida Mario 1: " , container.getWidth()-camara.getCamX()- 400, container.getWidth()-camara.getCamY()-750);
         
         g.setColor(Color.orange);
-        g.fillRect(container.getWidth()-camara.getCamX() - 250, container.getWidth()-camara.getCamY()-700, enemigo.getVida()*2, 20 );
+        g.fillRect(container.getWidth()-camara.getCamX() - 250, container.getWidth()-camara.getCamY()-700, enemigo1.getVida()*2, 20 );
             
         g.drawString("Vida Mario 2: " , container.getWidth()-camara.getCamX() - 400 , container.getWidth()-camara.getCamY()-700);
         g.drawString("Monedas: " + jugador.getInventario().getMonedas(), container.getWidth()-camara.getCamX()- 750, container.getWidth()-camara.getCamY()-700);
@@ -189,12 +188,12 @@ public class Nivel {
         return jugador;
     }
 
-    public Mario getMario() {
-        return mario;
+    public Enemigo getEnemigo2() {
+        return enemigo2;
     }
 
-    public Enemigo getEnemigo() {
-        return enemigo;
+    public Enemigo getEnemigo1() {
+        return enemigo1;
     }
 
     public Puerta getPuerta() {
@@ -236,8 +235,8 @@ public class Nivel {
             
         } 
         if (container.getInput().isKeyPressed(Input.KEY_N )){ //SOLO PARA HACER PRUEBAS  
-            mario.setVida(0);
-            enemigo.setVida(0);
+            enemigo2.setVida(0);
+            enemigo1.setVida(0);
         }
         if (container.getInput().isKeyPressed(Input.KEY_P)) {
             pausado = true;

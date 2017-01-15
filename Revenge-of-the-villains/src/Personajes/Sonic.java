@@ -35,9 +35,9 @@ public class Sonic extends Personaje implements IColisionable {
     private final Rectangle areaColision;
 
 
-    public Sonic(GameContainer container, Colisiones colisiones ) throws SlickException {
+    public Sonic(GameContainer container ) throws SlickException {
         
-        super(container,colisiones);
+        super(container);
         
         gestor = GestorColisiones.getInstancia();
         gestor.registrarCuerpo(this);

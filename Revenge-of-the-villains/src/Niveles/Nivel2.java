@@ -7,6 +7,7 @@ import Objetos.BolaFuego;
 import Objetos.Cofre;
 import Objetos.Lava;
 import Personajes.Enemigo;
+import Personajes.EnumTipoEnemigo;
 import Personajes.Mario;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
@@ -27,11 +28,19 @@ public class Nivel2 extends Nivel {
         jugador = nivel.getJugador();
         puerta = nivel.getPuerta();
         map = new TiledMap("res/tileMaps/NivelFinalMario.tmx");
-        colisiones = new Colisiones(map);
-        jugador.setColisiones(colisiones);
-        mario = new Mario(container, colisiones,500, 200, 1.0f);
-        enemigo = new Enemigo(container, colisiones, 1300, 1650, 0.7f);
-        cofre = new Cofre (mario.getPosX(),mario.getPosY()+50,0);
+        Colisiones.getInstancia().setMap(map);
+        jugador.setColisiones();
+        //enemigoFuerte = new Enemigo(container, 500, 200, 1.0f,EnumTipoEnemigo.NORMAL);
+        //enemigoDebil = new Enemigo(container,1300, 1650, 0.7f, EnumTipoEnemigo.DEBIL);
+        
+        
+        enemigo1 = new Enemigo(container,1300, 1650, EnumTipoEnemigo.NORMAL);
+        enemigo2 = (Enemigo) enemigo1.copia();
+        enemigo2.setPosX(500);
+        enemigo2.setPosY(200);
+        enemigo2.setCaracteristicas(EnumTipoEnemigo.FUERTE);
+        
+        cofre = new Cofre (enemigo2.getPosX(),enemigo2.getPosY()+50,0);
         lava = new Lava (1100,1300,0);
         fuego1 = new BolaFuego (1150,1300,0);
         fuego2 = new BolaFuego (1300,950,0);

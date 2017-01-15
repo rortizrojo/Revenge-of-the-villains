@@ -1,7 +1,6 @@
 package Personajes;
 
 import Engine.Camara;
-import Engine.Colisiones;
 import Engine.GestorColisiones;
 import Engine.IColisionable;
 import Armas.TiraBolas;
@@ -18,10 +17,11 @@ import org.newdawn.slick.geom.Rectangle;
  *
  * @author Roberto
  */
-public class Enemigo extends Personaje implements IColisionable {
+public class Enemigo extends Personaje implements IColisionable,Copiable {
     
     private float distancia;
-    private final float daño;    
+    private float daño;  
+    private float escala;
     //jugador_a_izq=true -> jugador a izq. de Mario
     private boolean jugador_a_izq;
     //jugador_a_alt=true -> jugador a misma altura Mario
@@ -55,18 +55,18 @@ public class Enemigo extends Personaje implements IColisionable {
     
     private boolean mirandoIzquierda;
 
-    private final Rectangle areaColision;
+    private Rectangle areaColision;
     private final GestorColisiones gestor;
     private final TiraBolas tiraBolas;
-    
+    private EnumTipoEnemigo tipoEnemigo;
 
-    public Enemigo(GameContainer container, Colisiones colisiones, float posX, float posY, float daño ) throws SlickException {
+    public Enemigo(GameContainer container, float posX, float posY, EnumTipoEnemigo tipoEnemigo ) throws SlickException {
         
-        super(container,colisiones);
+        super(container);
         gestor = GestorColisiones.getInstancia();
         gestor.registrarCuerpo(this);
-
-        tiraBolas = new TiraBolas(daño);
+        
+        tiraBolas = new TiraBolas(this.daño);
         vida = 100;
         cont_muerte = 100;
         muerto=false;
@@ -79,18 +79,14 @@ public class Enemigo extends Personaje implements IColisionable {
         this.posX = posX;
         this.posY = posY;
         
-        //Daño
-        this.daño= daño;
+
       
         //Tamaño del sprite .png ver en propiedades de la imagen
         anchoSprite = 28;
         altoSprite = 39;
         //Escalado del sprite, ajustar con el numero
-        anchoDibujado = anchoSprite*2.0f;
-        altoDibujado = altoSprite*2.0f;
+        setCaracteristicas(tipoEnemigo);
         
-        areaColision = new Rectangle(posX, posY,anchoDibujado,altoDibujado);
-  
         //Sheets y animaciones necesarias para el movimiento:
         sheetCorriendoDerecha = new SpriteSheet("res/animations//Mario/corriendoDerechaSprite.png", (int) anchoSprite, (int) altoSprite);
         sheetCorriendoIzquierda = new SpriteSheet("res/animations//Mario/corriendoIzquierdaSprite.png", (int) anchoSprite, (int) altoSprite);
@@ -107,27 +103,27 @@ public class Enemigo extends Personaje implements IColisionable {
         muerte_Der = new Animation();
         //Cargas los frames de los sprites en las animaciones
         //ej.--> for (int i = 0; i < n_framesPorSprite-1; i++)
-        for (int i = 0; i < 6; i++) { 
+        for (int i = 0; i < sheetCorriendoDerecha.getHorizontalCount(); i++) { 
             corriendoDerecha.addFrame(sheetCorriendoDerecha.getSprite(i, 0), 50);
         }
 
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < sheetParadoIzquierda.getHorizontalCount(); i++) {
             paradoIzquierda.addFrame(sheetParadoIzquierda.getSprite(i, 0), 150);
         }
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < sheetParadoDerecha.getHorizontalCount(); i++) {
             paradoDerecha.addFrame(sheetParadoDerecha.getSprite(i, 0), 150);
         }
 
-        for (int i = 0; i < 7; i++) {
+        for (int i = 0; i < sheetCorriendoIzquierda.getHorizontalCount(); i++) {
             corriendoIzquierda.addFrame(sheetCorriendoIzquierda.getSprite(i, 0), 50);
         }    
         
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i < sheetMuerte_Der.getHorizontalCount(); i++) {
             muerte_Der.addFrame(sheetMuerte_Der.getSprite(i, 0), 150);
         }
         
-        for (int i = 7; i >= 0; i--) {
+        for (int i = sheetMuerte_Izq.getHorizontalCount()-1; i >= 0; i--) {
             
             muerte_Izq.addFrame(sheetMuerte_Izq.getSprite(i, 0), 150);
         }
@@ -159,10 +155,12 @@ public class Enemigo extends Personaje implements IColisionable {
                         cambiar_dir = !cambiar_dir;
                         contador = 0;
                     }
+                    
                     if(cambiar_dir)
                         botonIzquierda = true;            
                     else 
-                        botonDerecha = true;    
+                        botonDerecha = true;
+                    
                     if(contador<35)
                         contador++;
                     //System.out.println("estado 0");
@@ -361,11 +359,7 @@ public class Enemigo extends Personaje implements IColisionable {
         else
             estado = 0; //ESTADO VIGILANDO = 0
     }     
-
-    public float getDaño() {
-        return daño;
-    }
-  
+    
     @Override
     public Shape getAreaColision() {
        return areaColision; 
@@ -394,4 +388,42 @@ public class Enemigo extends Personaje implements IColisionable {
         areaColision.setY(posY);
     }
 
+    public EnumTipoEnemigo getTipoEnemigo() {
+        return tipoEnemigo;
+    }
+
+    public void setCaracteristicas(EnumTipoEnemigo tipoEnemigo) {
+        this.tipoEnemigo = tipoEnemigo;
+        switch(tipoEnemigo){
+            case DEBIL: 
+                this.daño= 0.6f;
+                this.escala = 1.8f;
+                break;
+            case NORMAL: 
+                this.daño= 0.9f;
+                this.escala = 2.3f;
+                break;
+            default: 
+                this.daño= 1.2f;
+                this.escala = 2.8f;
+                break;
+            
+        }
+        anchoDibujado = anchoSprite*escala;
+        altoDibujado = altoSprite*escala;
+        
+        areaColision = new Rectangle(posX, posY,anchoDibujado,altoDibujado);
+        
+        
+    }
+    
+
+    
+    
+    
+    
+     @Override
+    public Object copia() throws SlickException{
+        return new Enemigo(this.container,this.posX, this.posY, this.tipoEnemigo );
+    }
 }

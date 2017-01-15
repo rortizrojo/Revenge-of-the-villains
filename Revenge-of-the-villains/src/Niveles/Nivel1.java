@@ -6,6 +6,7 @@ import Engine.Nivel;
 import Objetos.Moneda;
 import Objetos.Puerta;
 import Personajes.Enemigo;
+import Personajes.EnumTipoEnemigo;
 import Personajes.Mario;
 import java.util.ArrayList;
 import org.newdawn.slick.GameContainer;
@@ -18,6 +19,7 @@ import org.newdawn.slick.tiled.TiledMap;
  * @author Roberto
  */
 public class Nivel1 extends Nivel{
+
         
          //private Puerta puerta; 
     public Nivel1(GameContainer container, StateBasedGame game, Nivel nivel)throws SlickException{
@@ -29,23 +31,29 @@ public class Nivel1 extends Nivel{
             jugador = nivel.getJugador();
             map = new TiledMap("res/tileMaps/Nivel 2.tmx");
 
-            colisiones = new Colisiones(map);
-            jugador.setColisiones(colisiones);
+            colisiones = Colisiones.getInstancia();
+            colisiones.setMap(map);
+            jugador.setColisiones();
             //jugador.setMonedas();
-            mario = new Mario(container, colisiones, 350,1000, 1.0f);
-            enemigo = new Enemigo(container, colisiones,5550,1000, 0.6f);
+            //enemigoDebil = new Enemigo(container,5550,1000, 0.6f,  EnumTipoEnemigo.DEBIL);
+            //enemigoFuerte = new Enemigo(container, 350,1000, 1.0f, EnumTipoEnemigo.NORMAL);
+            enemigo1 = new Enemigo(container,5550,1000, EnumTipoEnemigo.NORMAL);
+            enemigo2 = (Enemigo) enemigo1.copia();
+            enemigo2.setPosX(350);
+            enemigo2.setPosY(1000);
+
             puerta = new Puerta(46,430,0);
             zoom = 0.65f;
             camara = new Camara(container, map,  jugador, zoom );
 
             monedas = new ArrayList<>();
-            colocarMonedas(colisiones);
+            colocarMonedas();
             nivelAct = jugador.getNivel();
                 
         
     }
 
-    private void colocarMonedas(Colisiones colisiones)throws SlickException{
+    private void colocarMonedas()throws SlickException{
         //int tileID;
             for (int x = 0; x < map.getWidth(); x++) {
                 for (int y = 0; y < map.getHeight(); y++) {
