@@ -1,5 +1,6 @@
 package States;
 
+import Engine.GestorColisiones;
 import Engine.Nivel;
 import Juego.EnumStates;
 import Niveles.Nivel0;
@@ -33,16 +34,15 @@ public class GameState extends BasicGameState {
     @Override
     public void init(GameContainer container, StateBasedGame game) throws SlickException {
 
-        
     
         //Si existe un nivel 
         if(nivel != null){     
             //Si el jugador está muerto, se pone el nivel a null para reiniciar todo
             if(nivel.getJugador().isMuerto()){
+                GestorColisiones.getInstancia().eliminarElementos();
                 nivel = null;
                 init(container, game);
             }
-
             
             //System.out.println("El nivel está pausado? "+ nivel.isPausado());
             //System.out.println("El nivel del jugador es: "+nivel.getJugador().getNivel());
@@ -96,6 +96,7 @@ public class GameState extends BasicGameState {
     @Override
     public void enter(GameContainer container, StateBasedGame game)throws SlickException{
        // System.out.println("Se ejecuta este método sobreescrito");
+       
        container.getInput().clearKeyPressedRecord();
        init(container, game); 
        

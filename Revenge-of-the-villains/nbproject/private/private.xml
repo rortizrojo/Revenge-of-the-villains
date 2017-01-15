@@ -3,39 +3,44 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/F:/Dropbox/Universidad/Curso%202016%20-%202017/Pat.%20Software/Lab/Practica%20Final/Codigo/Revenge-of-the-villains/src/States/HowToPlayState.java</file>
-            <file>file:/F:/Dropbox/Universidad/Curso%202016%20-%202017/Pat.%20Software/Lab/Practica%20Final/Codigo/Revenge-of-the-villains/src/States/PausaState.java</file>
             <file>file:/F:/Dropbox/Universidad/Curso%202016%20-%202017/Pat.%20Software/Lab/Practica%20Final/Codigo/Revenge-of-the-villains/src/Niveles/Nivel0.java</file>
             <file>file:/F:/Dropbox/Universidad/Curso%202016%20-%202017/Pat.%20Software/Lab/Practica%20Final/Codigo/Revenge-of-the-villains/src/Personajes/Personaje.java</file>
             <file>file:/F:/Dropbox/Universidad/Curso%202016%20-%202017/Pat.%20Software/Lab/Practica%20Final/Codigo/Revenge-of-the-villains/src/Armas/Pistola.java</file>
             <file>file:/F:/Dropbox/Universidad/Curso%202016%20-%202017/Pat.%20Software/Lab/Practica%20Final/Codigo/Revenge-of-the-villains/src/Engine/Nivel.java</file>
-            <file>file:/F:/Dropbox/Universidad/Curso%202016%20-%202017/Pat.%20Software/Lab/Practica%20Final/Codigo/Revenge-of-the-villains/src/Objetos/BolaFuego.java</file>
             <file>file:/F:/Dropbox/Universidad/Curso%202016%20-%202017/Pat.%20Software/Lab/Practica%20Final/Codigo/Revenge-of-the-villains/src/Armas/ControladorBola.java</file>
+            <file>file:/F:/Dropbox/Universidad/Curso%202016%20-%202017/Pat.%20Software/Lab/Practica%20Final/Codigo/Revenge-of-the-villains/src/Objetos/BolaFuego.java</file>
             <file>file:/F:/Dropbox/Universidad/Curso%202016%20-%202017/Pat.%20Software/Lab/Practica%20Final/Codigo/Revenge-of-the-villains/src/Engine/GestorColisiones.java</file>
             <file>file:/F:/Dropbox/Universidad/Curso%202016%20-%202017/Pat.%20Software/Lab/Practica%20Final/Codigo/Revenge-of-the-villains/src/Personajes/Enemigo.java</file>
+            <file>file:/F:/Dropbox/Universidad/Curso%202016%20-%202017/Pat.%20Software/Lab/Practica%20Final/Codigo/Revenge-of-the-villains/src/EstadosEnemigo/EstadoFurioso.java</file>
+            <file>file:/F:/Dropbox/Universidad/Curso%202016%20-%202017/Pat.%20Software/Lab/Practica%20Final/Codigo/Revenge-of-the-villains/src/EstadosEnemigo/EstadoVigilando.java</file>
+            <file>file:/F:/Dropbox/Universidad/Curso%202016%20-%202017/Pat.%20Software/Lab/Practica%20Final/Codigo/Revenge-of-the-villains/src/Engine/Inventario.java</file>
+            <file>file:/F:/Dropbox/Universidad/Curso%202016%20-%202017/Pat.%20Software/Lab/Practica%20Final/Codigo/Revenge-of-the-villains/src/Engine/Camara.java</file>
+            <file>file:/F:/Dropbox/Universidad/Curso%202016%20-%202017/Pat.%20Software/Lab/Practica%20Final/Codigo/Revenge-of-the-villains/src/EstadosEnemigo/EstadoAcercandose.java</file>
+            <file>file:/F:/Dropbox/Universidad/Curso%202016%20-%202017/Pat.%20Software/Lab/Practica%20Final/Codigo/Revenge-of-the-villains/src/Armas/Sprite.java</file>
             <file>file:/F:/Dropbox/Universidad/Curso%202016%20-%202017/Pat.%20Software/Lab/Practica%20Final/Codigo/Revenge-of-the-villains/src/Objetos/Cofre.java</file>
-            <file>file:/F:/Dropbox/Universidad/Curso%202016%20-%202017/Pat.%20Software/Lab/Practica%20Final/Codigo/Revenge-of-the-villains/src/Armas/Bala.java</file>
-            <file>file:/F:/Dropbox/Universidad/Curso%202016%20-%202017/Pat.%20Software/Lab/Practica%20Final/Codigo/Revenge-of-the-villains/src/Objetos/Moneda.java</file>
-            <file>file:/F:/Dropbox/Universidad/Curso%202016%20-%202017/Pat.%20Software/Lab/Practica%20Final/Codigo/Revenge-of-the-villains/src/Personajes/Sonic.java</file>
             <file>file:/F:/Dropbox/Universidad/Curso%202016%20-%202017/Pat.%20Software/Lab/Practica%20Final/Codigo/Revenge-of-the-villains/src/Armas/TiraBolas.java</file>
-            <file>file:/F:/Dropbox/Universidad/Curso%202016%20-%202017/Pat.%20Software/Lab/Practica%20Final/Codigo/Revenge-of-the-villains/src/Juego/EnumStates.java</file>
+            <file>file:/F:/Dropbox/Universidad/Curso%202016%20-%202017/Pat.%20Software/Lab/Practica%20Final/Codigo/Revenge-of-the-villains/src/EstadosEnemigo/EstadoGuardia.java</file>
             <file>file:/F:/Dropbox/Universidad/Curso%202016%20-%202017/Pat.%20Software/Lab/Practica%20Final/Codigo/Revenge-of-the-villains/src/Armas/Bola.java</file>
             <file>file:/F:/Dropbox/Universidad/Curso%202016%20-%202017/Pat.%20Software/Lab/Practica%20Final/Codigo/Revenge-of-the-villains/src/Personajes/Jugador.java</file>
-            <file>file:/F:/Dropbox/Universidad/Curso%202016%20-%202017/Pat.%20Software/Lab/Practica%20Final/Codigo/Revenge-of-the-villains/src/Personajes/Copiable.java</file>
+            <file>file:/F:/Dropbox/Universidad/Curso%202016%20-%202017/Pat.%20Software/Lab/Practica%20Final/Codigo/Revenge-of-the-villains/src/Armas/Arma.java</file>
+            <file>file:/F:/Dropbox/Universidad/Curso%202016%20-%202017/Pat.%20Software/Lab/Practica%20Final/Codigo/Revenge-of-the-villains/src/Armas/SpriteMovil.java</file>
             <file>file:/F:/Dropbox/Universidad/Curso%202016%20-%202017/Pat.%20Software/Lab/Practica%20Final/Codigo/Revenge-of-the-villains/src/Juego/Main.java</file>
             <file>file:/F:/Dropbox/Universidad/Curso%202016%20-%202017/Pat.%20Software/Lab/Practica%20Final/Codigo/Revenge-of-the-villains/src/States/GameState.java</file>
             <file>file:/F:/Dropbox/Universidad/Curso%202016%20-%202017/Pat.%20Software/Lab/Practica%20Final/Codigo/Revenge-of-the-villains/src/Objetos/Lava.java</file>
-            <file>file:/F:/Dropbox/Universidad/Curso%202016%20-%202017/Pat.%20Software/Lab/Practica%20Final/Codigo/Revenge-of-the-villains/src/Personajes/Mario.java</file>
             <file>file:/F:/Dropbox/Universidad/Curso%202016%20-%202017/Pat.%20Software/Lab/Practica%20Final/Codigo/Revenge-of-the-villains/src/Objetos/Puerta.java</file>
             <file>file:/F:/Dropbox/Universidad/Curso%202016%20-%202017/Pat.%20Software/Lab/Practica%20Final/Codigo/Revenge-of-the-villains/src/States/MenuState.java</file>
             <file>file:/F:/Dropbox/Universidad/Curso%202016%20-%202017/Pat.%20Software/Lab/Practica%20Final/Codigo/Revenge-of-the-villains/src/Niveles/Nivel1.java</file>
             <file>file:/F:/Dropbox/Universidad/Curso%202016%20-%202017/Pat.%20Software/Lab/Practica%20Final/Codigo/Revenge-of-the-villains/src/Armas/ControladorBala.java</file>
             <file>file:/F:/Dropbox/Universidad/Curso%202016%20-%202017/Pat.%20Software/Lab/Practica%20Final/Codigo/Revenge-of-the-villains/src/Niveles/Nivel2.java</file>
+            <file>file:/F:/Dropbox/Universidad/Curso%202016%20-%202017/Pat.%20Software/Lab/Practica%20Final/Codigo/Revenge-of-the-villains/src/States/GameOverState.java</file>
             <file>file:/F:/Dropbox/Universidad/Curso%202016%20-%202017/Pat.%20Software/Lab/Practica%20Final/Codigo/Revenge-of-the-villains/src/Personajes/EnumTipoEnemigo.java</file>
             <file>file:/F:/Dropbox/Universidad/Curso%202016%20-%202017/Pat.%20Software/Lab/Practica%20Final/Codigo/Revenge-of-the-villains/src/Engine/Colisiones.java</file>
-            <file>file:/F:/Dropbox/Universidad/Curso%202016%20-%202017/Pat.%20Software/Lab/Practica%20Final/Codigo/Revenge-of-the-villains/src/States/IntroState.java</file>
+            <file>file:/F:/Dropbox/Universidad/Curso%202016%20-%202017/Pat.%20Software/Lab/Practica%20Final/Codigo/Revenge-of-the-villains/src/Armas/Vector.java</file>
+            <file>file:/F:/Dropbox/Universidad/Curso%202016%20-%202017/Pat.%20Software/Lab/Practica%20Final/Codigo/Revenge-of-the-villains/src/EstadosEnemigo/EstadoAtacando.java</file>
+            <file>file:/F:/Dropbox/Universidad/Curso%202016%20-%202017/Pat.%20Software/Lab/Practica%20Final/Codigo/Revenge-of-the-villains/src/EstadosEnemigo/EstadoHuyendo.java</file>
+            <file>file:/F:/Dropbox/Universidad/Curso%202016%20-%202017/Pat.%20Software/Lab/Practica%20Final/Codigo/Revenge-of-the-villains/src/Engine/Hud.java</file>
             <file>file:/F:/Dropbox/Universidad/Curso%202016%20-%202017/Pat.%20Software/Lab/Practica%20Final/Codigo/Revenge-of-the-villains/src/Engine/Icontrolador.java</file>
-            <file>file:/F:/Dropbox/Universidad/Curso%202016%20-%202017/Pat.%20Software/Lab/Practica%20Final/Codigo/Revenge-of-the-villains/src/States/PuntuacionState.java</file>
+            <file>file:/F:/Dropbox/Universidad/Curso%202016%20-%202017/Pat.%20Software/Lab/Practica%20Final/Codigo/Revenge-of-the-villains/src/EstadosEnemigo/Estado.java</file>
         </group>
     </open-files>
 </project-private>

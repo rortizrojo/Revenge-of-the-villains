@@ -36,6 +36,7 @@ public class Nivel {
     protected TiledMap map;
     protected Colisiones colisiones;
     protected Jugador jugador;
+    protected static Enemigo enemigoOriginal ;
     protected Enemigo enemigo1;
     protected Enemigo enemigo2;
     protected Puerta puerta;
@@ -47,7 +48,7 @@ public class Nivel {
     protected BolaFuego fuego1;
     protected BolaFuego fuego2;
     protected BolaFuego fuego3;
-    protected GameContainer container;
+    protected static GameContainer container;
     protected StateBasedGame game;
     protected final UnicodeFont fuente;
     protected final UnicodeFont fuente2;
@@ -74,7 +75,7 @@ public class Nivel {
 
     public void update(int delta) throws SlickException{
         this.delta = delta;
-        
+        //System.out.println("Gestor Colisiones: " + GestorColisiones.getInstancia().getNumberOfElements());
         jugador.update(delta);
         if(jugador.getVida()>0)
             camara.moverCamara();
@@ -91,6 +92,7 @@ public class Nivel {
 
         if(jugador.isMuerto()){    
             System.out.println("jugador muerto");
+            //
             game.enterState(EnumStates.GAMEOVER.ordinal());
             
         }  
@@ -170,12 +172,12 @@ public class Nivel {
         g.setColor(Color.red);
         g.fillRect(container.getWidth()-camara.getCamX() - 250, container.getWidth()-camara.getCamY()-750, enemigo2.getVida()*2, 20 );
             
-        g.drawString("Vida Mario 1: " , container.getWidth()-camara.getCamX()- 400, container.getWidth()-camara.getCamY()-750);
+        g.drawString("Vida Enemigo 1: " , container.getWidth()-camara.getCamX()- 400, container.getWidth()-camara.getCamY()-750);
         
         g.setColor(Color.orange);
         g.fillRect(container.getWidth()-camara.getCamX() - 250, container.getWidth()-camara.getCamY()-700, enemigo1.getVida()*2, 20 );
             
-        g.drawString("Vida Mario 2: " , container.getWidth()-camara.getCamX() - 400 , container.getWidth()-camara.getCamY()-700);
+        g.drawString("Vida Enemigo 2: " , container.getWidth()-camara.getCamX() - 400 , container.getWidth()-camara.getCamY()-700);
         g.drawString("Monedas: " + jugador.getInventario().getMonedas(), container.getWidth()-camara.getCamX()- 750, container.getWidth()-camara.getCamY()-700);
     
     }
@@ -207,6 +209,12 @@ public class Nivel {
     public GameContainer getContainer() {
         return container;
     }
+
+    public static void setContainer(GameContainer container) {
+        Nivel.container = container;
+    }
+    
+    
 
     public StateBasedGame getGame() {
         return game;
@@ -282,7 +290,18 @@ public class Nivel {
        
     
     }
-    
-          
+
+    public static Enemigo getEnemigoOriginal() {
+        return enemigoOriginal;
+    }
+
+    public ArrayList<Moneda> getMonedas() {
+        return monedas;
+    }
+
+    public Lava getLava() {
+        return lava;
+    }
+             
         
 }

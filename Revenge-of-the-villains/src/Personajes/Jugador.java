@@ -7,7 +7,6 @@ package Personajes;
 
 import Armas.Bola;
 import Engine.Camara;
-import Engine.Colisiones;
 import Engine.GestorColisiones;
 import Engine.IColisionable;
 import Engine.Inventario;
@@ -95,11 +94,13 @@ public class Jugador extends Personaje implements IColisionable {
      */
     public Jugador(GameContainer container, StateBasedGame game) throws SlickException {
         
+       
         super(container);
         
         this.game = game;
         this.gestor = GestorColisiones.getInstancia();
         
+        nombre = "Jugador";
         finJuego = false;
         enemigos_muertos = false;
         pasoDeNivel=false;
@@ -348,10 +349,14 @@ public class Jugador extends Personaje implements IColisionable {
         
         if(colision.getClass().getName().equals("Armas.Bola") ){
             bola = (Bola)colision;
-            if (bola != null)
+            System.out.println("Me ha dado una bola");
+            if (bola != null){
                 if(vida>0){
                     vida = vida - bola.getDaño();
                 }
+           
+            }
+
         }
         if(colision.getClass().getName().equals("Objetos.Puerta")&&enemigos_muertos){
             this.puerta = (Puerta)colision;
@@ -374,17 +379,15 @@ public class Jugador extends Personaje implements IColisionable {
            finJuego = true; 
            
         }
-        if(colision.getClass().getName().equals("Personajes.Mario")){ 
-            Mario mario = (Mario)colision;
-            if(!mario.isMuerto())
-                if(vida>0)
-                   vida = vida - 0.05f;         
-        }    
+       
+          
         if(colision.getClass().getName().equals("Personajes.Enemigo")){ 
             Enemigo enemigo = (Enemigo)colision;
+            
+            System.out.println("Enemigo que colisiona: " + enemigo.getNombre());
             if(!enemigo.isMuerto())
                 if(vida>0)
-                   vida = vida - 0.03f;
+                   vida = vida - enemigo.getDañoTacto() ;
         } 
         if(colision.getClass().getName().equals("Objetos.Moneda")){ 
             moneda = (Moneda)colision;

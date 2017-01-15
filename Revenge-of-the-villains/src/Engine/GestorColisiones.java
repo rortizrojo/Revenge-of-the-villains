@@ -16,7 +16,6 @@
  */
 package Engine;
 
-import Engine.IColisionable;
 import java.util.ArrayList;
 
 /**
@@ -90,6 +89,14 @@ public class GestorColisiones {
         if (listaColisionables.get(i).getAreaColision().intersects(listaColisionables.get(j).getAreaColision())) {
             listaColisionables.get(i).alColisionar(listaColisionables.get(j));
         }
+    }
+    
+    public int getNumberOfElements(){
+        return listaColisionables.size();
+    }
+    
+    public void eliminarElementos(){
+        listaColisionables.clear();
     }
     
     

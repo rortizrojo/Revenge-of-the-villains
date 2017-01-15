@@ -54,7 +54,7 @@ public class BolaFuego implements IColisionable {
         sheetPuerta = new SpriteSheet("res/animations/fuego.png", (int) anchoSprite, (int) altoSprite);
         
         //numeroFrames = 4;
-        for (int i = 0; i <4; i++) {
+        for (int i = 0; i <sheetPuerta.getHorizontalCount(); i++) {
             animationFuego.addFrame(sheetPuerta.getSprite(i, 0), 100);
         }
         areaColision = new Rectangle(x,y,anchoDibujado,altoDibujado);

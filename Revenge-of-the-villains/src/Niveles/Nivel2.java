@@ -8,7 +8,6 @@ import Objetos.Cofre;
 import Objetos.Lava;
 import Personajes.Enemigo;
 import Personajes.EnumTipoEnemigo;
-import Personajes.Mario;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
@@ -23,21 +22,24 @@ public class Nivel2 extends Nivel {
     //private Puerta puerta; 
     public Nivel2( GameContainer container, StateBasedGame game, Nivel nivel)throws SlickException{
         super();
-        super.container = container;
+        Nivel.container = container;
         super.game = game;
         jugador = nivel.getJugador();
         puerta = nivel.getPuerta();
         map = new TiledMap("res/tileMaps/NivelFinalMario.tmx");
         Colisiones.getInstancia().setMap(map);
         jugador.setColisiones();
-        //enemigoFuerte = new Enemigo(container, 500, 200, 1.0f,EnumTipoEnemigo.NORMAL);
-        //enemigoDebil = new Enemigo(container,1300, 1650, 0.7f, EnumTipoEnemigo.DEBIL);
         
-        
-        enemigo1 = new Enemigo(container,1300, 1650, EnumTipoEnemigo.NORMAL);
+        enemigo1 = (Enemigo) enemigoOriginal.copia();
+        enemigo1.setPosX(1300);
+        enemigo1.setPosY(1650);
+        enemigo1.setNombre("enemigo1");
+        enemigo1.setCaracteristicas(EnumTipoEnemigo.NORMAL);
+
         enemigo2 = (Enemigo) enemigo1.copia();
         enemigo2.setPosX(500);
         enemigo2.setPosY(200);
+        enemigo2.setNombre("enemigo2");
         enemigo2.setCaracteristicas(EnumTipoEnemigo.FUERTE);
         
         cofre = new Cofre (enemigo2.getPosX(),enemigo2.getPosY()+50,0);

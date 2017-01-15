@@ -7,7 +7,6 @@ import Objetos.Moneda;
 import Objetos.Puerta;
 import Personajes.Enemigo;
 import Personajes.EnumTipoEnemigo;
-import Personajes.Mario;
 import java.util.ArrayList;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
@@ -26,7 +25,7 @@ public class Nivel1 extends Nivel{
        
         
             super();
-            super.container = container;
+            Nivel.container = container;
             super.game = game;
             jugador = nivel.getJugador();
             map = new TiledMap("res/tileMaps/Nivel 2.tmx");
@@ -34,14 +33,20 @@ public class Nivel1 extends Nivel{
             colisiones = Colisiones.getInstancia();
             colisiones.setMap(map);
             jugador.setColisiones();
-            //jugador.setMonedas();
-            //enemigoDebil = new Enemigo(container,5550,1000, 0.6f,  EnumTipoEnemigo.DEBIL);
-            //enemigoFuerte = new Enemigo(container, 350,1000, 1.0f, EnumTipoEnemigo.NORMAL);
-            enemigo1 = new Enemigo(container,5550,1000, EnumTipoEnemigo.NORMAL);
-            enemigo2 = (Enemigo) enemigo1.copia();
+
+            
+            enemigo1 = (Enemigo) enemigoOriginal.copia();
+            enemigo1.setPosX(5550);
+            enemigo1.setPosY(1000);
+            enemigo1.setNombre("enemigo1");
+            enemigo1.setCaracteristicas(EnumTipoEnemigo.NORMAL);
+            
+            enemigo2 = (Enemigo) enemigoOriginal.copia();
             enemigo2.setPosX(350);
             enemigo2.setPosY(1000);
-
+            enemigo2.setNombre("enemigo2");
+            enemigo2.setCaracteristicas(EnumTipoEnemigo.NORMAL);
+                        
             puerta = new Puerta(46,430,0);
             zoom = 0.65f;
             camara = new Camara(container, map,  jugador, zoom );

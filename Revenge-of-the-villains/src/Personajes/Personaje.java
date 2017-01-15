@@ -19,6 +19,8 @@ import org.newdawn.slick.tiled.TiledMap;
  */
 public abstract class Personaje implements IColisionable {
 
+    protected String nombre; 
+    
     protected float vida;
     protected float posX;
     protected float posY;
@@ -35,7 +37,7 @@ public abstract class Personaje implements IColisionable {
     private float tiempoSalto = 10;
     private boolean puedeSaltar = false;
 
-    protected GameContainer container;
+    protected static GameContainer container;
     protected Colisiones colisiones;
 
     // declara botones
@@ -73,6 +75,7 @@ public abstract class Personaje implements IColisionable {
         map = colisiones.getMap();
 
     }
+    
 
     public void update(int delta) throws SlickException {
 
@@ -230,6 +233,30 @@ public abstract class Personaje implements IColisionable {
 
     public void setVida(int vida) {
         this.vida = vida;
+    }
+
+    public boolean isConectadoSuelo() {
+        return conectadoSuelo;
+    }
+
+    public boolean isConectadoIzquierda() {
+        return conectadoIzquierda;
+    }
+
+    public boolean isConectadoDerecha() {
+        return conectadoDerecha;
+    }
+
+    public boolean isConectadoTecho() {
+        return conectadoTecho;
+    }
+
+    public void setBotonIzquierda(boolean botonIzquierda) {
+        this.botonIzquierda = botonIzquierda;
+    }
+
+    public void setBotonDerecha(boolean botonDerecha) {
+        this.botonDerecha = botonDerecha;
     }
 
     

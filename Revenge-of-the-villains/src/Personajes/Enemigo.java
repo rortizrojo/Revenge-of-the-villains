@@ -4,6 +4,7 @@ import Engine.Camara;
 import Engine.GestorColisiones;
 import Engine.IColisionable;
 import Armas.TiraBolas;
+import EstadosEnemigo.*;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -19,8 +20,11 @@ import org.newdawn.slick.geom.Rectangle;
  */
 public class Enemigo extends Personaje implements IColisionable,Copiable {
     
+    private Estado estadoActual; // Estado actual
+    private static Enemigo instancia;
     private float distancia;
-    private float daño;  
+    private float dañoArma;
+    private float dañoTacto;
     private float escala;
     //jugador_a_izq=true -> jugador a izq. de Mario
     private boolean jugador_a_izq;
@@ -60,13 +64,15 @@ public class Enemigo extends Personaje implements IColisionable,Copiable {
     private final TiraBolas tiraBolas;
     private EnumTipoEnemigo tipoEnemigo;
 
-    public Enemigo(GameContainer container, float posX, float posY, EnumTipoEnemigo tipoEnemigo ) throws SlickException {
+    
+    public Enemigo(GameContainer container,String nombre, float posX, float posY, EnumTipoEnemigo tipoEnemigo ) throws SlickException {
         
         super(container);
         gestor = GestorColisiones.getInstancia();
         gestor.registrarCuerpo(this);
         
-        tiraBolas = new TiraBolas(this.daño);
+        this.nombre = nombre;
+        
         vida = 100;
         cont_muerte = 100;
         muerto=false;
@@ -79,13 +85,13 @@ public class Enemigo extends Personaje implements IColisionable,Copiable {
         this.posX = posX;
         this.posY = posY;
         
-
-      
         //Tamaño del sprite .png ver en propiedades de la imagen
         anchoSprite = 28;
         altoSprite = 39;
         //Escalado del sprite, ajustar con el numero
         setCaracteristicas(tipoEnemigo);
+        
+        tiraBolas = new TiraBolas(this.dañoArma);
         
         //Sheets y animaciones necesarias para el movimiento:
         sheetCorriendoDerecha = new SpriteSheet("res/animations//Mario/corriendoDerechaSprite.png", (int) anchoSprite, (int) altoSprite);
@@ -128,6 +134,7 @@ public class Enemigo extends Personaje implements IColisionable,Copiable {
             muerte_Izq.addFrame(sheetMuerte_Izq.getSprite(i, 0), 150);
         }
     }
+
       
      /**
      * Secuencia de acciones que realiza el personaje
@@ -135,138 +142,22 @@ public class Enemigo extends Personaje implements IColisionable,Copiable {
     @Override
     public void acciones() {
     
-        botonDerecha = false;
-        botonIzquierda = false;
-        botonArriba = false;
-        
-        saltar =false;
-        
         tiraBolas.update(delta);
         tiraBolas.delete(map);
-        sincronizarArea();
-        gestor.comprobarColisiones();
-        
         if(vida>0){
-        
+            botonDerecha = false;
+            botonIzquierda = false;
+            botonArriba = false;
+
+            saltar =false;
+
+            sincronizarArea();
+            gestor.comprobarColisiones();
+            
             // Según el estado realiza unas acciones u otras
-            switch (estado){
-                case 0: //VIGILANDO -> caminar despacio de lado a lado                          
-                    if ((conectadoIzquierda || conectadoDerecha) && contador>30){
-                        cambiar_dir = !cambiar_dir;
-                        contador = 0;
-                    }
-                    
-                    if(cambiar_dir)
-                        botonIzquierda = true;            
-                    else 
-                        botonDerecha = true;
-                    
-                    if(contador<35)
-                        contador++;
-                    //System.out.println("estado 0");
-                    break;   
+            if(estadoActual != null)
+                estadoActual.ejecutar(this);
 
-                case 1: //EN GUARDIA -> se para y empieza a mirar a los lados buscando al jugador
-                    mirandoIzquierda = contador<100;            
-                    contador++;
-                    if (contador > 200)
-                        contador  = 0; 
-                    //System.out.println("estado 1");
-                    break;
-
-                case 2: //ACERCANDOSE -> ve al personaje y se empieza a acercar
-                    if (jugador_a_izq == true){
-                        mirandoIzquierda = true;
-                        if (conectadoSuelo && !conectadoIzquierda)//->puede avanzar 
-                            botonIzquierda = true; 
-                    }
-                    if (jugador_a_izq == false){
-                        mirandoIzquierda = false;
-                        if(conectadoSuelo && !conectadoDerecha) //-> puede avanzar
-                            botonDerecha = true;
-                    }
-                    if (!jugador_a_alt && jugador_a_igualX){//Esta en misma X pero muy arriba->se para                 
-                            botonIzquierda = false;
-                            botonDerecha = false;
-                        }  
-                    //System.out.println("estado 2");
-                    break;
-
-                case 3: //ATACANDO -> ataca a jugador
-                    if (jugador_a_izq == true){
-                        if (distancia >100 && jugador_a_alt && conectadoSuelo &&
-                                !conectadoIzquierda)
-                            botonIzquierda = true; 
-                        if (distancia >100 && !jugador_a_alt){
-                            mirandoIzquierda = true;
-                            saltar = true; 
-                        }
-                        if (cont_disparo == 30){
-                            tiraBolas.disparar(this, -500);       
-                        }
-                    }
-                    else{ 
-                        if (distancia >100 && jugador_a_alt && conectadoSuelo  && 
-                                !conectadoDerecha)
-                            botonDerecha = true;
-                        if (distancia >100 && !jugador_a_alt){
-                            mirandoIzquierda = false;
-                            saltar = true; 
-                        }
-                        if (cont_disparo == 30){
-                            tiraBolas.disparar(this, +500);
-                        }
-                    }       
-                    cont_disparo++;
-                    if (cont_disparo > 30)
-                        cont_disparo=0;
-
-                    //System.out.println("estado 3");
-                    break;
-
-                case 4: //FURIOSO -> ataca a jugador con mas fuerza
-                    
-                    if (jugador_a_izq == true){
-                        if (distancia >50 && jugador_a_alt && conectadoSuelo && 
-                                !conectadoIzquierda)
-                            botonIzquierda = true; 
-                        if (distancia >50 && !jugador_a_alt){
-                            mirandoIzquierda = true;
-                            saltar = true; 
-                        }
-                        if (cont_disparo == 5){
-                            tiraBolas.disparar(this, -500);       
-                        }
-                    }
-                    else{ 
-                        if (distancia >50 && jugador_a_alt && conectadoSuelo  &&
-                                !conectadoDerecha)
-                            botonDerecha = true;
-                        if (distancia >50 && !jugador_a_alt){
-                            mirandoIzquierda = false;
-                            saltar = true; 
-                        }
-                        if (cont_disparo == 5){
-                            tiraBolas.disparar(this, +500);
-                        }
-                    }  
-                    cont_disparo++;
-                    if (cont_disparo > 5)
-                        cont_disparo=0;
-                    //System.out.println("estado 4");
-                    break;
-
-                case 5: //HUYENDO           
-                    
-                    if (jugador_a_izq == true){
-                        botonDerecha = true; 
-                    }
-                    else{ 
-                        botonIzquierda = true;                  
-                    }   
-                    //System.out.println("estado 5");
-                    break;
-            }
             //Saltar con un frecuencia 
             if (saltar){
                 if (cont_salto==50)
@@ -346,18 +237,31 @@ public class Enemigo extends Personaje implements IColisionable,Copiable {
         jugador_a_alt = (Math.abs(jugadorY-posY) < 50);  
         jugador_a_igualX = (Math.abs(jugadorX-posX) < 50);
         
-        if (vida>65 && distancia<=700 && distancia > 680) 
-            estado = 1; //ESTADO EN GUARDIA = 1
-        else if (vida>65 && distancia<=680 && distancia > 400) 
-            estado = 2; //ESTADO ACERCANDOSE = 2
-        else if (vida>65 && distancia<=680) 
-            estado = 3; //ESTADO ATACANDO = 3
-        else if (vida<=65 && vida>5 && distancia<=680) 
-            estado = 4; //ESTADO FURIOSO = 4
-        else if (vida<=5) 
-            estado = 5; //ESTADO HUYENDO = 5 
-        else
-            estado = 0; //ESTADO VIGILANDO = 0
+        if (vida>65 && distancia<=700 && distancia > 680) { 
+            //ESTADO EN GUARDIA = 1
+            estadoActual = new EstadoGuardia();
+        }
+        else if (vida>65 && distancia<=680 && distancia > 400) { 
+            //ESTADO ACERCANDOSE = 2
+            estadoActual = new EstadoAcercandose();
+        }
+        else if (vida>65 && distancia<=680) {
+            //ESTADO ATACANDO = 3  
+            estadoActual = new EstadoAtacando();
+        }
+        else if (vida<=65 && vida>5 && distancia<=680) {
+            //ESTADO FURIOSO = 4
+            estadoActual = new EstadoFurioso();
+        } 
+        else if (vida<=5) {
+            //ESTADO HUYENDO = 5 
+            estadoActual = new EstadoHuyendo();
+        } 
+        else{
+            //ESTADO VIGILANDO = 0
+            estadoActual = new EstadoVigilando();
+        }
+            
     }     
     
     @Override
@@ -396,15 +300,18 @@ public class Enemigo extends Personaje implements IColisionable,Copiable {
         this.tipoEnemigo = tipoEnemigo;
         switch(tipoEnemigo){
             case DEBIL: 
-                this.daño= 0.6f;
+                this.dañoArma= 0.6f;
+                this.dañoTacto= 0.3f;
                 this.escala = 1.8f;
                 break;
             case NORMAL: 
-                this.daño= 0.9f;
+                this.dañoArma= 0.8f;
+                this.dañoTacto= 0.6f;
                 this.escala = 2.3f;
                 break;
             default: 
-                this.daño= 1.2f;
+                this.dañoArma= 1.0f;
+                this.dañoTacto= 1.2f;
                 this.escala = 2.8f;
                 break;
             
@@ -417,13 +324,104 @@ public class Enemigo extends Personaje implements IColisionable,Copiable {
         
     }
     
+    @Override
+    public Object copia() throws SlickException{
+        return new Enemigo(this.container,this.nombre, this.posX, this.posY, this.tipoEnemigo );
+    }
+    
+    
+    /**
+     * Devuelve la instancia de la clase.
+     * Acceso controlado a la única instancia. 
+     * Otras clases que quieran una referencia a la única instancia de la clase Singleton conseguirán esa instancia 
+     * llamando al método estático getInstancia de la clase. 
+     * @return Instancia de la clase.
+     * @throws org.newdawn.slick.SlickException
+     */
+    public static Enemigo getInstancia() throws SlickException {
+        if(instancia == null)
+            return new Enemigo(container, "enemigoBase" , 0, 0, EnumTipoEnemigo.DEBIL);
+            
+        return instancia;
+    }
+
+    public float getDañoArma() {
+        return dañoArma;
+    }
+
+    public float getDañoTacto() {
+        return dañoTacto;
+    }
+
+    public float getDistancia() {
+        return distancia;
+    }
+
+    public int getContador() {
+        return contador;
+    }
+
+    public void setContador(int contador) {
+        this.contador = contador;
+    }
+
+    public boolean isCambiar_dir() {
+        return cambiar_dir;
+    }
+
+    public void setCambiar_dir(boolean cambiar_dir) {
+        this.cambiar_dir = cambiar_dir;
+    }
+
+    public boolean isMirandoIzquierda() {
+        return mirandoIzquierda;
+    }
+
+    public void setMirandoIzquierda(boolean mirandoIzquierda) {
+        this.mirandoIzquierda = mirandoIzquierda;
+    }
+    
+
+    public boolean isJugador_a_izq() {
+        return jugador_a_izq;
+    }
+
+    public boolean isJugador_a_alt() {
+        return jugador_a_alt;
+    }
+
+    public void setSaltar(boolean saltar) {
+        this.saltar = saltar;
+    }
+
+    public TiraBolas getTiraBolas() {
+        return tiraBolas;
+    }
+
+    public int getCont_disparo() {
+        return cont_disparo;
+    }
+
+    public void setCont_disparo(int cont_disparo) {
+        this.cont_disparo = cont_disparo;
+    }
+
+    public boolean isJugador_a_igualX() {
+        return jugador_a_igualX;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    
+    
 
     
     
     
     
-     @Override
-    public Object copia() throws SlickException{
-        return new Enemigo(this.container,this.posX, this.posY, this.tipoEnemigo );
-    }
 }

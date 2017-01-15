@@ -28,20 +28,30 @@ public class Nivel0 extends Nivel {
     //private Puerta puerta;
     public Nivel0( GameContainer container, StateBasedGame game)throws SlickException{
         super(); 
-        super.container = container;
+        Nivel.container = container;
         super.game = game;
         map = new TiledMap("res/tileMaps/Nivel 1.tmx");
-      //  puerta = new Puerta (5819,928,0,gestor);
         
         System.out.println("Empieza el nivel 0");
         Colisiones.getInstancia().setMap(map);
         jugador = new Jugador(container,game);
-        //enemigoDebil = new Enemigo(container,  1573, 1030, 0.6f, EnumTipoEnemigo.DEBIL);
-        //enemigoFuerte = new Enemigo(container, 4421, 916, 1.2f, EnumTipoEnemigo.FUERTE);
-        enemigo1 = new Enemigo(container,  1573, 1030, EnumTipoEnemigo.DEBIL);
-        enemigo2 = (Enemigo) enemigo1.copia();
+
+        //Se crea el prototipo de enemigo
+        enemigoOriginal = Enemigo.getInstancia();
+        
+        /**
+         * Se hace una copia de enemigoOriginal por cada enemigo que se va a tener
+         * y se modifican sus características
+         */
+        enemigo1 = (Enemigo) enemigoOriginal.copia();
+        enemigo1.setPosX(1573);
+        enemigo1.setPosY(1030);
+        enemigo1.setNombre("enemigo1");
+        
+        enemigo2 = (Enemigo) enemigoOriginal.copia();
         enemigo2.setPosX(4421);
         enemigo2.setPosY(916);
+        enemigo2.setNombre("enemigo2");
         enemigo2.setCaracteristicas(EnumTipoEnemigo.NORMAL);
                
         puerta = new Puerta(5819,928,0); 
