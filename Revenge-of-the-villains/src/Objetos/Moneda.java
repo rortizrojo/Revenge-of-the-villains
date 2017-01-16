@@ -31,10 +31,10 @@ public class Moneda implements IColisionable {
     private final Sound monedaSound;
     
         
-    public Moneda(float x, float y) throws SlickException{
+    public Moneda(float posX, float posY) throws SlickException{
         
-        this.posMonedaX = x;
-        this.posMonedaY = y;
+        this.posMonedaX = posX;
+        this.posMonedaY = posY;
         cogida = false;
         anchoSprite = 100;
         altoSprite = 100;
@@ -49,7 +49,7 @@ public class Moneda implements IColisionable {
         for (int i = 0; i < numeroFrames; i++) {
             animationMoneda.addFrame(sheetMoneda.getSprite(i, 0), 200);
         }
-        areaColision = new Rectangle(x,y,anchoDibujado,altoDibujado);
+        areaColision = new Rectangle(posMonedaX,posMonedaY,anchoDibujado,altoDibujado);
         GestorColisiones.getInstancia().registrarCuerpo(this);
         
     }
@@ -83,6 +83,7 @@ public class Moneda implements IColisionable {
     @Override
     public void alColisionar(IColisionable colision) {
         if(colision.getClass().getName().equals("Personajes.Jugador")){
+            
             cogida = true;
             
             if(cogida)

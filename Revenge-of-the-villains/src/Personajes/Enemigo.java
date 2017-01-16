@@ -35,7 +35,7 @@ public class Enemigo extends Personaje implements IColisionable,Copiable {
     private boolean cambiar_dir;
     private boolean muerto;
    
-    private int estado, cont_disparo, cont_salto, contador,cont_muerte;
+    private int cont_disparo, cont_salto, contador,cont_muerte;
     
     ////////Sprites y animaciones:
     private final SpriteSheet sheetCorriendoDerecha;
@@ -134,7 +134,8 @@ public class Enemigo extends Personaje implements IColisionable,Copiable {
             muerte_Izq.addFrame(sheetMuerte_Izq.getSprite(i, 0), 150);
         }
     }
-
+    
+    
       
      /**
      * Secuencia de acciones que realiza el personaje
@@ -166,15 +167,19 @@ public class Enemigo extends Personaje implements IColisionable,Copiable {
                 if (cont_salto>50)
                     cont_salto=0;       
             }//Sonidos
-        
-            if(saltando)
-                if(!saltoMario.playing())
-                    saltoMario.play(1f, 0.2f);
+
            
         }
         
     }
-         
+      
+   
+    @Override
+    public void update(int delta) throws SlickException{
+        super.update(delta);
+        actualizarEstado(Jugador.getInstancia().getPosX(), Jugador.getInstancia().getPosY());
+    }
+    
     @Override
     public void render(int delta,Graphics g, Camara camara) throws SlickException {
 
@@ -236,29 +241,35 @@ public class Enemigo extends Personaje implements IColisionable,Copiable {
         //jugador_a_alt=true -> jugador a la misma altura Mario
         jugador_a_alt = (Math.abs(jugadorY-posY) < 50);  
         jugador_a_igualX = (Math.abs(jugadorX-posX) < 50);
-        
+        Estado estadoAtacando;
         if (vida>65 && distancia<=700 && distancia > 680) { 
-            //ESTADO EN GUARDIA = 1
+            //ESTADO EN GUARDIA 
             estadoActual = new EstadoGuardia();
         }
         else if (vida>65 && distancia<=680 && distancia > 400) { 
-            //ESTADO ACERCANDOSE = 2
+            //ESTADO ACERCANDOSE
             estadoActual = new EstadoAcercandose();
         }
         else if (vida>65 && distancia<=680) {
-            //ESTADO ATACANDO = 3  
+            //ESTADO ATACANDO  
             estadoActual = new EstadoAtacando();
         }
-        else if (vida<=65 && vida>5 && distancia<=680) {
-            //ESTADO FURIOSO = 4
+        else if (vida<=65 && vida>45 && distancia<=680) {
+            //NUEVO ESTADO --> MUY ENFADADO
+            estadoAtacando= new EstadoAtacando();
+            estadoActual = new EstadoMuyEnfadado(estadoAtacando);
+        } 
+        else if (vida <= 45 && vida >5){
+            
+            //ESTADO FURIOSO 
             estadoActual = new EstadoFurioso();
         } 
-        else if (vida<=5) {
-            //ESTADO HUYENDO = 5 
+        else if (vida<=5)  {
+            //ESTADO HUYENDO 
             estadoActual = new EstadoHuyendo();
         } 
         else{
-            //ESTADO VIGILANDO = 0
+            //ESTADO VIGILANDO
             estadoActual = new EstadoVigilando();
         }
             
@@ -299,7 +310,7 @@ public class Enemigo extends Personaje implements IColisionable,Copiable {
         return tipoEnemigo;
     }
 
-    public void setCaracteristicas(EnumTipoEnemigo tipoEnemigo) {
+    public final void setCaracteristicas(EnumTipoEnemigo tipoEnemigo) {
         this.tipoEnemigo = tipoEnemigo;
         switch(tipoEnemigo){
             case DEBIL: 
@@ -308,8 +319,8 @@ public class Enemigo extends Personaje implements IColisionable,Copiable {
                 this.escala = 1.8f;
                 break;
             case NORMAL: 
-                this.dañoArma= 0.8f;
-                this.dañoTacto= 0.4f;
+                this.dañoArma= 0.2f;
+                this.dañoTacto= 0.2f;
                 this.escala = 2.3f;
                 break;
             default: 
@@ -329,7 +340,7 @@ public class Enemigo extends Personaje implements IColisionable,Copiable {
     
     @Override
     public Object copia() throws SlickException{
-        return new Enemigo(this.container,this.nombre, this.posX, this.posY, this.tipoEnemigo );
+        return new Enemigo(Enemigo.container,this.nombre, this.posX, this.posY, this.tipoEnemigo );
     }
     
     
@@ -419,6 +430,14 @@ public class Enemigo extends Personaje implements IColisionable,Copiable {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public Estado getEstadoActual() {
+        return estadoActual;
+    }
+
+    public Sound getSaltoMario() {
+        return saltoMario;
     }
     
     

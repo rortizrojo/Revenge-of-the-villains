@@ -30,7 +30,8 @@ public class TiraBolas extends Arma {
     
     public void disparar(Personaje personaje, float velocidad){
         bolas.addBola((float)personaje.getPosX()+20,(float)personaje.getPosY()+20, velocidad,daño);
-        disparoBola.play(1f,0.2f);
+        disparoBola.play(1f, 0.15f);
+
     }
     
     public void update(int delta){

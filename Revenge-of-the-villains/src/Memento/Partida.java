@@ -27,15 +27,15 @@ import java.util.ArrayList;
 public class Partida {
     
     
-    private Nivel nivel; // Nivel en la que se encuentra la partida.
-    private FechaHora fecha; // Fecha en que se salva la partida.
-    private ArrayList<IColisionable> lista ; //Objeto que contiene los objetos colisionables del nivel
+    private final Nivel nivel; // Nivel en la que se encuentra la partida.
+    private final FechaHora fecha; // Fecha en que se salva la partida.
+    private final ArrayList<IColisionable> lista ; //Objeto que contiene los objetos colisionables del nivel
     
 
     /**
      * Constructor.
      * @param nivel Nivel en la que se encuentra la partida.
-     * @param gestor Objeto que contiene los objetos colisionables del nivel
+     * @param lista Lista de objetos colisionables
      */
     public Partida(Nivel nivel, ArrayList<IColisionable> lista) {
         this.lista = lista;
@@ -72,7 +72,7 @@ public class Partida {
      */
     @Override
     public String toString() {
-        return "- Partida salvada:\nPuntuación: " + nivel.getJugador().getPuntuacion() + " # " 
+        return "\nPuntuación: " + nivel.getJugador().getPuntuacion() + " # " 
                     + fecha.toString();
     }
 }

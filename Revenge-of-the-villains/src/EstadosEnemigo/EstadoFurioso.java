@@ -36,7 +36,7 @@ public class EstadoFurioso implements Estado {
                 enemigo.setMirandoIzquierda(true);
                 enemigo.setSaltar(true); 
             }
-            if (enemigo.getCont_disparo() == 5){
+            if (Math.random()*100 <= 20){
                 enemigo.getTiraBolas().disparar(enemigo, -500);       
             }
         }
@@ -48,13 +48,11 @@ public class EstadoFurioso implements Estado {
                 enemigo.setBotonIzquierda(false);
                 enemigo.setSaltar(true);
             }
-            if (enemigo.getCont_disparo() == 5){
+            if ((Math.random()*100 ) <= 20){
                 enemigo.getTiraBolas().disparar(enemigo, +500);
             }
         }  
-        enemigo.setCont_disparo(enemigo.getCont_disparo() + 1 );
-        if (enemigo.getCont_disparo() > 5)
-             enemigo.setCont_disparo(0);
+
     }
     
 }

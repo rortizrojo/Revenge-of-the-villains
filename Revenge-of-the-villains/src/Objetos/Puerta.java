@@ -68,7 +68,7 @@ public class Puerta implements IColisionable {
     }
     
     
-    public void update(int delta){
+    public void update(){
         
         
         sincronizarArea();

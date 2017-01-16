@@ -197,6 +197,7 @@ public abstract class Personaje implements IColisionable {
                 }
         }
         posY += velocidadY;
+        
     }
 
     public float getPosX() {

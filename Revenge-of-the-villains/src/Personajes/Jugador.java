@@ -88,9 +88,6 @@ public class Jugador extends Personaje implements IColisionable {
      * Constructor de la clase Jugador
      * @param container         Contenedor del juego
      * @param game              Juego basado en estados
-     * @param colisiones        Objeto que contiene las posiciones de los objetos 
-     * que contienen colision
-     * @param gestor            Objeto que gestiona los objetos colisionables y sus interacciones
      * @throws SlickException   Si se produce algún error durante la carga 
      * de sprites o sonidos
      */
@@ -223,7 +220,9 @@ public class Jugador extends Personaje implements IColisionable {
             
             sincronizarArea();
             gestor.comprobarColisiones();
-            gestor.anularCuerpo(moneda);
+            GestorColisiones.getInstancia().anularCuerpo(moneda);
+            Camara.getInstancia().moverCamara();
+            
         }
        
         
@@ -251,6 +250,18 @@ public class Jugador extends Personaje implements IColisionable {
             }
         }
     }
+    
+    @Override
+    public void update(int delta)throws SlickException {
+        super.update(delta);
+        if(muerto){    
+            System.out.println("jugador muerto");
+            game.enterState(EnumStates.GAMEOVER.ordinal());
+
+        }  
+    }
+    
+    
     @Override
     public void render(int delta,Graphics g, Camara camara) throws SlickException {
         
@@ -407,6 +418,8 @@ public class Jugador extends Personaje implements IColisionable {
                 if(inventario.getMonedas()== 10)
                     monedasRecogidas = true;
             }
+            
+            
         } 
     }
 
@@ -422,7 +435,6 @@ public class Jugador extends Personaje implements IColisionable {
      * Otras clases que quieran una referencia a la única instancia de la clase Singleton conseguirán esa instancia 
      * llamando al método estático getInstancia de la clase. 
      * @return Instancia de la clase.
-     * @throws org.newdawn.slick.SlickException
      */
     public static Jugador getInstancia() {
          return instancia;

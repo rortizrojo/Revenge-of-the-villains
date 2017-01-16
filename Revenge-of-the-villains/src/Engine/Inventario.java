@@ -20,7 +20,9 @@ public class Inventario {
         
     }
 
-
+    public void borrarMonedas(){
+        monedas = 0;
+    }
 
     public int getMonedas() {
         return monedas;

@@ -75,28 +75,13 @@ public class Nivel {
 
     public void update(int delta) throws SlickException{
         this.delta = delta;
-        //System.out.println("Gestor Colisiones: " + GestorColisiones.getInstancia().getNumberOfElements());
         jugador.update(delta);
-        if(jugador.getVida()>0)
-            camara.moverCamara();
-
         enemigo1.update(delta);
-        enemigo1.actualizarEstado(jugador.getPosX(), jugador.getPosY());
-        
         enemigo2.update(delta);
-        enemigo2.actualizarEstado(jugador.getPosX(), jugador.getPosY());
-       
         jugador.setEnemigos_muertos(enemigo1.isMuerto()&&enemigo2.isMuerto());
-        
-        camara.moverCamara();
 
-        if(jugador.isMuerto()){    
-            System.out.println("jugador muerto");
-            //
-            game.enterState(EnumStates.GAMEOVER.ordinal());
-            
-        }  
-        puerta.update(delta);
+        
+        puerta.update();
         if (nivelAct==2){
             
             if(!enemigo2.isMuerto())

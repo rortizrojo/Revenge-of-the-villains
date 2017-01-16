@@ -15,6 +15,7 @@ import org.newdawn.slick.tiled.TiledMap;
  */
 public class Camara {
     
+    private static Camara instancia;
     private float x;
     private float y;
     private float camX;
@@ -32,7 +33,7 @@ public class Camara {
     
     
     public Camara(GameContainer container , TiledMap map, Personaje personaje, float zoom){
-        
+        this.instancia = this;
         this.personaje = personaje;
         this.map = map;
         this.zoom = zoom;
@@ -120,4 +121,11 @@ public class Camara {
         x = personaje.getPosX()*zoom;
         y = personaje.getPosY()*zoom;
     }
+
+    public static Camara getInstancia() {
+        return instancia;
+    }
+    
+    
+    
 }

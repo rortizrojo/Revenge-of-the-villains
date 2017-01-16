@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class Conserje {
 
     // Lista de recuerdos.
-    private ArrayList<Recuerdo> recuerdos = new ArrayList<>();
+    private final ArrayList<Recuerdo> recuerdos = new ArrayList<>();
 
     /**
      * Añade un recuerdo a la lista de recuerdos.

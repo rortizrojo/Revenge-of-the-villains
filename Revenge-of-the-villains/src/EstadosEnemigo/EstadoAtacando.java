@@ -27,33 +27,34 @@ public class EstadoAtacando implements Estado{
     @Override
     public void ejecutar(Enemigo enemigo){
         
-        //System.out.println(enemigo.getNombre() + ": Estoy en el estado Atacando");
-    if (enemigo.isJugador_a_izq()  == true){
-        if (enemigo.getDistancia() >100 && enemigo.isJugador_a_alt() && 
-            enemigo.isConectadoSuelo() && !enemigo.isConectadoIzquierda())
-            enemigo.setBotonIzquierda(true);
-        if (enemigo.getDistancia() >100 && ! enemigo.isJugador_a_alt()){
-            enemigo.setMirandoIzquierda(true);
-            enemigo.setSaltar(true); 
-        }
-        if (enemigo.getCont_disparo() == 30){
-            enemigo.getTiraBolas().disparar(enemigo, -500);       
+        System.out.println(enemigo.getNombre() + ": Estoy en el estado Atacando");
+        if (enemigo.isJugador_a_izq()  == true){
+            if (enemigo.getDistancia() >100 && enemigo.isJugador_a_alt() && 
+                enemigo.isConectadoSuelo() && !enemigo.isConectadoIzquierda())
+                enemigo.setBotonIzquierda(true);
+            if (enemigo.getDistancia() >100 && ! enemigo.isJugador_a_alt()){
+                enemigo.setMirandoIzquierda(true);
+                enemigo.setSaltar(true); 
+            }
+            if ((Math.random()*100 )<= 10){
+                enemigo.getTiraBolas().disparar(enemigo, -500);       
             }
         }
         else{ 
-        if (enemigo.getDistancia() >100 && enemigo.isJugador_a_alt() && 
-                enemigo.isConectadoSuelo()  && !enemigo.isConectadoDerecha())
-            enemigo.setBotonDerecha(true);
-        if (enemigo.getDistancia() >100 && !enemigo.isJugador_a_alt()){
-            enemigo.setMirandoIzquierda(false);
-            enemigo.setSaltar(true);  
-        }
-        if (enemigo.getCont_disparo() == 30){
-            enemigo.getTiraBolas().disparar(enemigo, +500);
-        }
-    }       
-    enemigo.setCont_disparo(enemigo.getCont_disparo() + 1 );
-    if (enemigo.getCont_disparo() > 30)
-         enemigo.setCont_disparo(0);
+            if (enemigo.getDistancia() >100 && enemigo.isJugador_a_alt() && 
+                    enemigo.isConectadoSuelo()  && !enemigo.isConectadoDerecha())
+                enemigo.setBotonDerecha(true);
+            if (enemigo.getDistancia() >100 && !enemigo.isJugador_a_alt()){
+                enemigo.setMirandoIzquierda(false);
+                enemigo.setSaltar(true);  
+            }
+            if ((Math.random()*100 ) <= 10){
+                enemigo.getTiraBolas().disparar(enemigo, +500);
+            }
+        }  
+        /*    
+        enemigo.setCont_disparo(enemigo.getCont_disparo() + 1 );
+        if (enemigo.getCont_disparo() > 30)
+             enemigo.setCont_disparo(0);*/
     }
 }
