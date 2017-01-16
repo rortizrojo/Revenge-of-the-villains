@@ -98,6 +98,11 @@ public class GestorColisiones {
     public void eliminarElementos(){
         listaColisionables.clear();
     }
+
+    public ArrayList<IColisionable> getListaColisionables() {
+        return listaColisionables;
+    }
+    
     
     
         /**

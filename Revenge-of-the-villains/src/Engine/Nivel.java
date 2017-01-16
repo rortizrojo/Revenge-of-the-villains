@@ -180,6 +180,7 @@ public class Nivel {
         g.drawString("Vida Enemigo 2: " , container.getWidth()-camara.getCamX() - 400 , container.getWidth()-camara.getCamY()-700);
         g.drawString("Monedas: " + jugador.getInventario().getMonedas(), container.getWidth()-camara.getCamX()- 750, container.getWidth()-camara.getCamY()-700);
     
+        g.drawString("Puntuación: " + jugador.getPuntuacion(), container.getWidth()-camara.getCamX()- 750, container.getWidth()-camara.getCamY()-650);
     }
 
     public Colisiones getColisiones() {

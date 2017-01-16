@@ -271,14 +271,17 @@ public class Enemigo extends Personaje implements IColisionable,Copiable {
 
     @Override
     public void alColisionar(IColisionable colision) {
-        if (colision.getClass().getName().equals("Armas.Bala"))
+        if (colision.getClass().getName().equals("Armas.Bala")){
+            Jugador.getInstancia().setPuntuacion(Jugador.getInstancia().getPuntuacion() + 50);
             if(vida>0){
                 vida = vida - 1.2f;
                 if(vida<=0){
                    gestor.anularCuerpo(this);
                    muerteMario.play();
+                   Jugador.getInstancia().setPuntuacion(Jugador.getInstancia().getPuntuacion()+200);
                 }
             }
+        }
         
                 
     }
@@ -301,17 +304,17 @@ public class Enemigo extends Personaje implements IColisionable,Copiable {
         switch(tipoEnemigo){
             case DEBIL: 
                 this.dañoArma= 0.6f;
-                this.dañoTacto= 0.3f;
+                this.dañoTacto= 0.2f;
                 this.escala = 1.8f;
                 break;
             case NORMAL: 
                 this.dañoArma= 0.8f;
-                this.dañoTacto= 0.6f;
+                this.dañoTacto= 0.4f;
                 this.escala = 2.3f;
                 break;
             default: 
                 this.dañoArma= 1.0f;
-                this.dañoTacto= 1.2f;
+                this.dañoTacto= 0.6f;
                 this.escala = 2.8f;
                 break;
             

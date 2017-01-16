@@ -1,11 +1,16 @@
 package States;
 
 import Engine.GestorColisiones;
+import Engine.IColisionable;
 import Engine.Nivel;
 import Juego.EnumStates;
+import Memento.Conserje;
+import Memento.Originador;
+import Memento.Partida;
 import Niveles.Nivel0;
 import Niveles.Nivel1;
 import Niveles.Nivel2;
+import java.util.ArrayList;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
@@ -18,6 +23,9 @@ import org.newdawn.slick.state.StateBasedGame;
  */
 public class GameState extends BasicGameState {
     private Nivel nivel;
+    private Originador originador;
+    private Conserje conserje;
+    private boolean partidaGuardada;
    
 
     @Override
@@ -39,6 +47,11 @@ public class GameState extends BasicGameState {
         if(nivel != null){     
             //Si el jugador está muerto, se pone el nivel a null para reiniciar todo
             if(nivel.getJugador().isMuerto()){
+                ArrayList lista = new ArrayList<IColisionable>();
+                GestorColisiones.getInstancia().getListaColisionables().forEach((objeto) -> {
+                    lista.add(objeto);
+                });
+                guardarPartida(nivel,lista );
                 GestorColisiones.getInstancia().eliminarElementos();
                 nivel = null;
                 init(container, game);
@@ -71,8 +84,23 @@ public class GameState extends BasicGameState {
         }
         //Si no se ha creado el nivel, se inicializa con nivel 0
         else{
-            nivel = new Nivel0(container, game);
-
+            if(!partidaGuardada)
+                nivel = new Nivel0(container,game);
+            else{
+                nivel = recuperarPartida().getNivel();
+                nivel.getJugador().setMuerto(false);
+                nivel.getJugador().setVida(100);
+                nivel.getJugador().setPosX(200);
+                nivel.getJugador().setPosY(200);
+                System.out.println("elementos colisoinables "+recuperarPartida().getLista().size() );
+                recuperarPartida().getLista().forEach((objeto) -> {
+                    GestorColisiones.getInstancia().getListaColisionables().add(objeto);
+                });
+    
+            
+            }
+                
+        
         }
 
         
@@ -101,6 +129,40 @@ public class GameState extends BasicGameState {
        init(container, game); 
        
    
+    }
+    
+    public void guardarPartida(Nivel nivel,ArrayList<IColisionable> lista){
+         
+        try {
+            //partidas
+            Partida p1 = new Partida(nivel,lista);
+
+            //originador
+            originador = new Originador();
+
+            //conserje
+            conserje = new Conserje();
+
+            //establecemos partidas y guardamos sus recuerdos para poder recuperarlos
+            originador.setPartida(p1);
+            conserje.setRecuerdo(originador.crearRecuerdo());
+            partidaGuardada = true;
+            System.out.println(originador.getPartida().toString());
+            
+            
+            //recuperamos la partida 1
+
+        } catch (Exception e) {
+            System.out.println("Error: "+e.toString());
+        }
+        
+        
+    }
+    
+    public Partida recuperarPartida(){
+        originador.setRecuerdo(conserje.getRecuerdo(0));
+        System.out.println(originador.getPartida().toString());
+        return originador.getPartida();
     }
    
 }

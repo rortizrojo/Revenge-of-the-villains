@@ -6,6 +6,9 @@
 package Armas;
 
 import Engine.IColisionable;
+import Personajes.Enemigo;
+import Personajes.EnumTipoEnemigo;
+import Personajes.Jugador;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
 import org.newdawn.slick.geom.Rectangle;
@@ -78,9 +81,9 @@ public class Bala implements IColisionable {
 
     @Override
     public void alColisionar(IColisionable colision) {
-       if(colision.getClass().getName().equals("Personajes.Mario") || colision.getClass().getName().equals("Personajes.Enemigo")){
+        if(colision.getClass().getName().equals("Personajes.Enemigo")){
            bala.setPosicion(0, -100);
-       }
+        }
            
     }
 
@@ -89,5 +92,8 @@ public class Bala implements IColisionable {
         areaColision.setX(posBalaX);
         areaColision.setY(posBalaY);
     }
+    
+    
+
     
 }
