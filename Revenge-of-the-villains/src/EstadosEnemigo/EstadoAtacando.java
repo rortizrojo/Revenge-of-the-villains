@@ -27,7 +27,7 @@ public class EstadoAtacando implements Estado{
     @Override
     public void ejecutar(Enemigo enemigo){
         
-        System.out.println(enemigo.getNombre() + ": Estoy en el estado Atacando");
+        //System.out.println(enemigo.getNombre() + ": Estoy en el estado Atacando");
         if (enemigo.isJugador_a_izq()  == true){
             if (enemigo.getDistancia() >100 && enemigo.isJugador_a_alt() && 
                 enemigo.isConectadoSuelo() && !enemigo.isConectadoIzquierda())

@@ -129,12 +129,12 @@ public class Nivel {
         
         puerta.draw();
         
-        jugador.render(delta, g, camara);
+        jugador.render(delta, g);
         
         if(!enemigo1.isMuerto())
-            enemigo1.render(delta, g, camara);  
+            enemigo1.render(delta, g);  
         if(!enemigo2.isMuerto())
-            enemigo2.render(delta, g, camara);
+            enemigo2.render(delta, g);
         if(jugador.getPasoDeNivel()|| jugador.getFinJuego()){
             fuente.drawString(jugador.getPosX()-100, jugador.getPosY()-100,"MISSION COMPLETED");
             fuente2.drawString(jugador.getPosX()-70, jugador.getPosY()-70,"(presiona F para continuar)");  
@@ -186,10 +186,6 @@ public class Nivel {
 
     public Puerta getPuerta() {
         return puerta;
-    }
-
-    public Camara getCamara() {
-        return camara;
     }
 
     public GameContainer getContainer() {
@@ -287,6 +283,10 @@ public class Nivel {
 
     public Lava getLava() {
         return lava;
+    }
+
+    public void setJugador(Jugador jugador) {
+        this.jugador = jugador;
     }
              
         

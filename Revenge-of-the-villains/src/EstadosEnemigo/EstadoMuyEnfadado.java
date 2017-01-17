@@ -36,7 +36,7 @@ public class EstadoMuyEnfadado extends Decorador{
     @Override 
     public void ejecutar(Enemigo enemigo){
         super.ejecutar(enemigo);
-        System.out.println("Estoy muy enfadado");       
+        //System.out.println("Estoy muy enfadado");       
         if( (Math.random()*10 ) < 3 )
             if(!enemigo.getSaltoMario().playing())
                 enemigo.getSaltoMario().play(1f, 0.2f);

@@ -7,6 +7,7 @@ package Niveles;
 
 import Engine.Camara;
 import Engine.Colisiones;
+import Engine.GestorColisiones;
 import Engine.Nivel;
 import Objetos.Puerta;
 import Personajes.Enemigo;
@@ -38,7 +39,7 @@ public class Nivel0 extends Nivel {
 
         //Se crea el prototipo de enemigo
         enemigoOriginal = Enemigo.getInstancia();
-        
+        GestorColisiones.getInstancia().anularCuerpo(enemigoOriginal);
         /**
          * Se hace una copia de enemigoOriginal por cada enemigo que se va a tener
          * y se modifican sus características

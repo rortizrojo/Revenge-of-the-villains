@@ -252,18 +252,17 @@ public class Jugador extends Personaje implements IColisionable {
     }
     
     @Override
-    public void update(int delta)throws SlickException {
-        super.update(delta);
+    public void actualizarEstado()throws SlickException {
         if(muerto){    
             System.out.println("jugador muerto");
             game.enterState(EnumStates.GAMEOVER.ordinal());
-
+            
         }  
     }
     
     
     @Override
-    public void render(int delta,Graphics g, Camara camara) throws SlickException {
+    public void render(int delta,Graphics g) throws SlickException {
         
             this.delta = delta;
 
@@ -414,7 +413,7 @@ public class Jugador extends Personaje implements IColisionable {
             moneda = (Moneda)colision;
             
             if(!moneda.isCogida()){
-                inventario.setMonedas();
+                inventario.añadirMoneda();
                 if(inventario.getMonedas()== 10)
                     monedasRecogidas = true;
             }

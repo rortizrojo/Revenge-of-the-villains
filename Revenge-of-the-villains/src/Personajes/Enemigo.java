@@ -172,16 +172,14 @@ public class Enemigo extends Personaje implements IColisionable,Copiable {
         }
         
     }
-      
-   
+         
     @Override
-    public void update(int delta) throws SlickException{
-        super.update(delta);
+    public void actualizarEstado() throws SlickException{
         actualizarEstado(Jugador.getInstancia().getPosX(), Jugador.getInstancia().getPosY());
     }
     
     @Override
-    public void render(int delta,Graphics g, Camara camara) throws SlickException {
+    public void render(int delta,Graphics g) throws SlickException {
 
         this.delta = delta;
         //Si muere
@@ -287,6 +285,7 @@ public class Enemigo extends Personaje implements IColisionable,Copiable {
             if(vida>0){
                 vida = vida - 1.2f;
                 if(vida<=0){
+                   
                    gestor.anularCuerpo(this);
                    muerteMario.play();
                    Jugador.getInstancia().setPuntuacion(Jugador.getInstancia().getPuntuacion()+200);
@@ -353,9 +352,11 @@ public class Enemigo extends Personaje implements IColisionable,Copiable {
      * @throws org.newdawn.slick.SlickException
      */
     public static Enemigo getInstancia() throws SlickException {
-        if(instancia == null)
+        if(instancia == null){
             return new Enemigo(container, "enemigoBase" , 0, 0, EnumTipoEnemigo.DEBIL);
             
+        }
+        
         return instancia;
     }
 

@@ -20,6 +20,8 @@ public class Inventario {
         
     }
 
+    
+    
     public void borrarMonedas(){
         monedas = 0;
     }
@@ -28,7 +30,11 @@ public class Inventario {
         return monedas;
     }
 
-    public void setMonedas() {
+    public void setMonedas(int monedas){
+        this.monedas = monedas;
+    }
+    
+    public void añadirMoneda() {
         this.monedas++;
     }
     

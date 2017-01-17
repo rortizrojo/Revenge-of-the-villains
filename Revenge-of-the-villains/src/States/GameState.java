@@ -1,5 +1,6 @@
 package States;
 
+import Engine.Camara;
 import Engine.Colisiones;
 import Engine.GestorColisiones;
 import Engine.IColisionable;
@@ -12,6 +13,7 @@ import Niveles.Nivel0;
 import Niveles.Nivel1;
 import Niveles.Nivel2;
 import Objetos.Moneda;
+import Personajes.Jugador;
 import java.util.ArrayList;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -93,11 +95,12 @@ public class GameState extends BasicGameState {
             else{
                 Partida partida = recuperarPartida() ;
                 nivel = partida.getNivel();
-                nivel.getJugador().setMuerto(false);
-                nivel.getJugador().setVida(100);
-                nivel.getJugador().setPosX(200);
-                nivel.getJugador().setPosY(200);
-                //nivel.getJugador().getInventario().borrarMonedas();
+                Jugador jugador = new Jugador(container, game);
+                jugador.getInventario().setMonedas(partida.getNivel().getJugador().getInventario().getMonedas());
+                jugador.setPuntuacion(partida.getNivel().getJugador().getPuntuacion());
+                nivel.setJugador(jugador);
+                Camara.getInstancia().setPersonaje(jugador);
+                
                 //System.out.println("Monedas: " + nivel.getMonedas().size());
                 
                 //System.out.println("elementos colisoinables "+recuperarPartida().getLista().size() );
@@ -122,6 +125,7 @@ public class GameState extends BasicGameState {
     }
     @Override
     public void update(GameContainer container, StateBasedGame game, int delta) throws SlickException {  
+        Camara.getInstancia().moverCamara();
         if (nivel!=null)
             nivel.update(delta);
        

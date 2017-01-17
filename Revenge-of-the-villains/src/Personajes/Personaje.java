@@ -76,18 +76,102 @@ public abstract class Personaje implements IColisionable {
 
     }
     
-
-    public void update(int delta) throws SlickException {
-
-        //creando variables para las colisiones...
-        this.delta = delta;
-        /*
-        
-        System.out.println("velocidad x = "+ velocidadX);
-        System.out.println("velocidad y = "+ velocidadY);*/
+    
+    public final void update(int delta) throws SlickException {
         
         //Comprueba colisiones solo si el jugador esta dentro de los limites del mapa
         //para que no provoque una excepcion de indexOutOfBounds en el array
+        compruebaColisiones();
+        acciones();
+        movimientoPersonaje();
+        recuperaVida();
+        actualizarEstado();
+        
+    }
+
+    public float getPosX() {
+        return posX;
+    }
+
+    public void setPosX(float posX) {
+        this.posX = posX;
+    }
+
+    public float getPosY() {
+        return posY;
+    }
+
+    public void setPosY(float posY) {
+        this.posY = posY;
+    }
+
+    public float getAnchoSprite() {
+        return anchoSprite;
+    }
+
+    public float getAltoSprite() {
+        return altoSprite;
+    }
+
+    public boolean isConectado() {
+        return conectadoSuelo;
+    }
+
+    public float getVida() {
+        return vida;
+    }
+
+    public void setVida(int vida) {
+        this.vida = vida;
+    }
+
+    public boolean isConectadoSuelo() {
+        return conectadoSuelo;
+    }
+
+    public boolean isConectadoIzquierda() {
+        return conectadoIzquierda;
+    }
+
+    public boolean isConectadoDerecha() {
+        return conectadoDerecha;
+    }
+
+    public boolean isConectadoTecho() {
+        return conectadoTecho;
+    }
+
+    public void setBotonIzquierda(boolean botonIzquierda) {
+        this.botonIzquierda = botonIzquierda;
+    }
+
+    public void setBotonDerecha(boolean botonDerecha) {
+        this.botonDerecha = botonDerecha;
+    }
+
+    
+
+    public void setColisiones() {
+        this.colisiones = Colisiones.getInstancia();
+        bloqueadoDerecha = colisiones.getBloqueadoDerecha();
+        bloqueadoIzquierda = colisiones.getBloqueadoIzquierda();
+        bloqueadoArriba = colisiones.getBloqueadoArriba();
+        bloqueadoAbajo = colisiones.getBloqueadoAbajo();
+        map = colisiones.getMap();
+    }
+
+    
+    
+    /*** METODOS DEL PATRÓN TEMPLATE METHOD ***/
+    
+    
+    public abstract void acciones() throws SlickException;
+    
+    public abstract void actualizarEstado() throws SlickException;
+
+    public abstract void render(int delta, Graphics g) throws SlickException;
+
+    private final void compruebaColisiones() {
         if((posY+altoDibujado+velocidadY)<(map.getHeight()*map.getTileHeight()) && posY>=0){
             conectadoDerecha = bloqueadoIzquierda   [(int)(posX+anchoDibujado+velocidadX)/map.getTileWidth()][(int)(posY+ altoDibujado+velocidadY-1)/map.getTileHeight()]
                     || bloqueadoIzquierda[(int)(posX+anchoDibujado+velocidadX)/map.getTileWidth()][(int)(posY+ velocidadY)/map.getTileHeight()];
@@ -100,8 +184,9 @@ public abstract class Personaje implements IColisionable {
             conectadoTecho = (bloqueadoAbajo[((int)(posX+anchoDibujado)/map.getTileWidth())-1][(int)(posY)/map.getTileHeight()] 
                 || bloqueadoAbajo[(int)(posX)/map.getTileWidth()][(int)(posY)/map.getTileHeight()]);
         }
-        
-        acciones();
+    }
+
+    private final void movimientoPersonaje() {
         if(vida>0){
             
             posX += velocidadX;
@@ -187,7 +272,9 @@ public abstract class Personaje implements IColisionable {
 
             
         }
-        
+    }
+
+    private final void recuperaVida() {
         //RECUPERAR VIDA PERDIDA PASADO UN TIEMPO        
         if (vida<75 && vida > 2){
         cont_vida++;
@@ -197,81 +284,5 @@ public abstract class Personaje implements IColisionable {
                 }
         }
         posY += velocidadY;
-        
     }
-
-    public float getPosX() {
-        return posX;
-    }
-
-    public void setPosX(float posX) {
-        this.posX = posX;
-    }
-
-    public float getPosY() {
-        return posY;
-    }
-
-    public void setPosY(float posY) {
-        this.posY = posY;
-    }
-
-    public float getAnchoSprite() {
-        return anchoSprite;
-    }
-
-    public float getAltoSprite() {
-        return altoSprite;
-    }
-
-    public boolean isConectado() {
-        return conectadoSuelo;
-    }
-
-    public float getVida() {
-        return vida;
-    }
-
-    public void setVida(int vida) {
-        this.vida = vida;
-    }
-
-    public boolean isConectadoSuelo() {
-        return conectadoSuelo;
-    }
-
-    public boolean isConectadoIzquierda() {
-        return conectadoIzquierda;
-    }
-
-    public boolean isConectadoDerecha() {
-        return conectadoDerecha;
-    }
-
-    public boolean isConectadoTecho() {
-        return conectadoTecho;
-    }
-
-    public void setBotonIzquierda(boolean botonIzquierda) {
-        this.botonIzquierda = botonIzquierda;
-    }
-
-    public void setBotonDerecha(boolean botonDerecha) {
-        this.botonDerecha = botonDerecha;
-    }
-
-    
-
-    public void setColisiones() {
-        this.colisiones = Colisiones.getInstancia();
-        bloqueadoDerecha = colisiones.getBloqueadoDerecha();
-        bloqueadoIzquierda = colisiones.getBloqueadoIzquierda();
-        bloqueadoArriba = colisiones.getBloqueadoArriba();
-        bloqueadoAbajo = colisiones.getBloqueadoAbajo();
-        map = colisiones.getMap();
-    }
-
-    public abstract void acciones() throws SlickException;
-
-    public abstract void render(int delta, Graphics g, Camara camara) throws SlickException;
 }

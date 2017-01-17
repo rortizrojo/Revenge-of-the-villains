@@ -28,7 +28,7 @@ public class Camara {
     private float altoMapa; 
     private final float anchoVentana;
     private final float altoVentana;
-    private final Personaje personaje;
+    private Personaje personaje;
     private float zoom;
     
     
@@ -124,6 +124,10 @@ public class Camara {
 
     public static Camara getInstancia() {
         return instancia;
+    }
+
+    public void setPersonaje(Personaje personaje) {
+        this.personaje = personaje;
     }
     
     
