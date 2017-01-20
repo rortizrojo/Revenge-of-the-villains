@@ -16,9 +16,7 @@
  */
 package Personajes;
 
-/**
- *
- * @author rorti
+/** Enumerado que permite especificar la fuerza del enemigo que se va a crear
  */
 public enum EnumTipoEnemigo {
     DEBIL,NORMAL,FUERTE;

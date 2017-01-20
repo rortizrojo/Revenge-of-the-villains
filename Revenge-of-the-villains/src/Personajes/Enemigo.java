@@ -309,6 +309,11 @@ public class Enemigo extends Personaje implements IColisionable,Copiable {
         return tipoEnemigo;
     }
 
+    /**
+     * Método que se llama en el constructor y ajusta las características del 
+     * enemigo según el tipo de enemigo que se indique
+     * @param tipoEnemigo Tipo enumerado que indica la fuerza del enemigo
+     */
     public final void setCaracteristicas(EnumTipoEnemigo tipoEnemigo) {
         this.tipoEnemigo = tipoEnemigo;
         switch(tipoEnemigo){

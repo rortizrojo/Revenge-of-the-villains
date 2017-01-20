@@ -115,11 +115,12 @@ public class GestorColisiones {
     
     
     
-        /**
+    /**
      * Devuelve la instancia de la clase.
      * Acceso controlado a la única instancia. 
-     * Otras clases que quieran una referencia a la única instancia de la clase Singleton conseguirán esa instancia 
-     * llamando al método estático getInstancia de la clase. 
+     * Otras clases que quieran una referencia a la única instancia de la clase
+     * Singleton conseguirán esa instancia llamando al método estático 
+     * getInstancia de la clase. 
      * @return Instancia de la clase.
      */
     public static GestorColisiones getInstancia() {
