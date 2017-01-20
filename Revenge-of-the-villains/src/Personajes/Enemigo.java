@@ -21,7 +21,16 @@ import org.newdawn.slick.geom.Rectangle;
 public class Enemigo extends Personaje implements IColisionable,Copiable {
     
     private Estado estadoActual; // Estado actual
+    
+    
+    /**
+     * Instancia de la clase. 
+     * Es privada: solo accesible por la propia clase.
+     * Es estática: propia de la clase (compartida por los objetos). 
+     */
     private static Enemigo instancia;
+    
+    
     private float distancia;
     private float dañoArma;
     private float dañoTacto;
@@ -64,8 +73,12 @@ public class Enemigo extends Personaje implements IColisionable,Copiable {
     private final TiraBolas tiraBolas;
     private EnumTipoEnemigo tipoEnemigo;
 
-    
-    public Enemigo(GameContainer container,String nombre, float posX, float posY, EnumTipoEnemigo tipoEnemigo ) throws SlickException {
+    /**
+     * Constructor privado. 
+     * No se permite crear instancias de la clase Singleton usando new.
+     */
+    private Enemigo(GameContainer container,String nombre, float posX, 
+            float posY, EnumTipoEnemigo tipoEnemigo ) throws SlickException {
         
         super(container);
         gestor = GestorColisiones.getInstancia();
@@ -138,7 +151,7 @@ public class Enemigo extends Personaje implements IColisionable,Copiable {
     
       
      /**
-     * Secuencia de acciones que realiza el personaje
+     * Secuencia de acciones que realiza el enemigo
      */
     @Override
     public void acciones() {
@@ -172,7 +185,10 @@ public class Enemigo extends Personaje implements IColisionable,Copiable {
         }
         
     }
-         
+    /**
+     * Actualiza el estado del Enemigo
+     * @throws SlickException 
+     */  
     @Override
     public void actualizarEstado() throws SlickException{
         actualizarEstado(Jugador.getInstancia().getPosX(), Jugador.getInstancia().getPosY());
@@ -351,8 +367,9 @@ public class Enemigo extends Personaje implements IColisionable,Copiable {
     /**
      * Devuelve la instancia de la clase.
      * Acceso controlado a la única instancia. 
-     * Otras clases que quieran una referencia a la única instancia de la clase Singleton conseguirán esa instancia 
-     * llamando al método estático getInstancia de la clase. 
+     * Otras clases que quieran una referencia a la única instancia de la clase 
+     * Singleton conseguirán esa instancia llamando al método estático
+     * getInstancia de la clase. 
      * @return Instancia de la clase.
      * @throws org.newdawn.slick.SlickException
      */

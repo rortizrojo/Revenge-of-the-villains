@@ -61,14 +61,14 @@ public class GestorColisiones {
     public void anularCuerpo(IColisionable cuerpo) {
         if (listaColisionables.contains(cuerpo)) {
             listaColisionables.remove(cuerpo);
-            
+            /*
             System.out.print("Queda: " );
             listaColisionables.forEach((elemento) -> {
                   
                   System.out.print(" "+ elemento.getClass().getSimpleName() );
-            });
+            });*/
             
-            System.out.println("");
+            //System.out.println("");
     
             
         }

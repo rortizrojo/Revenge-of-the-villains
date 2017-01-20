@@ -163,8 +163,8 @@ public class Jugador extends Personaje implements IColisionable {
         
 
     }
-    /**
-     * 
+     /**
+     * Secuencia de acciones que realiza el jugador
      */
     @Override
     public void acciones()  {
@@ -250,7 +250,10 @@ public class Jugador extends Personaje implements IColisionable {
             }
         }
     }
-    
+    /**
+     * Actualiza el estado del Jugador
+     * @throws SlickException 
+     */  
     @Override
     public void actualizarEstado()throws SlickException {
         if(muerto){    
@@ -369,7 +372,7 @@ public class Jugador extends Personaje implements IColisionable {
         
         if(colision.getClass().getName().equals("Armas.Bola") ){
             bola = (Bola)colision;
-            System.out.println("Me ha dado una bola");
+            //System.out.println("Me ha dado una bola");
             if (bola != null){
                 if(vida>0){
                     vida = vida - bola.getDaño();

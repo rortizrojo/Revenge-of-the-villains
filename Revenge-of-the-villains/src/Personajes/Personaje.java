@@ -76,15 +76,19 @@ public abstract class Personaje implements IColisionable {
 
     }
     
-    
+    /**
+     * Método plnatilla
+     * @param delta Delta
+     * @throws SlickException 
+     */
     public final void update(int delta) throws SlickException {
         
-        //Comprueba colisiones solo si el jugador esta dentro de los limites del mapa
-        //para que no provoque una excepcion de indexOutOfBounds en el array
         compruebaColisiones();
+        //Este método lo implementan los hijos
         acciones();
         movimientoPersonaje();
         recuperaVida();
+        //Este método lo implementan los hijos
         actualizarEstado();
         
     }
@@ -171,7 +175,10 @@ public abstract class Personaje implements IColisionable {
 
     public abstract void render(int delta, Graphics g) throws SlickException;
 
+    
     private final void compruebaColisiones() {
+        //Comprueba colisiones solo si el jugador esta dentro de los limites del mapa
+        //para que no provoque una excepcion de indexOutOfBounds en el array
         if((posY+altoDibujado+velocidadY)<(map.getHeight()*map.getTileHeight()) && posY>=0){
             conectadoDerecha = bloqueadoIzquierda   [(int)(posX+anchoDibujado+velocidadX)/map.getTileWidth()][(int)(posY+ altoDibujado+velocidadY-1)/map.getTileHeight()]
                     || bloqueadoIzquierda[(int)(posX+anchoDibujado+velocidadX)/map.getTileWidth()][(int)(posY+ velocidadY)/map.getTileHeight()];
